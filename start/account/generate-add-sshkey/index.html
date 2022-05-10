@@ -1,0 +1,2326 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://osg-htc.org/start/account/generate-add-sshkey/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Generate SSH Keys and Activate Your OSG Login - OSG Connect Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#generate-ssh-keys-and-activate-your-osg-login" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OSG Connect Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generate SSH Keys and Activate Your OSG Login 
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    OSG Connect Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        OSG Connect Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          HPC Admin
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HPC Admin" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          HPC Admin
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hpcadmin/osg-flock/" class="md-nav__link">
+        Submit Node Flocking to OSG 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hpcadmin/osg-xsede/" class="md-nav__link">
+        Running OSG jobs on XSEDE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/training/osg-user-school/" class="md-nav__link">
+        Annual, Week-Long OSG User School 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/training/previous-training-events/" class="md-nav__link">
+        Other Past Training Events 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/training/osgusertraining/" class="md-nav__link">
+        OSG User Training (regular/monthly) 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/training/Joint-SWC-OSG/" class="md-nav__link">
+        Joint Software Carpentry and OSG Workshops 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/resources/contact-information/" class="md-nav__link">
+        Contact OSG for non-Support Inquiries 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../training/resources/frequently-asked-questions-faq-/" class="md-nav__link">
+        Frequently Asked Questions 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Start
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Start" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobdurationcategory/" class="md-nav__link">
+        Indicate the Duration Category of Your Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        Roadmap to HTC Workload Submission via OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/openmpi-jobs/" class="md-nav__link">
+        OpenMPI Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/requirements/" class="md-nav__link">
+        Control Where Your Jobs Run / Job Requirements 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/multicore-jobs/" class="md-nav__link">
+        Multicore Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/gpu-jobs/" class="md-nav__link">
+        Using GPUs on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/large-memory-jobs/" class="md-nav__link">
+        Large Memory Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/compiling-applications/" class="md-nav__link">
+        Compiling Software for OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software-overview/" class="md-nav__link">
+        Using Software on the Open Science Pool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/example-compilation/" class="md-nav__link">
+        Example Software Compilation 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/singularity-containers/" class="md-nav__link">
+        Use Containers on the OSG 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/containers-docker/" class="md-nav__link">
+        Create/Register a Docker Container Image 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software-request/" class="md-nav__link">
+        Request Help with Your Software 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/new_modules_list/" class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/available-containers-list/" class="md-nav__link">
+        View Existing OSPool-Supported Containers 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/containers-singularity/" class="md-nav__link">
+        Create a Singularity Container Image 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/containers/" class="md-nav__link">
+        Use Containers on the OSG 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Scaling-Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Scaling-Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Scaling-Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling-up/preparing-to-scale-up/" class="md-nav__link">
+        Determining the Amount of Resources to Request in a Submit File 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling-up/submit-multiple-jobs/" class="md-nav__link">
+        Easily Submit Multiple Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling-up/checkpointing-on-OSPool/" class="md-nav__link">
+        Checkpointing Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling-up/dagman-workflows/" class="md-nav__link">
+        Submit Workflows with HTCondor's DAGMan 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/tutorial-command/" class="md-nav__link">
+        Use OSG Connect Tutorials 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          Account
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Account" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Account
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Generate SSH Keys and Activate Your OSG Login 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Generate SSH Keys and Activate Your OSG Login 
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-generate-ssh-keys" class="md-nav__link">
+    Step 1: Generate SSH Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Generate SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix-based-operating-system-linuxmac-or-latest-windows-10-versions" class="md-nav__link">
+    Unix-based operating system (Linux/Mac) or latest Windows 10 versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-using-putty-to-log-in" class="md-nav__link">
+    Windows, using Putty to log in
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-add-the-public-ssh-key-to-login-node" class="md-nav__link">
+    Step 2: Add the public SSH key to login node
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Add the public SSH key to login node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-multiple-keys" class="md-nav__link">
+    Can I Use Multiple Keys?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-in" class="md-nav__link">
+    Logging In
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging In">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determine-which-login-node-to-use" class="md-nav__link">
+    Determine which login node to use
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-mac-linux-or-newer-versions-of-windows" class="md-nav__link">
+    For Mac, Linux, or newer versions of Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-older-versions-of-windows" class="md-nav__link">
+    For older versions of Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    Getting Help
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starting-project/" class="md-nav__link">
+        Join and Use a Project in OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registration-and-login/" class="md-nav__link">
+        Registration and Login for OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Input Files Up To 100MB In Size 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/scp/" class="md-nav__link">
+        Use scp To Transfer Files To and From OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/stashcache/" class="md-nav__link">
+        Transfer Larger Input and Output Files 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/file-transfer-via-http/" class="md-nav__link">
+        Transfer HTTP-available Files up to 1GB In Size 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/output-file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Job Output Files Up To 1GB In Size 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data/osgconnect-storage/" class="md-nav__link">
+        Overview: Data Staging and Transfer to Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Welcome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Welcome" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Welcome
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Xsede
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Xsede" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Xsede
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/xsede/osg-xsede/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Overview" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/overview/is-it-for-you/" class="md-nav__link">
+        Computation on the Open Science Pool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/overview/getting-help-from-RCFs/" class="md-nav__link">
+        Email, Office Hours, and 1-1 Meetings 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/overview/acknowledgeOSG/" class="md-nav__link">
+        Acknowledge the OSG 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/overview/gracc/" class="md-nav__link">
+        OSG Accounting (GRACC)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/overview/policy/" class="md-nav__link">
+        Policies for Using OSG Connect and the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/julia-on-osg/" class="md-nav__link">
+        Using Julia on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/manage-python-packages/" class="md-nav__link">
+        Run Python Scripts on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/conda-on-osg/" class="md-nav__link">
+        Using conda to Run Python on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/java-on-osg/" class="md-nav__link">
+        Using Java in Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" type="checkbox" id="__nav_6_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_5">
+          Freesurfer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Freesurfer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Freesurfer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/FreeSurfer/Introduction/" class="md-nav__link">
+        Introduction to FreeSurfer on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-AutoDockVina/README.md" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-tensorflow-containers/README.md" class="md-nav__link">
+        Working with Tensorflow, GPUs, and containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-software/README.md" class="md-nav__link">
+        Software Access Using HTCondor or the Web
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-htcondor-transfer/README.md" class="md-nav__link">
+        Transferring data with HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-stash-http/README.md" class="md-nav__link">
+        Access Stash remotely using HTTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-stashcache-blast/README.md" class="md-nav__link">
+        StashCache-Blast
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
+        Scaling Up With HTCondor’s Queue Command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-python-virtualenv/README.md" class="md-nav__link">
+        Virtualenv in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-quickstart/README.md" class="md-nav__link">
+        Quickstart - Submit Example HTCondor Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-blast-split/README.md" class="md-nav__link">
+        High-Throughput BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-AutoDockVina/README.md" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-R-addlibSNA/README.md" class="md-nav__link">
+        Use External Packages in your R Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-namd/README.md" class="md-nav__link">
+        A Simple NAMD Application
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-error101/README.md" class="md-nav__link">
+        Troubleshooting Job Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-swift/README.md" class="md-nav__link">
+        Swift
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-pegasus/README.md" class="md-nav__link">
+        Use Pegasus to Manage Workflows on OSG Connect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-osg-locations/README.md" class="md-nav__link">
+        Finding OSG Locations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-gromacs/README.md" class="md-nav__link">
+        GROMACS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
+        Basics of compiled MATLAB applications - Hello World example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-makeflow-quickstart/README.md" class="md-nav__link">
+        Makeflow - Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-blast/README.md" class="md-nav__link">
+        Sequence Search with BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-R/README.md" class="md-nav__link">
+        Run R scripts on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-photodemo/README.md" class="md-nav__link">
+        Photo Analysis Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/tutorial-ScalingUp-R/README.md" class="md-nav__link">
+        Scaling up compute resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-generate-ssh-keys" class="md-nav__link">
+    Step 1: Generate SSH Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Generate SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix-based-operating-system-linuxmac-or-latest-windows-10-versions" class="md-nav__link">
+    Unix-based operating system (Linux/Mac) or latest Windows 10 versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-using-putty-to-log-in" class="md-nav__link">
+    Windows, using Putty to log in
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-add-the-public-ssh-key-to-login-node" class="md-nav__link">
+    Step 2: Add the public SSH key to login node
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Add the public SSH key to login node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#can-i-use-multiple-keys" class="md-nav__link">
+    Can I Use Multiple Keys?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-in" class="md-nav__link">
+    Logging In
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging In">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determine-which-login-node-to-use" class="md-nav__link">
+    Determine which login node to use
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-mac-linux-or-newer-versions-of-windows" class="md-nav__link">
+    For Mac, Linux, or newer versions of Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-older-versions-of-windows" class="md-nav__link">
+    For older versions of Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    Getting Help
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="generate-ssh-keys-and-activate-your-osg-login">Generate SSH Keys and Activate Your OSG Login<a class="headerlink" href="#generate-ssh-keys-and-activate-your-osg-login" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>OSG Connect requires SSH-key-based logins. You need to follow 
+a two-step process to set up the SSH key to your account. </p>
+<ol>
+<li>
+<p>Generate a SSH key pair.  </p>
+</li>
+<li>
+<p>Add your public key to the submit host by uploading it to 
+your OSG Connect user profile (via the OSG Connect website).</p>
+</li>
+</ol>
+<p>After completing the process, you can log in from a local computer 
+(your laptop or desktop) to the OSG Connect login node assigned
+using either ssh or an ssh program like Putty -- see below for 
+more details on logging in. </p>
+<p>NOTE: Please do not edit the authorized keys file on the login node.</p>
+<h2 id="step-1-generate-ssh-keys">Step 1: Generate SSH Keys<a class="headerlink" href="#step-1-generate-ssh-keys" title="Permanent link">&para;</a></h2>
+<p>We will discuss how to generate a SSH key pair for two cases: </p>
+<ul>
+<li>"Unix" systems (Linux, Mac) and certain, latest versions of Windows</li>
+<li>Older Windows systems</li>
+</ul>
+<p>Please note: The key pair consist of a private key and a public key. You will upload the 
+public key to OSG Connect, but you also need to keep a copy of the private key to log in!<br />
+You should keep the private key on machines that you have 
+direct access to, i.e. your local computer (your laptop or desktop).</p>
+<h3 id="unix-based-operating-system-linuxmac-or-latest-windows-10-versions">Unix-based operating system (Linux/Mac) or latest Windows 10 versions<a class="headerlink" href="#unix-based-operating-system-linuxmac-or-latest-windows-10-versions" title="Permanent link">&para;</a></h3>
+<p>We will create a key in the .ssh directory of your computer. Open a terminal on your local computer and run the following commands: </p>
+<div class="codehilite"><pre><span></span><code> mkdir ~/.ssh
+ chmod 700 ~/.ssh
+ ssh-keygen -t rsa
+</code></pre></div>
+
+<p>For the newer OS versions the .ssh directory is already created and the first command is redundant. The last command will produce a prompt similar to</p>
+<div class="codehilite"><pre><span></span><code> Generating public/private rsa key pair.
+ Enter file in which to save the key (/home/&lt;local_user_name&gt;/.ssh/id_rsa):
+</code></pre></div>
+
+<p>Unless you want to change the location of the key, continue by pressing enter.
+Now you will be asked for a passphrase. Enter a passphrase that you will be 
+able to remember and which is secure:</p>
+<div class="codehilite"><pre><span></span><code> Enter passphrase (empty for no passphrase):
+ Enter same passphrase again:
+</code></pre></div>
+
+<p>When everything has successfully completed, the output should resemble the
+following: </p>
+<div class="codehilite"><pre><span></span><code> Your identification has been saved in /home/&lt;local_user_name&gt;/.ssh/id_rsa.
+ Your public key has been saved in /home/&lt;local_user_name&gt;/.ssh/id_rsa.pub.
+ The key fingerprint is:
+ ...
+</code></pre></div>
+
+<p>The part you want to upload is the content of the <code>.pub</code> file (~/.ssh/id_rsa.pub)</p>
+<h3 id="windows-using-putty-to-log-in">Windows, using Putty to log in<a class="headerlink" href="#windows-using-putty-to-log-in" title="Permanent link">&para;</a></h3>
+<p>If you can connect using the <code>ssh</code> command within the Command Prompt (Windows 10 build version 1803 and later), please follow the Mac/Linux directions above. If not, 
+continue with the directions below. </p>
+<ol>
+<li>
+<p>Open the <code>PuTTYgen</code> program.  You can download <code>PuttyGen</code> 
+here: <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuttyGen Download Page</a>, 
+scroll down until you see the <code>puttygen.exe</code> file. </p>
+</li>
+<li>
+<p>For Type of key to generate, select RSA or SSH-2 RSA. </p>
+</li>
+<li>
+<p>Click the "Generate" button.</p>
+</li>
+<li>
+<p><strong>Move your mouse in the area below the progress bar.</strong>
+When the progress bar is full, PuTTYgen generates your key pair.</p>
+</li>
+<li>
+<p>Type a passphrase in the "Key passphrase" field. Type the same passphrase in the "Confirm passphrase" field. You 
+can use a key without a passphrase, but this is not recommended.</p>
+</li>
+<li>
+<p>Click the "Save private key" button to save the private key. <strong>You must save the private key.</strong> You will need it to connect to your machine.</p>
+</li>
+<li>
+<p>Right-click in the text field labeled "Public key for pasting into OpenSSH authorized_keys file" and choose Select All.</p>
+</li>
+<li>
+<p>Right-click again in the same text field and choose Copy.</p>
+</li>
+</ol>
+<p><img alt="alt text" src="https://raw.githubusercontent.com/OSGConnect/connectbook/master/images/puttygen_ssh_key.png" title="PuttyGen Window" /></p>
+<h2 id="step-2-add-the-public-ssh-key-to-login-node">Step 2: Add the public SSH key to login node<a class="headerlink" href="#step-2-add-the-public-ssh-key-to-login-node" title="Permanent link">&para;</a></h2>
+<p>To add your public key to the OSG Connect log in node: </p>
+<ol>
+<li>
+<p>Go to www.osgconnect.net and sign in with the institutional identity you used when requesting an OSG Connect account. </p>
+</li>
+<li>
+<p>Click "Profile" in the top right corner.</p>
+</li>
+<li>
+<p>Click the "Edit Profile" button located after the user information in the left hand box.</p>
+</li>
+<li>
+<p>Copy/paste the public key which is found in the <code>.pub</code> file into the "SSH Public Key" text box. 
+The expected key is a single line, with three fields looking something like 
+<code>ssh-rsa ASSFFSAF... user@host</code>. If you used the first set of key-generating 
+instructions it is the content of <code>~/.ssh/id_rsa.pub</code> and for the second (using 
+PuTTYgen), it is the content from step 7 above.</p>
+</li>
+<li>
+<p>Click "Update Profile"</p>
+</li>
+</ol>
+<p>The key is now added to your profile in the OSG Connect website. This will automatically
+be added to the login nodes within a couple hours.</p>
+<blockquote>
+<h3 id="can-i-use-multiple-keys">Can I Use Multiple Keys?<a class="headerlink" href="#can-i-use-multiple-keys" title="Permanent link">&para;</a></h3>
+<p>Yes! If you want to log into OSG Connect from multiple computers, you can do so by generating
+a keypair on each computer you want to use, and then adding the public key to your OSG 
+Connect profile. </p>
+</blockquote>
+<h2 id="logging-in">Logging In<a class="headerlink" href="#logging-in" title="Permanent link">&para;</a></h2>
+<p>After following the steps above to upload your key and it's been a few hours, you should 
+be able to log in to OSG Connect. </p>
+<h3 id="determine-which-login-node-to-use">Determine which login node to use<a class="headerlink" href="#determine-which-login-node-to-use" title="Permanent link">&para;</a></h3>
+<p>Before you can connect, you will need to know which login node your account is assigned to. You can find 
+this information on your profile from the OSG Connect website.</p>
+<ol>
+<li>
+<p>Go to www.osgconnect.net and sign in with your CILogin. </p>
+</li>
+<li>
+<p>Click "Profile" in the top right corner.</p>
+</li>
+<li>
+<p>The assigned login nodes are listed in the left side box. Make note of the address of 
+your assigned login node as you will use this to connect to OSG Connect.</p>
+</li>
+</ol>
+<p><img alt="Identify Login Node" src="https://raw.githubusercontent.com/OSGConnect/connectbook/master/images/find_osgconnect_login_node.png" title="OSG Connect Profile" /></p>
+<h3 id="for-mac-linux-or-newer-versions-of-windows">For Mac, Linux, or newer versions of Windows<a class="headerlink" href="#for-mac-linux-or-newer-versions-of-windows" title="Permanent link">&para;</a></h3>
+<p>Open a terminal and type in: </p>
+<div class="codehilite"><pre><span></span><code>ssh &lt;your_osg_connect_username&gt;@&lt;your_osg_login_node&gt;
+</code></pre></div>
+
+<p>It will ask for the passphrase for your ssh key (if you set one) and then you 
+should be logged in. </p>
+<h3 id="for-older-versions-of-windows">For older versions of Windows<a class="headerlink" href="#for-older-versions-of-windows" title="Permanent link">&para;</a></h3>
+<p>On older versions of Windows, you can use the <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Putty program</a> to log in. </p>
+<p><img src="https://raw.githubusercontent.com/OSGConnect/connectbook/master/images/putty-screenshots.png" alt="PuTTY Intructions Screenshot"></p>
+<ol>
+<li>
+<p>Open the <code>PutTTY</code> program. If necessary, you can download PuTTY from the website here <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY download page</a>.</p>
+</li>
+<li>
+<p>Type the address of your assigned login node as the hostname (see "Determine which login node to use" above).</p>
+</li>
+<li>
+<p>In the left hand menu, click the "+" next to "SSH" to expand the menu.</p>
+</li>
+<li>
+<p>Click "Auth" in the "SSH" menu.</p>
+</li>
+<li>
+<p>Click "Browse" and specify the private key file you saved in step 5 above.</p>
+</li>
+<li>
+<p>Return to "Session".  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;a. Name your session  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;b. Save session for future use     </p>
+</li>
+<li>Click "Open" to launch shell. Provide your ssh-key passphrase (created at Step 4 in PuTTYgen) when prompted to do so.</li>
+</ol>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
+<p>For assistance or questions, please email the OSG Research Facilitation team  at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#111;&#112;&#101;&#110;&#115;&#99;&#105;&#101;&#110;&#99;&#101;&#103;&#114;&#105;&#100;&#46;&#111;&#114;&#103;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#111;&#112;&#101;&#110;&#115;&#99;&#105;&#101;&#110;&#99;&#101;&#103;&#114;&#105;&#100;&#46;&#111;&#114;&#103;</a> or visit the <a href="http://support.opensciencegrid.org">help desk and community forums</a>.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../jobs/tutorial-command/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Use OSG Connect Tutorials " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Use OSG Connect Tutorials 
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../starting-project/" class="md-footer__link md-footer__link--next" aria-label="Next: Join and Use a Project in OSG Connect " rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Join and Use a Project in OSG Connect 
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://twitter.com/OSGUserSchool" target="_blank" rel="noopener" title="OSG User School on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://www.facebook.com/OSGUserSchool" target="_blank" rel="noopener" title="OSG User School on Facebook" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
