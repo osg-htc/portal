@@ -8,19 +8,21 @@
       
       
       
-      <link rel="icon" href="/assets/OSG_Logo.svg">
+        <link rel="canonical" href="https://osg-htc.org/software_examples_for_osg/other_languages_tools/julia-on-osg/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>OSG Connect Docs</title>
+        <title>Using Julia on the OSPool - OSG Connect Docs</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.644de097.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,11 +37,11 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/code-highlight.css">
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
     
-      <link rel="stylesheet" href="/stylesheets/osg.css">
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
     
-    <script>__md_scope=new URL("/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#using-julia-on-the-ospool" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -72,9 +79,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+    <a href="../../.." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
       
-  <img src="/assets/OSG_Logo.svg" alt="logo">
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -90,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Using Julia on the OSPool 
             
           </span>
         </div>
@@ -153,7 +160,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="/." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -173,7 +180,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/overview/welcome_and_account_setup/is-it-for-you/" class="md-tabs__link">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-tabs__link">
         Overview
       </a>
     </li>
@@ -196,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-tabs__link">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-tabs__link">
         Support And Training Resources
       </a>
     </li>
@@ -219,7 +226,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-tabs__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-tabs__link">
         Managing HTC Workloads On OSG Connect
       </a>
     </li>
@@ -230,6 +237,8 @@
       
         
   
+  
+    
   
 
 
@@ -242,7 +251,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-tabs__link">
+      <a href="../../bioinformatics/tutorial-blast-split/README.md" class="md-tabs__link md-tabs__link--active">
         Software Examples For Osg
       </a>
     </li>
@@ -265,7 +274,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-tabs__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-tabs__link">
         HPC Administration
       </a>
     </li>
@@ -295,9 +304,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+    <a href="../../.." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
       
-  <img src="/assets/OSG_Logo.svg" alt="logo">
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
 
     </a>
     OSG Connect Docs
@@ -313,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -380,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/is-it-for-you/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-nav__link">
         Computation on the Open Science Pool 
       </a>
     </li>
@@ -394,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/generate-add-sshkey/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/generate-add-sshkey/" class="md-nav__link">
         Generate SSH Keys and Activate Your OSG Login 
       </a>
     </li>
@@ -408,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/starting-project/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/starting-project/" class="md-nav__link">
         Join and Use a Project in OSG Connect 
       </a>
     </li>
@@ -422,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/registration-and-login/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/registration-and-login/" class="md-nav__link">
         Registration and Login for OSG Connect 
       </a>
     </li>
@@ -469,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/contact-information/" class="md-nav__link">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
         Contact OSG for non-Support Inquiries
       </a>
     </li>
@@ -483,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/frequently-asked-questions-faq-/" class="md-nav__link">
+      <a href="../../../overview/references/frequently-asked-questions-faq-/" class="md-nav__link">
         Frequently Asked Questions
       </a>
     </li>
@@ -497,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/acknowledgeOSG/" class="md-nav__link">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
         Acknowledge the OSG
       </a>
     </li>
@@ -511,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/gracc/" class="md-nav__link">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
         OSG Accounting (GRACC)
       </a>
     </li>
@@ -525,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/policy/" class="md-nav__link">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
         Policies for Using OSG Connect and the OSPool 
       </a>
     </li>
@@ -606,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-nav__link">
         Email, Office Hours, and 1-1 Meetings 
       </a>
     </li>
@@ -653,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/osg-user-school/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/osg-user-school/" class="md-nav__link">
         Annual, Week-Long OSG User School 
       </a>
     </li>
@@ -667,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/previous-training-events/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/previous-training-events/" class="md-nav__link">
         Other Past Training Events 
       </a>
     </li>
@@ -681,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/osgusertraining/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/osgusertraining/" class="md-nav__link">
         OSG User Training (regular/monthly) 
       </a>
     </li>
@@ -762,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-nav__link">
         Indicate the Duration Category of Your Jobs 
       </a>
     </li>
@@ -776,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
         Determining the Amount of Resources to Request in a Submit File 
       </a>
     </li>
@@ -790,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/" class="md-nav__link">
         Roadmap to HTC Workload Submission via OSG Connect 
       </a>
     </li>
@@ -837,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/" class="md-nav__link">
         Easily Submit Multiple Jobs
       </a>
     </li>
@@ -851,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/" class="md-nav__link">
         Checkpointing Jobs
       </a>
     </li>
@@ -865,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/" class="md-nav__link">
         Use OSG Connect Tutorials
       </a>
     </li>
@@ -879,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md" class="md-nav__link">
         Quickstart - Submit Example HTCondor Jobs
       </a>
     </li>
@@ -893,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md" class="md-nav__link">
         Organizing and Submitting HTC Workloads
       </a>
     </li>
@@ -907,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/README.md" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/README.md" class="md-nav__link">
         Troubleshooting Job Errors
       </a>
     </li>
@@ -921,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md" class="md-nav__link">
         Finding OSG Locations
       </a>
     </li>
@@ -968,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/" class="md-nav__link">
         Control Where Your Jobs Run / Job Requirements 
       </a>
     </li>
@@ -982,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/" class="md-nav__link">
         Compiling Software for OSG Connect 
       </a>
     </li>
@@ -996,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/" class="md-nav__link">
         Using Software on the Open Science Pool 
       </a>
     </li>
@@ -1010,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/" class="md-nav__link">
         Example Software Compilation 
       </a>
     </li>
@@ -1024,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/" class="md-nav__link">
         Create/Register a Docker Container Image 
       </a>
     </li>
@@ -1038,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/" class="md-nav__link">
         Request Help with Your Software 
       </a>
     </li>
@@ -1052,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/" class="md-nav__link">
         Access Software using Distributed Environment Modules 
       </a>
     </li>
@@ -1066,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/" class="md-nav__link">
         View Existing OSPool-Supported Containers 
       </a>
     </li>
@@ -1080,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/" class="md-nav__link">
         Create a Singularity Container Image 
       </a>
     </li>
@@ -1094,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/" class="md-nav__link">
         Use Containers on the OSG 
       </a>
     </li>
@@ -1141,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/" class="md-nav__link">
         Transfer Input Files Up To 100MB In Size 
       </a>
     </li>
@@ -1155,7 +1164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/" class="md-nav__link">
         Use scp To Transfer Files To and From OSG Connect 
       </a>
     </li>
@@ -1169,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/" class="md-nav__link">
         Transfer Larger Input and Output Files 
       </a>
     </li>
@@ -1183,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/" class="md-nav__link">
         Transfer HTTP-available Files up to 1GB In Size 
       </a>
     </li>
@@ -1197,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/" class="md-nav__link">
         Transfer Job Output Files Up To 1GB In Size 
       </a>
     </li>
@@ -1211,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/" class="md-nav__link">
         Overview: Data Staging and Transfer to Jobs 
       </a>
     </li>
@@ -1258,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
         OpenMPI Jobs 
       </a>
     </li>
@@ -1272,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
         Multicore Jobs 
       </a>
     </li>
@@ -1286,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
         Using GPUs on the OSPool 
       </a>
     </li>
@@ -1300,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
         Large Memory Jobs 
       </a>
     </li>
@@ -1347,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/" class="md-nav__link">
         Submit Workflows with HTCondor's DAGMan 
       </a>
     </li>
@@ -1361,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/README.md" class="md-nav__link">
+      <a href="../../../managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/README.md" class="md-nav__link">
         Use Pegasus to Manage Workflows on OSG Connect
       </a>
     </li>
@@ -1388,12 +1397,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1442,7 +1453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-nav__link">
+      <a href="../../bioinformatics/tutorial-blast-split/README.md" class="md-nav__link">
         High-Throughput BLAST
       </a>
     </li>
@@ -1456,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-bwa/README.md" class="md-nav__link">
+      <a href="../../bioinformatics/tutorial-bwa/README.md" class="md-nav__link">
         High-Throughput BWA Read Mapping
       </a>
     </li>
@@ -1503,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/README.md" class="md-nav__link">
+      <a href="../../drug_discovery/tutorial-AutoDockVina/README.md" class="md-nav__link">
         Running a Molecule Docking Job with AutoDock Vina
       </a>
     </li>
@@ -1550,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/freesurfer/Introduction/" class="md-nav__link">
+      <a href="../../freesurfer/Introduction/" class="md-nav__link">
         Introduction to FreeSurfer on the OSPool 
       </a>
     </li>
@@ -1597,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/README.md" class="md-nav__link">
+      <a href="../../machine_learning/tutorial-tensorflow-containers/README.md" class="md-nav__link">
         Working with Tensorflow, GPUs, and containers
       </a>
     </li>
@@ -1644,7 +1655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
+      <a href="../../matlab_runtime/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
         Basics of compiled MATLAB applications - Hello World example
       </a>
     </li>
@@ -1691,7 +1702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/manage-python-packages/" class="md-nav__link">
+      <a href="../../python/manage-python-packages/" class="md-nav__link">
         Run Python Scripts on the OSPool 
       </a>
     </li>
@@ -1705,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
+      <a href="../../python/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
         Scaling Up With HTCondor’s Queue Command
       </a>
     </li>
@@ -1719,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/tutorial-wordfreq/README.md" class="md-nav__link">
+      <a href="../../python/tutorial-wordfreq/README.md" class="md-nav__link">
         Wordcount Tutorial for Submitting Multiple Jobs
       </a>
     </li>
@@ -1766,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-R-addlibSNA/README.md" class="md-nav__link">
+      <a href="../../r/tutorial-R-addlibSNA/README.md" class="md-nav__link">
         Use External Packages in your R Jobs
       </a>
     </li>
@@ -1780,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-R/README.md" class="md-nav__link">
+      <a href="../../r/tutorial-R/README.md" class="md-nav__link">
         Run R scripts on the OSPool
       </a>
     </li>
@@ -1794,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-ScalingUp-R/README.md" class="md-nav__link">
+      <a href="../../r/tutorial-ScalingUp-R/README.md" class="md-nav__link">
         Scaling up compute resources
       </a>
     </li>
@@ -1813,12 +1824,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" checked>
       
       
       
@@ -1839,11 +1852,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/julia-on-osg/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Using Julia on the OSPool 
       </a>
+      
     </li>
   
 
@@ -1855,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/conda-on-osg/" class="md-nav__link">
+      <a href="../conda-on-osg/" class="md-nav__link">
         Using conda to Run Python on the OSPool 
       </a>
     </li>
@@ -1869,7 +1892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/java-on-osg/" class="md-nav__link">
+      <a href="../java-on-osg/" class="md-nav__link">
         Using Java in Jobs 
       </a>
     </li>
@@ -1950,7 +1973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-nav__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-nav__link">
         Submit Node Flocking to OSG 
       </a>
     </li>
@@ -1964,7 +1987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-xsede/" class="md-nav__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-xsede/" class="md-nav__link">
         Running OSG jobs on XSEDE
       </a>
     </li>
@@ -1992,12 +2015,278 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<h1 id="using-julia-on-the-ospool">Using Julia on the OSPool<a class="headerlink" href="#using-julia-on-the-ospool" title="Permanent link">&para;</a></h1>
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
+<p>This guide provides an introduction to running Julia code on the Open 
+Science Pool. The <a href="#quickstart-instructions">Quickstart Instructions</a> provide 
+an outline of job submission. The following sections provide more details about 
+installing Julia packages (<a href="#install-julia-packages">Install Julia Packages</a>) and creating a complete
+job submission (<a href="#submit-julia-jobs">Submit Julia Jobs</a>). This guide assumes that 
+you have a script written in Julia and can identify the additional Julia packages 
+needed to run the script. </p>
+<p>If you are using many Julia packages or have other software dependencies as 
+part of your job, you may want to manage your software via a container instead 
+of using the tar.gz file method described in this guide. The OSG Connect team 
+maintains a <a href="12000073449">Julia container</a> that can be used as a starting point 
+for creating a customized container with added packages. See 
+our <a href="12000024676">Docker and Singularity Guide</a> for more details. </p>
+<h1 id="quickstart-instructions">Quickstart Instructions<a class="headerlink" href="#quickstart-instructions" title="Permanent link">&para;</a></h1>
+<ol>
+<li>
+<p>Download the precompiled Julia software from <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a>. 
+You will need the 64-bit, tarball compiled for general use on a Linux x86 system. The 
+file name will resemble something like <code>julia-#.#.#-linux-x86_64.tar.gz</code>.</p>
+<ul>
+<li>Tip: use <code>wget</code> to download directly to your <code>/home</code> directory on the 
+login node, <strong>OR</strong> use <code>transfer_input_files = url</code> in your HTCondor submit files.</li>
+</ul>
+</li>
+<li>
+<p>Install your Julia packages on the login node, else skip to the next step.</p>
+<ul>
+<li>For more details, see the section on installing Julia 
+packages below: <a href="#install-julia-packages">Installing Julia Packages</a></li>
+</ul>
+</li>
+<li>
+<p>Submit a job that executes a Julia script using the Julia precompiled binary
+with base Julia and Standard Library, via a shell script like the following as 
+the job's executable: </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># extract Julia tar.gz file</span>
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+
+<span class="c1"># add Julia binary to PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$_CONDOR_SCRATCH_DIR</span>/julia-#-#-#/bin:<span class="nv">$PATH</span>
+
+<span class="c1"># run Julia script</span>
+julia my-script.jl
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>For more details on the job submission, see the section 
+below: <a href="#submit-julia-jobs">Submit Julia Jobs</a></li>
+</ul>
+</li>
+</ol>
+<h1 id="install-julia-packages">Install Julia Packages<a class="headerlink" href="#install-julia-packages" title="Permanent link">&para;</a></h1>
+<p>If your work requires additional Julia packages, you will need to peform a one-time 
+installation of these packages within a Julia project. A copy of the project 
+can then be saved for use in subsequent job submissions. For more details, 
+please see Julia's documentation at <a href="https://julialang.github.io/Pkg.jl">Julia Pkg.jl</a>.</p>
+<h2 id="download-julia-and-set-up-a-project">Download Julia and set up a "project"<a class="headerlink" href="#download-julia-and-set-up-a-project" title="Permanent link">&para;</a></h2>
+<p>If you have not already downloaded a copy of Julia, download the 
+precompiled Julia software from <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a>. 
+You will need the 64-bit, tarball compiled for general use on a Linux x86 system. The 
+file name will resemble something like <code>julia-#.#.#-linux-x86_64.tar.gz</code>. </p>
+<p>We will need a copy of the original tar.gz file for running jobs, but to install 
+packages, we also need an unpacked version of the software. Run the following commands 
+to extract the Julia software and add Julia to your <code>PATH</code>: </p>
+<div class="codehilite"><pre><span></span><code>$ tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+$ export PATH=$PWD/julia-#.#.#/bin:$PATH
+</code></pre></div>
+
+<p>After these steps, you should be able to run Julia from the command line, e.g.</p>
+<div class="codehilite"><pre><span></span><code>$ julia --version
+</code></pre></div>
+
+<p>Now create a project directory to install your packages (we've called 
+it <code>my-project/</code> below) and tell Julia its name: </p>
+<div class="codehilite"><pre><span></span><code>$ mkdir my-project
+$ export JULIA_DEPOT_PATH=$PWD/my-project
+</code></pre></div>
+
+<blockquote>
+<p>If you already have a directory with Julia packages on the login node, you can 
+add to it by skipping the <code>mkdir</code> step above and going straight to setting the 
+<code>JULIA_DEPOT_PATH</code> variable. </p>
+</blockquote>
+<p>You can choose whatever name to use for this directory -- if you have
+different projects that you use for different jobs, you could
+use a more descriptive name than "my-project".</p>
+<h2 id="install-packages">Install Packages<a class="headerlink" href="#install-packages" title="Permanent link">&para;</a></h2>
+<p>We will now use Julia to install any needed packages to the project directory 
+we created in the previous step. </p>
+<p>Open Julia with the <code>--project</code> option set to the project directory: </p>
+<div class="codehilite"><pre><span></span><code>$ julia --project=my-project
+</code></pre></div>
+
+<p>Once you've started up the Julia REPL (interpreter), start the Pkg REPL, used to 
+install packages, by typing <code>]</code>. Then install and test packages by using 
+Julia's <code>add Package</code> syntax. </p>
+<div class="codehilite"><pre><span></span><code>               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.0.5 (2019-09-09)
+ _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia&gt; ]
+(my-project) pkg&gt; add Package
+(my-project) pkg&gt; test Package
+</code></pre></div>
+
+<p>If you have multiple packages to install they can be combined 
+into a single command, e.g. <code>(my-project) pkg&gt; add Package1 Package2 Package3</code>.</p>
+<p><strong>If you encounter issues getting packages to install successfully, please 
+contact us at support@opensciencegrid.org</strong></p>
+<p>Once you are done, you can exit the Pkg REPL by typing the <code>DELETE</code> key and then 
+typing <code>exit()</code></p>
+<div class="codehilite"><pre><span></span><code>(my-project) pkg&gt; 
+julia&gt; exit()
+</code></pre></div>
+
+<p>Your packages will have been installed to the <code>my_project</code> directory; we want 
+to compress this folder so that it is easier to copy to jobs. </p>
+<div class="codehilite"><pre><span></span><code>$ tar -czf my-project.tar.gz my-project/
+</code></pre></div>
+
+<h1 id="submit-julia-jobs">Submit Julia Jobs<a class="headerlink" href="#submit-julia-jobs" title="Permanent link">&para;</a></h1>
+<p>To submit a job that runs a Julia script, create a bash 
+script and HTCondor submit file following the examples in this section. These 
+example assume that you have downloaded a copy of Julia for Linux as a <code>tar.gz</code> 
+file and if using packages, you have gone through the steps above to install them 
+and create an additional <code>tar.gz</code> file of the installed packages. </p>
+<h2 id="create-executable-bash-script">Create Executable Bash Script<a class="headerlink" href="#create-executable-bash-script" title="Permanent link">&para;</a></h2>
+<p>Your job will use a bash script as the HTCondor <code>executable</code>. This script 
+will contain all the steps needed to unpack the Julia binaries and 
+execute your Julia script (<code>script.jl</code> below). What follows are two example bash scripts, 
+one which can be used to execute a script with base Julia only, and one that 
+will use packages you installed to a project directory (see <a href="#install-julia-packages">Install Julia Packages</a>).</p>
+<h3 id="example-bash-script-for-base-julia-only">Example Bash Script For Base Julia Only<a class="headerlink" href="#example-bash-script-for-base-julia-only" title="Permanent link">&para;</a></h3>
+<p>If your Julia script can run without additional packages (other than base Julia and 
+the Julia Standard library) use the example script directly below.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># julia-job.sh</span>
+
+<span class="c1"># extract Julia tar.gz file</span>
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+
+<span class="c1"># add Julia binary to PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$_CONDOR_SCRATCH_DIR</span>/julia-#.#.#/bin:<span class="nv">$PATH</span>
+
+<span class="c1"># run Julia script</span>
+julia script.jl
+</code></pre></div>
+</td></tr></table>
+<h3 id="example-bash-script-for-julia-with-installed-packages">Example Bash Script For Julia With Installed Packages<a class="headerlink" href="#example-bash-script-for-julia-with-installed-packages" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># julia-job.sh</span>
+
+<span class="c1"># extract Julia tar.gz file and project tar.gz file</span>
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+tar -xzf my-project.tar.gz
+
+<span class="c1"># add Julia binary to PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$_CONDOR_SCRATCH_DIR</span>/julia-#.#.#/bin:<span class="nv">$PATH</span>
+<span class="c1"># add Julia packages to DEPOT variable</span>
+<span class="nb">export</span> <span class="nv">JULIA_DEPOT_PATH</span><span class="o">=</span><span class="nv">$_CONDOR_SCRATCH_DIR</span>/my-project
+
+<span class="c1"># run Julia script</span>
+julia --project<span class="o">=</span>my-project script.jl
+</code></pre></div>
+</td></tr></table>
+<h2 id="create-htcondor-submit-file">Create HTCondor Submit File<a class="headerlink" href="#create-htcondor-submit-file" title="Permanent link">&para;</a></h2>
+<p>After creating a bash script to run Julia, then create a submit file 
+to submit the job. </p>
+<p>More details about setting up a submit file, including a submit file template, 
+can be found in our quickstart guide: <a href="5000633410">Quickstart Tutorial</a></p>
+<div class="codehilite"><pre><span></span><code># julia-job.sub
+
+executable = julia-job.sh
+
+transfer_input_files = julia-#.#.#-linux-x86_64.tar.gz, script.jl
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+output        = job.$(Cluster).$(Process).out
+error         = job.$(Cluster).$(Process).error
+log           = job.$(Cluster).$(Process).log
+
+requirements   = (OSGVO_OS_STRING == &quot;RHEL 7&quot;)
+request_cpus   = 1
+request_memory = 2GB
+request_disk   = 2GB
+
+queue 1
+</code></pre></div>
+
+<p>If your Julia script needs to use packages installed for a project, 
+be sure to include <code>my-project.tar.gz</code> as an input file in <code>julia-job.sub</code>. 
+For project tarballs that are &lt;100MB, you can follow the below example:</p>
+<div class="codehilite"><pre><span></span><code>transfer_input_files = julia-#.#.#-linux-x86_64.tar.gz, script.jl, my-project.tar.gz
+</code></pre></div>
+
+<p>Modify the CPU/memory request lines to match what is needed by the job. 
+Test a few jobs for disk space/memory usage in order to make sure your 
+requests for a large batch are accurate! Disk space and memory usage can be found in the 
+log file after the job completes.</p>
+
+              
             </article>
           </div>
         </div>
@@ -2005,6 +2294,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../python/manage-python-packages/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Run Python Scripts on the OSPool " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Run Python Scripts on the OSPool 
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../conda-on-osg/" class="md-footer__link md-footer__link--next" aria-label="Next: Using conda to Run Python on the OSPool " rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Using conda to Run Python on the OSPool 
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2042,10 +2366,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs"], "search": "/assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.c44cc438.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
       
     
   </body>

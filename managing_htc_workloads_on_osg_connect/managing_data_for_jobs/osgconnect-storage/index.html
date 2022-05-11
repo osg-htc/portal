@@ -8,19 +8,21 @@
       
       
       
-      <link rel="icon" href="/assets/OSG_Logo.svg">
+        <link rel="canonical" href="https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>OSG Connect Docs</title>
+        <title>Overview: Data Staging and Transfer to Jobs - OSG Connect Docs</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.644de097.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,11 +37,11 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/code-highlight.css">
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
     
-      <link rel="stylesheet" href="/stylesheets/osg.css">
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
     
-    <script>__md_scope=new URL("/",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -72,9 +79,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+    <a href="../../.." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
       
-  <img src="/assets/OSG_Logo.svg" alt="logo">
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -90,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Overview: Data Staging and Transfer to Jobs 
             
           </span>
         </div>
@@ -153,7 +160,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="/." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -173,7 +180,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/overview/welcome_and_account_setup/is-it-for-you/" class="md-tabs__link">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-tabs__link">
         Overview
       </a>
     </li>
@@ -196,7 +203,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-tabs__link">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-tabs__link">
         Support And Training Resources
       </a>
     </li>
@@ -207,6 +214,8 @@
       
         
   
+  
+    
   
 
 
@@ -219,7 +228,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-tabs__link">
+      <a href="../../htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-tabs__link md-tabs__link--active">
         Managing HTC Workloads On OSG Connect
       </a>
     </li>
@@ -242,7 +251,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-tabs__link">
+      <a href="../../../software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-tabs__link">
         Software Examples For Osg
       </a>
     </li>
@@ -265,7 +274,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-tabs__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-tabs__link">
         HPC Administration
       </a>
     </li>
@@ -295,9 +304,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+    <a href="../../.." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
       
-  <img src="/assets/OSG_Logo.svg" alt="logo">
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
 
     </a>
     OSG Connect Docs
@@ -313,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -380,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/is-it-for-you/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-nav__link">
         Computation on the Open Science Pool 
       </a>
     </li>
@@ -394,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/generate-add-sshkey/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/generate-add-sshkey/" class="md-nav__link">
         Generate SSH Keys and Activate Your OSG Login 
       </a>
     </li>
@@ -408,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/starting-project/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/starting-project/" class="md-nav__link">
         Join and Use a Project in OSG Connect 
       </a>
     </li>
@@ -422,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/welcome_and_account_setup/registration-and-login/" class="md-nav__link">
+      <a href="../../../overview/welcome_and_account_setup/registration-and-login/" class="md-nav__link">
         Registration and Login for OSG Connect 
       </a>
     </li>
@@ -469,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/contact-information/" class="md-nav__link">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
         Contact OSG for non-Support Inquiries
       </a>
     </li>
@@ -483,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/frequently-asked-questions-faq-/" class="md-nav__link">
+      <a href="../../../overview/references/frequently-asked-questions-faq-/" class="md-nav__link">
         Frequently Asked Questions
       </a>
     </li>
@@ -497,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/acknowledgeOSG/" class="md-nav__link">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
         Acknowledge the OSG
       </a>
     </li>
@@ -511,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/gracc/" class="md-nav__link">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
         OSG Accounting (GRACC)
       </a>
     </li>
@@ -525,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/overview/references/policy/" class="md-nav__link">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
         Policies for Using OSG Connect and the OSPool 
       </a>
     </li>
@@ -606,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-nav__link">
         Email, Office Hours, and 1-1 Meetings 
       </a>
     </li>
@@ -653,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/osg-user-school/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/osg-user-school/" class="md-nav__link">
         Annual, Week-Long OSG User School 
       </a>
     </li>
@@ -667,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/previous-training-events/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/previous-training-events/" class="md-nav__link">
         Other Past Training Events 
       </a>
     </li>
@@ -681,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/support_and_training_resources/education_and_training/osgusertraining/" class="md-nav__link">
+      <a href="../../../support_and_training_resources/education_and_training/osgusertraining/" class="md-nav__link">
         OSG User Training (regular/monthly) 
       </a>
     </li>
@@ -708,12 +717,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -762,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-nav__link">
+      <a href="../../htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-nav__link">
         Indicate the Duration Category of Your Jobs 
       </a>
     </li>
@@ -776,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
+      <a href="../../htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
         Determining the Amount of Resources to Request in a Submit File 
       </a>
     </li>
@@ -790,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/" class="md-nav__link">
+      <a href="../../htc_workload_planning_testing_scaling_up/roadmap/" class="md-nav__link">
         Roadmap to HTC Workload Submission via OSG Connect 
       </a>
     </li>
@@ -837,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/submit-multiple-jobs/" class="md-nav__link">
         Easily Submit Multiple Jobs
       </a>
     </li>
@@ -851,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/" class="md-nav__link">
         Checkpointing Jobs
       </a>
     </li>
@@ -865,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/tutorial-command/" class="md-nav__link">
         Use OSG Connect Tutorials
       </a>
     </li>
@@ -879,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md" class="md-nav__link">
         Quickstart - Submit Example HTCondor Jobs
       </a>
     </li>
@@ -893,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md" class="md-nav__link">
         Organizing and Submitting HTC Workloads
       </a>
     </li>
@@ -907,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/README.md" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/tutorial-error101/README.md" class="md-nav__link">
         Troubleshooting Job Errors
       </a>
     </li>
@@ -921,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md" class="md-nav__link">
+      <a href="../../submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md" class="md-nav__link">
         Finding OSG Locations
       </a>
     </li>
@@ -968,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/requirements/" class="md-nav__link">
         Control Where Your Jobs Run / Job Requirements 
       </a>
     </li>
@@ -982,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/compiling-applications/" class="md-nav__link">
         Compiling Software for OSG Connect 
       </a>
     </li>
@@ -996,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/software-overview/" class="md-nav__link">
         Using Software on the Open Science Pool 
       </a>
     </li>
@@ -1010,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/example-compilation/" class="md-nav__link">
         Example Software Compilation 
       </a>
     </li>
@@ -1024,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/containers-docker/" class="md-nav__link">
         Create/Register a Docker Container Image 
       </a>
     </li>
@@ -1038,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/software-request/" class="md-nav__link">
         Request Help with Your Software 
       </a>
     </li>
@@ -1052,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/new_modules_list/" class="md-nav__link">
         Access Software using Distributed Environment Modules 
       </a>
     </li>
@@ -1066,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/available-containers-list/" class="md-nav__link">
         View Existing OSPool-Supported Containers 
       </a>
     </li>
@@ -1080,7 +1091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/containers-singularity/" class="md-nav__link">
         Create a Singularity Container Image 
       </a>
     </li>
@@ -1094,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/" class="md-nav__link">
+      <a href="../../using_software_on_the_osg/containers/" class="md-nav__link">
         Use Containers on the OSG 
       </a>
     </li>
@@ -1113,12 +1124,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
       
       
       
@@ -1141,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/" class="md-nav__link">
+      <a href="../file-transfer-via-htcondor/" class="md-nav__link">
         Transfer Input Files Up To 100MB In Size 
       </a>
     </li>
@@ -1155,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/" class="md-nav__link">
+      <a href="../scp/" class="md-nav__link">
         Use scp To Transfer Files To and From OSG Connect 
       </a>
     </li>
@@ -1169,7 +1182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/" class="md-nav__link">
+      <a href="../stashcache/" class="md-nav__link">
         Transfer Larger Input and Output Files 
       </a>
     </li>
@@ -1183,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/" class="md-nav__link">
+      <a href="../file-transfer-via-http/" class="md-nav__link">
         Transfer HTTP-available Files up to 1GB In Size 
       </a>
     </li>
@@ -1197,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/" class="md-nav__link">
+      <a href="../output-file-transfer-via-htcondor/" class="md-nav__link">
         Transfer Job Output Files Up To 1GB In Size 
       </a>
     </li>
@@ -1209,11 +1222,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Overview: Data Staging and Transfer to Jobs 
       </a>
+      
     </li>
   
 
@@ -1258,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
+      <a href="../../considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
         OpenMPI Jobs 
       </a>
     </li>
@@ -1272,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
+      <a href="../../considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
         Multicore Jobs 
       </a>
     </li>
@@ -1286,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
+      <a href="../../considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
         Using GPUs on the OSPool 
       </a>
     </li>
@@ -1300,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
+      <a href="../../considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
         Large Memory Jobs 
       </a>
     </li>
@@ -1347,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/" class="md-nav__link">
+      <a href="../../automated_workflows/dagman-workflows/" class="md-nav__link">
         Submit Workflows with HTCondor's DAGMan 
       </a>
     </li>
@@ -1361,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/README.md" class="md-nav__link">
+      <a href="../../automated_workflows/tutorial-pegasus/README.md" class="md-nav__link">
         Use Pegasus to Manage Workflows on OSG Connect
       </a>
     </li>
@@ -1442,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-nav__link">
         High-Throughput BLAST
       </a>
     </li>
@@ -1456,7 +1479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/bioinformatics/tutorial-bwa/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/bioinformatics/tutorial-bwa/README.md" class="md-nav__link">
         High-Throughput BWA Read Mapping
       </a>
     </li>
@@ -1503,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/README.md" class="md-nav__link">
         Running a Molecule Docking Job with AutoDock Vina
       </a>
     </li>
@@ -1550,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/freesurfer/Introduction/" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/freesurfer/Introduction/" class="md-nav__link">
         Introduction to FreeSurfer on the OSPool 
       </a>
     </li>
@@ -1597,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/README.md" class="md-nav__link">
         Working with Tensorflow, GPUs, and containers
       </a>
     </li>
@@ -1644,7 +1667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
         Basics of compiled MATLAB applications - Hello World example
       </a>
     </li>
@@ -1691,7 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/manage-python-packages/" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/python/manage-python-packages/" class="md-nav__link">
         Run Python Scripts on the OSPool 
       </a>
     </li>
@@ -1705,7 +1728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/python/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
         Scaling Up With HTCondor’s Queue Command
       </a>
     </li>
@@ -1719,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/python/tutorial-wordfreq/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/python/tutorial-wordfreq/README.md" class="md-nav__link">
         Wordcount Tutorial for Submitting Multiple Jobs
       </a>
     </li>
@@ -1766,7 +1789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-R-addlibSNA/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/r/tutorial-R-addlibSNA/README.md" class="md-nav__link">
         Use External Packages in your R Jobs
       </a>
     </li>
@@ -1780,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-R/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/r/tutorial-R/README.md" class="md-nav__link">
         Run R scripts on the OSPool
       </a>
     </li>
@@ -1794,7 +1817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/r/tutorial-ScalingUp-R/README.md" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/r/tutorial-ScalingUp-R/README.md" class="md-nav__link">
         Scaling up compute resources
       </a>
     </li>
@@ -1841,7 +1864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/julia-on-osg/" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/other_languages_tools/julia-on-osg/" class="md-nav__link">
         Using Julia on the OSPool 
       </a>
     </li>
@@ -1855,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/conda-on-osg/" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/other_languages_tools/conda-on-osg/" class="md-nav__link">
         Using conda to Run Python on the OSPool 
       </a>
     </li>
@@ -1869,7 +1892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/software_examples_for_osg/other_languages_tools/java-on-osg/" class="md-nav__link">
+      <a href="../../../software_examples_for_osg/other_languages_tools/java-on-osg/" class="md-nav__link">
         Using Java in Jobs 
       </a>
     </li>
@@ -1950,7 +1973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-nav__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-nav__link">
         Submit Node Flocking to OSG 
       </a>
     </li>
@@ -1964,7 +1987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/hpc_administration/osg_for_hpc_administrators/osg-xsede/" class="md-nav__link">
+      <a href="../../../hpc_administration/osg_for_hpc_administrators/osg-xsede/" class="md-nav__link">
         Running OSG jobs on XSEDE
       </a>
     </li>
@@ -1992,12 +2015,227 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
 
+
+<p>====================================</p>
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
+<p>OSG Connect provides two locations for uploading files (data and software) that are 
+needed for running jobs: </p>
+<div class="codehilite"><pre><span></span><code>home: /home/&lt;username&gt;          (general storage from which ALL jobs should be submitted)
+public: /public/&lt;username&gt;      (only for large job input and output using stash links (input) and stashcp (output))
+</code></pre></div>
+
+<p>In general, OSG Connect users are responsible for managing data in 
+these folders and for using appropriate mechanisms for delivering 
+data to/from jobs, as detailed below. Each is controlled with a 
+quota and should be treated as temporary storage for <em>active</em> 
+job execution. OSG Connect has no routine backup of data in these 
+locations, and users should remove old data after jobs complete, 
+in part, to make room for future submissions. <strong>If you think you'll 
+need more space for a set of concurrently-queued jobs, even after 
+cleaning up old data, please send a request to 
+<a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a>!</strong></p>
+<p>For additional data information, see also the "Data Storage and Transfer" section of 
+our <a href="5000634384#data-storage-and-transfer">FAQ</a>. </p>
+<p><strong>Note: OSG Connect staff reserve the right to monitor and/or remove 
+data without notice to the user IF doing so is necessary for ensuring 
+proper use or to quickly fix a performance or security issue.</strong></p>
+<h1 id="data-locations-and-quotas">Data Locations and Quotas<a class="headerlink" href="#data-locations-and-quotas" title="Permanent link">&para;</a></h1>
+<p>Your OSG Connect account includes access to two data storage locations: 
+<code>/home</code> and <code>/public</code>. <strong>Where you store your files and how your files 
+are made accessible to your jobs depends on the size of the file and how 
+much data is needed or produced by your jobs.</strong>   </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Location</strong></th>
+<th align="center"><strong>Storage Needs</strong></th>
+<th align="center"><strong>Network mounted</strong></th>
+<th align="center"><strong>Backed Up?</strong></th>
+<th align="center"><strong>Initial Quota</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>/home</code></td>
+<td align="center">Storage of submit files, input files &lt;100MB each, and per-job output<br>up to a 1GB.  Jobs should ONLY be submitted from this folder.</td>
+<td align="center">No</td>
+<td align="center">No</td>
+<td align="center">50 GB</td>
+</tr>
+<tr>
+<td align="center"><code>/public</code></td>
+<td align="center">Staging ONLY for large input files (100MB-50GB, each) for publicly-accessible<br>download into jobs (using <code>stash:///</code> links or <code>stashcp</code> see below) and large output files (1-10GB).</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">500 GB</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Your quota status will be displayed when you connect to your OSG Connect login node: </p>
+<div class="codehilite"><pre><span></span><code>Disk utilization for username:
+/public   : [                        ] 0% (0/500000 MB)
+/home     : [ #                      ] 4% (2147/53687 MB)
+</code></pre></div>
+
+<p>You can also display your quota usage at any time using the command 
+<code>quota</code> while connected to your login node.</p>
+<p><strong>Don't hesitate to contact us at <a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a> if you 
+think you need a quota increase! We can support very large amounts of data.</strong></p>
+<h2 id="home-usage-and-policies"><code>/home</code> Usage And Policies<a class="headerlink" href="#home-usage-and-policies" title="Permanent link">&para;</a></h2>
+<p>User directories within <code>/home</code> are meant for general-use storage of your files 
+needed for job submission. The initial quota per user is 50 GBs, and can be increased by request
+to support@opensciencegrid.org when a user needs more space for appropriately-sized files.</p>
+<p><strong>ALL JOBS MUST BE SUBMITTED FROM WITHIN <code>/home</code></strong>. Users are also prohibited 
+from making their <code>/home</code> directory world-readable due to security concerns. See 
+<a href="https://support.opensciencegrid.org/support/solutions/articles/12000074852">Policies for Using OSG via OSG Connect Submit Servers</a> for more details. </p>
+<p>If you're unable to submit jobs or your jobs are going on hold because you've 
+reached your <code>/home</code> quota, please contact us at 
+<a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a> about a quota increase.</p>
+<h2 id="public-usage-and-policies"><code>/public</code> Usage and Policies<a class="headerlink" href="#public-usage-and-policies" title="Permanent link">&para;</a></h2>
+<p>User directories within <code>/public</code> are meant <strong>ONLY</strong> for staging job files too large for regular 
+HTCondor file transfer (per-job input greater than 100MB, or per-job output greater than 1GB), and should only OSG caching 
+mechanisms (see tables for input and output, further below).</p>
+<p><strong>JOBS MUST NEVER BE SUBMITTED FROM WITHIN <code>/public</code></strong>, and should not list <code>/public</code> files in the 
+<code>transfer_input_files</code> or other lines of a submit file, unless as a <code>stash:///</code> address (see tables further below). 
+Files placed in <code>/public</code> should only be accessed by jobs using the below tools (see 
+<a href="#transferring-data-tofrom-jobs">Transferring Data To/From Jobs</a>). Users violating these policies may 
+lose the ability to submit jobs until their submissions are corrected.</p>
+<p>The initial disk quota of <code>/public</code> is 500 GBs. Contact <a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a> 
+if you will need an increase for concurrently running work, after cleaning up all 
+data from past jobs. <strong>Given that users should not be storing long-term data (like submit files, 
+software, etc.) in <code>/public</code>, files and directories that have not been accessed for over six 
+months may be deleted by OSG Connect staff with or without notifying the user.</strong></p>
+<p>Files placed within a user's <code>/public</code> directory <strong>are publicly accessible</strong>, 
+discoverable and readable by anyone. Data is made public via the <code>stash</code> transfer mechanisms (which also make data public via http/https), and mirrored 
+to a shared data repository which is available on a large number of systems around the world.</p>
+<h3 id="is-there-any-support-for-private-data">Is there any support for private data?<a class="headerlink" href="#is-there-any-support-for-private-data" title="Permanent link">&para;</a></h3>
+<p>If you do not want your data to be downloadable by anyone, and it's small enough for
+HTCondor file transfer, then it should be staged in your <code>/home</code> directory and 
+transferred to jobs with HTCondor file transfer (<code>transfer_input_files</code> in the submit 
+file). If it cannot be public (cannot use http or stash for job delivery), and is too
+large for HTCondor file transfer, then it's not a good fit for the open environment of 
+the Open Science Pool, and another resource will likely be more appropriate. As a 
+reminder, if the data is not being used for active computing work on OSG Connect, it 
+should not be stored on OSG Connect systems, and our data storage locations are not 
+backed up or suitable for project-duration storage.</p>
+<h2 id="external-data-transfer-tofrom-osg-connect-login-nodes">External Data Transfer to/from OSG Connect Login Nodes<a class="headerlink" href="#external-data-transfer-tofrom-osg-connect-login-nodes" title="Permanent link">&para;</a></h2>
+<p>In general, common Unix tools such as <code>rsync</code>, <code>scp</code>, Putty, WinSCP, <code>gFTP</code>, etc. can be used to upload data from your computer to the OSG Connect login node, or to download files from the OSG Connect login node. </p>
+<p><br></p>
+<h1 id="transferring-data-tofrom-jobs">Transferring Data To/From Jobs<a class="headerlink" href="#transferring-data-tofrom-jobs" title="Permanent link">&para;</a></h1>
+<h2 id="transferring-input-data-to-jobs">Transferring Input Data to Jobs<a class="headerlink" href="#transferring-input-data-to-jobs" title="Permanent link">&para;</a></h2>
+<p>This table summarizes the options for sending input files from the OSG Connect 
+login node to the execution node where a job is running. This assumes that you 
+have already uploaded these input files from your own computer to your OSG Connect login node. </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Transfer Method</strong></th>
+<th align="center"><strong>File Sizes</strong></th>
+<th align="center"><strong>File Location</strong></th>
+<th align="center"><strong>Command</strong></th>
+<th align="center"><strong>More Info</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>regular HTCondor<br>file transfer</strong></td>
+<td align="center">&lt;100 MB;<br>&lt;500 MB total per job</td>
+<td align="center"><code>/home</code></td>
+<td align="center"><code>transfer_input_files</code></td>
+<td align="center"><a href="https://support.opensciencegrid.org/support/solutions/articles/5000639787">HTCondor File Transfer</a></td>
+</tr>
+<tr>
+<td align="center"><strong>OSG's<br> transfer tools</strong></td>
+<td align="center">&gt;1GB;<br>&lt;10 GB per job</td>
+<td align="center"><code>/public</code></td>
+<td align="center"><code>stash</code> address in <code>transfer_input_files</code></td>
+<td align="center"><a href="https://support.opensciencegrid.org/support/solutions/articles/12000002775">Stash Transfer</a></td>
+</tr>
+<tr>
+<td align="center"><strong>HTTP</strong></td>
+<td align="center">&lt;1GB</td>
+<td align="center">non-OSG web server</td>
+<td align="center"><code>http</code> address in <code>transfer_input_files</code></td>
+<td align="center"><a href="https://support.opensciencegrid.org/support/solutions/articles/5000639798">HTTP Access</a></td>
+</tr>
+<tr>
+<td align="center"><strong>GridFTP</strong></td>
+<td align="center">&gt; 10 GB</td>
+<td align="center"><code>/public</code> or non-OSG data server</td>
+<td align="center"><code>gfal-copy</code></td>
+<td align="center"><a href="mailto:support@opensciencegrid.org">contact us</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="transferring-output-data-from-jobs">Transferring Output Data from Jobs<a class="headerlink" href="#transferring-output-data-from-jobs" title="Permanent link">&para;</a></h2>
+<p>This table summarizes a job's options for returning output files generated by the job back to the OSG Connect login node. </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Transfer Method</strong></th>
+<th align="center"><strong>File Sizes</strong></th>
+<th align="center"><strong>Transfer To</strong></th>
+<th align="center"><strong>Command</strong></th>
+<th align="center"><strong>More Info</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><strong>regular HTCondor file transfer</strong></td>
+<td align="center">&lt; 1 GB</td>
+<td align="center"><code>/home</code></td>
+<td align="center">HTCondor default output transfer or <code>transfer_output_files</code></td>
+<td align="center"><a href="https://support.opensciencegrid.org/support/solutions/articles/5000639787">HTCondor Transfer</a></td>
+</tr>
+<tr>
+<td align="center"><strong>OSG's transfer tools</strong></td>
+<td align="center">&gt;1GB and<br>&lt; 10 GB</td>
+<td align="center"><code>/public</code></td>
+<td align="center"><code>stashcp</code> in job executable</td>
+<td align="center"><a href="https://support.opensciencegrid.org/support/solutions/articles/12000002775">stashcp</a></td>
+</tr>
+<tr>
+<td align="center"><strong>GridFTP</strong></td>
+<td align="center">&gt; 10 GB</td>
+<td align="center"><code>/public</code></td>
+<td align="center"><code>gfal-copy</code></td>
+<td align="center"><a href="mailto:support@opensciencegrid.org">contact us</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Watch this video from the 2021 OSG Virtual School</strong> for more information about Handling Data on OSG:</p>
+<p><a href="https://www.youtube.com/embed/YBGWycYZRD4"><img src="https://raw.githubusercontent.com/OSGConnect/connectbook/master/images/Handling_Data_Video_Thumbnail.png" width="500"></a></p>
+<h1 id="get-help">Get Help<a class="headerlink" href="#get-help" title="Permanent link">&para;</a></h1>
+<p>For assistance or questions, please email the OSG Research Facilitation team  at <a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a> or visit the <a href="http://support.opensciencegrid.org">help desk and community forums</a>.</p>
+
+              
             </article>
           </div>
         </div>
@@ -2005,6 +2243,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../output-file-transfer-via-htcondor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Transfer Job Output Files Up To 1GB In Size " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Transfer Job Output Files Up To 1GB In Size 
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../considerations_for_specific_resource_needs/openmpi-jobs/" class="md-footer__link md-footer__link--next" aria-label="Next: OpenMPI Jobs " rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              OpenMPI Jobs 
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2042,10 +2315,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs"], "search": "/assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.c44cc438.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
       
     
   </body>
