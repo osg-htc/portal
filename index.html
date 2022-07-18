@@ -226,7 +226,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-tabs__link">
+      <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-tabs__link">
         Managing HTC Workloads On OSG Connect
       </a>
     </li>
@@ -249,31 +249,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-tabs__link">
-        Software Examples For Osg
-      </a>
-    </li>
-  
-
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-tabs__link">
-        HPC Administration
+      <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/" class="md-tabs__link">
+        Software Examples For OSG
       </a>
     </li>
   
@@ -293,13 +270,49 @@
         font-size: 1rem;
     }
 
-    .child > ul {
-        padding: 0;
+    .top-hr {
+        font-size: 16px;
+    }
+
+    .child h3 {
+        margin-top: 1.2rem;
+    }
+
+    .sub-doc ul {
         list-style-type: none;
+        margin: 0;
+        padding-left: 12px;
+    }
+
+    .sub-doc li {
+        position: relative;
+        margin: .5rem 0;
+        display: flex;
+        align-items: center;
+        color: #6D6D6D;
+    }
+
+    .sub-doc ul li::before {
+        content: url("/assets/file-text.svg");
+        height: 24px; width: 18px;
+        transform: translatex(-50%);
+    }
+
+    .sub-doc a {
+        color: #2b2b2b;
+        font-weight: 500;
+        transition: color .2s;
+        transition-timing-function: ease-in;
+    }
+
+    .sub-doc a:hover {
+        color: orange;
+        transition: color .2s;
+        transition-timing-function: ease-out;
     }
 
     .parent-doc {
-        padding: 0 20px;
+        padding: 0 80px;
         display: flex;
         flex-direction: column;
     }
@@ -374,12 +387,16 @@
     }
 
     .top-hr {
-        margin-top: 42px;
+        margin-top: 20px;
     }
 
     @media screen and (max-width:30em) {
         .tx-hero h1 {
             font-size: 1.4rem
+        }
+
+        .parent-doc {
+            padding: 0 20px;
         }
     }
 
@@ -401,7 +418,6 @@
             width: 48.14815%;
             float: left;
             margin-right: 3.7037%;
-            margin-bottom: 20px;
         }
 
         .tx-hero {
@@ -447,7 +463,7 @@
         </div>
         <div class="tx-hero__content">
           <h1>OSG Connect Documentation</h1>
-          <p>OSG Connect offers researchers fair-share access to the capacity provided by the OSPool and the OSDF, with options for researchers to Bring Their Own Capacity.</p>
+          <p><b>OSG Connect offers researchers access to compute capacity provided by the <a href="https://osg-htc.org/services/open_science_pool.html">OSPool</a></b></p>
           <a href="overview/welcome_and_account_setup/is-it-for-you/" title="Computation on the Open Science Pool" class="md-button md-button--primary">
             Get started
           </a>
@@ -550,7 +566,7 @@
                                         </li>
                                     
                                         <li class="">
-                                            <a href="support_and_training_resources/education_and_training/previous-training-events/">Other Past Training Events </a>
+                                            <a href="support_and_trainingresources/education_and_training/previous-training-events.md">Other Past Training Events </a>
                                         </li>
                                     
                                         <li class="">
@@ -574,10 +590,6 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/">Indicate the Duration Category of Your Jobs </a>
-                                        </li>
-                                    
-                                        <li class="">
                                             <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/">Determining the Amount of Resources to Request in a Submit File </a>
                                         </li>
                                     
@@ -589,7 +601,7 @@
                             </div>
                         
                             <div class="child">
-                                <h3>Submitting HTC Workloads With Htcondor</h3>
+                                <h3>Submitting HTC Workloads With HTCondor</h3>
                                 <ul>
                                     
                                         <li class="">
@@ -605,19 +617,19 @@
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md">Quickstart - Submit Example HTCondor Jobs</a>
+                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/">Quickstart-Submit Example HTCondor Jobs</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md">Organizing and Submitting HTC Workloads</a>
+                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/">Organizing and Submitting HTC Workloads</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/README.md">Troubleshooting Job Errors</a>
+                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/">Troubleshooting Job Errors</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md">Finding OSG Locations</a>
+                                            <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/">Finding OSG Locations</a>
                                         </li>
                                     
                                 </ul>
@@ -628,43 +640,43 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/">Control Where Your Jobs Run / Job Requirements </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/">Control Where Your Jobs Run/Job Requirements</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/">Using Software on the Open Science Pool </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/">Using Software on the Open Science Pool</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">Example Software Compilation </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">Example Software Compilation</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/">Create/Register a Docker Container Image </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/">Create/Register a Docker Container Image</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Request Help with Your Software </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Request Help with Your Software</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/">Access Software using Distributed Environment Modules </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/">Access Software using Distributed Environment Modules</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/">View Existing OSPool-Supported Containers </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/">View Existing OSPool-Supported Containers</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/">Create a Singularity Container Image </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/">Create a Singularity Container Image</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/">Use Containers on the OSG </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/">Use Containers on the OSG</a>
                                         </li>
                                     
                                 </ul>
@@ -675,27 +687,27 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">Transfer Input Files Up To 100MB In Size </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">Transfer Input Files Up To 100MB In Size</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/">Use scp To Transfer Files To and From OSG Connect </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/">Use scp To Transfer Files To and From OSG Connect</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">Transfer Larger Input and Output Files </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">Transfer Larger Input and Output Files</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/">Transfer HTTP-available Files up to 1GB In Size </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/">Transfer HTTP-available Files up to 1GB In Size</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/">Transfer Job Output Files Up To 1GB In Size </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/">Transfer Job Output Files Up To 1GB In Size</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Overview: Data Staging and Transfer to Jobs </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Overview: Data Staging and Transfer to Jobs</a>
                                         </li>
                                     
                                 </ul>
@@ -706,19 +718,23 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/">OpenMPI Jobs </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/">OpenMPI Jobs</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/">Multicore Jobs </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/">Multicore Jobs</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/">Using GPUs on the OSPool </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/">Using GPUs on the OSPool</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/">Large Memory Jobs </a>
+                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/">Large Memory Jobs</a>
+                                        </li>
+                                    
+                                        <li class="">
+                                            <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/osg-xsede/">Running OSG jobs on XSEDE</a>
                                         </li>
                                     
                                 </ul>
@@ -733,7 +749,7 @@
                                         </li>
                                     
                                         <li class="">
-                                            <a href="managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/README.md">Use Pegasus to Manage Workflows on OSG Connect</a>
+                                            <a href="managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/">Use Pegasus to Manage Workflows on OSG Connect</a>
                                         </li>
                                     
                                 </ul>
@@ -745,7 +761,7 @@
         
             
                 <div class="parent-doc">
-                    <h2>Software Examples For Osg</h2>
+                    <h2>Software Examples For OSG</h2>
                     <div class="sub-doc">
                         
                             <div class="child">
@@ -753,11 +769,11 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md">High-Throughput BLAST</a>
+                                            <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/">High-Throughput BLAST</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/bioinformatics/tutorial-bwa/README.md">High-Throughput BWA Read Mapping</a>
+                                            <a href="software_examples_for_osg/bioinformatics/tutorial-bwa/">High-Throughput BWA Read Mapping</a>
                                         </li>
                                     
                                 </ul>
@@ -768,7 +784,7 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/README.md">Running a Molecule Docking Job with AutoDock Vina</a>
+                                            <a href="software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/">Running a Molecule Docking Job with AutoDock Vina</a>
                                         </li>
                                     
                                 </ul>
@@ -786,22 +802,22 @@
                             </div>
                         
                             <div class="child">
-                                <h3>Machine_Learning</h3>
+                                <h3>Machine Learning</h3>
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/README.md">Working with Tensorflow, GPUs, and containers</a>
+                                            <a href="software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/">Working with Tensorflow, GPUs, and containers</a>
                                         </li>
                                     
                                 </ul>
                             </div>
                         
                             <div class="child">
-                                <h3>Matlab_Runtime</h3>
+                                <h3>Matlab Runtime</h3>
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/README.md">Basics of compiled MATLAB applications - Hello World example</a>
+                                            <a href="software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/">Basics of compiled MATLAB applications - Hello World example</a>
                                         </li>
                                     
                                 </ul>
@@ -816,11 +832,11 @@
                                         </li>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/python/tutorial-ScalingUp-Python/README.md">Scaling Up With HTCondor’s Queue Command</a>
+                                            <a href="software_examples_for_osg/python/tutorial-ScalingUp-Python/">Scaling Up With HTCondor’s Queue Command</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/python/tutorial-wordfreq/README.md">Wordcount Tutorial for Submitting Multiple Jobs</a>
+                                            <a href="software_examples_for_osg/python/tutorial-wordfreq/">Wordcount Tutorial for Submitting Multiple Jobs</a>
                                         </li>
                                     
                                 </ul>
@@ -831,15 +847,15 @@
                                 <ul>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/r/tutorial-R-addlibSNA/README.md">Use External Packages in your R Jobs</a>
+                                            <a href="software_examples_for_osg/r/tutorial-R-addlibSNA/">Use External Packages in your R Jobs</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/r/tutorial-R/README.md">Run R scripts on the OSPool</a>
+                                            <a href="software_examples_for_osg/r/tutorial-R/">Run R scripts on the OSPool</a>
                                         </li>
                                     
                                         <li class="">
-                                            <a href="software_examples_for_osg/r/tutorial-ScalingUp-R/README.md">Scaling up compute resources</a>
+                                            <a href="software_examples_for_osg/r/tutorial-ScalingUp-R/">Scaling up compute resources</a>
                                         </li>
                                     
                                 </ul>
@@ -859,30 +875,6 @@
                                     
                                         <li class="">
                                             <a href="software_examples_for_osg/other_languages_tools/java-on-osg/">Using Java in Jobs </a>
-                                        </li>
-                                    
-                                </ul>
-                            </div>
-                        
-                    </div>
-                </div>
-            
-        
-            
-                <div class="parent-doc">
-                    <h2>HPC Administration</h2>
-                    <div class="sub-doc">
-                        
-                            <div class="child">
-                                <h3>OSG For HPC Administrators</h3>
-                                <ul>
-                                    
-                                        <li class="">
-                                            <a href="hpc_administration/osg_for_hpc_administrators/osg-flock/">Submit Node Flocking to OSG </a>
-                                        </li>
-                                    
-                                        <li class="">
-                                            <a href="hpc_administration/osg_for_hpc_administrators/osg-xsede/">Running OSG jobs on XSEDE</a>
                                         </li>
                                     
                                 </ul>
@@ -1291,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="support_and_training_resources/education_and_training/previous-training-events/" class="md-nav__link">
+      <a href="support_and_trainingresources/education_and_training/previous-training-events.md" class="md-nav__link">
         Other Past Training Events 
       </a>
     </li>
@@ -1386,20 +1378,6 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/" class="md-nav__link">
-        Indicate the Duration Category of Your Jobs 
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
         Determining the Amount of Resources to Request in a Submit File 
       </a>
@@ -1444,14 +1422,14 @@
       
       
         <label class="md-nav__link" for="__nav_4_2">
-          Submitting HTC Workloads With Htcondor
+          Submitting HTC Workloads With HTCondor
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Submitting HTC Workloads With Htcondor" data-md-level="2">
+      <nav class="md-nav" aria-label="Submitting HTC Workloads With HTCondor" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
-          Submitting HTC Workloads With Htcondor
+          Submitting HTC Workloads With HTCondor
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1503,8 +1481,8 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/README.md" class="md-nav__link">
-        Quickstart - Submit Example HTCondor Jobs
+      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/" class="md-nav__link">
+        Quickstart-Submit Example HTCondor Jobs
       </a>
     </li>
   
@@ -1517,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/README.md" class="md-nav__link">
+      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/" class="md-nav__link">
         Organizing and Submitting HTC Workloads
       </a>
     </li>
@@ -1531,7 +1509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/README.md" class="md-nav__link">
+      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/" class="md-nav__link">
         Troubleshooting Job Errors
       </a>
     </li>
@@ -1545,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/README.md" class="md-nav__link">
+      <a href="managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/" class="md-nav__link">
         Finding OSG Locations
       </a>
     </li>
@@ -1593,7 +1571,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/" class="md-nav__link">
-        Control Where Your Jobs Run / Job Requirements 
+        Control Where Your Jobs Run/Job Requirements
       </a>
     </li>
   
@@ -1607,7 +1585,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/" class="md-nav__link">
-        Compiling Software for OSG Connect 
+        Compiling Software for OSG Connect
       </a>
     </li>
   
@@ -1621,7 +1599,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/" class="md-nav__link">
-        Using Software on the Open Science Pool 
+        Using Software on the Open Science Pool
       </a>
     </li>
   
@@ -1635,7 +1613,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/" class="md-nav__link">
-        Example Software Compilation 
+        Example Software Compilation
       </a>
     </li>
   
@@ -1649,7 +1627,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/" class="md-nav__link">
-        Create/Register a Docker Container Image 
+        Create/Register a Docker Container Image
       </a>
     </li>
   
@@ -1663,7 +1641,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/" class="md-nav__link">
-        Request Help with Your Software 
+        Request Help with Your Software
       </a>
     </li>
   
@@ -1677,7 +1655,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/" class="md-nav__link">
-        Access Software using Distributed Environment Modules 
+        Access Software using Distributed Environment Modules
       </a>
     </li>
   
@@ -1691,7 +1669,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/" class="md-nav__link">
-        View Existing OSPool-Supported Containers 
+        View Existing OSPool-Supported Containers
       </a>
     </li>
   
@@ -1705,7 +1683,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/" class="md-nav__link">
-        Create a Singularity Container Image 
+        Create a Singularity Container Image
       </a>
     </li>
   
@@ -1719,7 +1697,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/" class="md-nav__link">
-        Use Containers on the OSG 
+        Use Containers on the OSG
       </a>
     </li>
   
@@ -1766,7 +1744,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/" class="md-nav__link">
-        Transfer Input Files Up To 100MB In Size 
+        Transfer Input Files Up To 100MB In Size
       </a>
     </li>
   
@@ -1780,7 +1758,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/" class="md-nav__link">
-        Use scp To Transfer Files To and From OSG Connect 
+        Use scp To Transfer Files To and From OSG Connect
       </a>
     </li>
   
@@ -1794,7 +1772,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/" class="md-nav__link">
-        Transfer Larger Input and Output Files 
+        Transfer Larger Input and Output Files
       </a>
     </li>
   
@@ -1808,7 +1786,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/" class="md-nav__link">
-        Transfer HTTP-available Files up to 1GB In Size 
+        Transfer HTTP-available Files up to 1GB In Size
       </a>
     </li>
   
@@ -1822,7 +1800,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/" class="md-nav__link">
-        Transfer Job Output Files Up To 1GB In Size 
+        Transfer Job Output Files Up To 1GB In Size
       </a>
     </li>
   
@@ -1836,7 +1814,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/" class="md-nav__link">
-        Overview: Data Staging and Transfer to Jobs 
+        Overview: Data Staging and Transfer to Jobs
       </a>
     </li>
   
@@ -1883,7 +1861,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
-        OpenMPI Jobs 
+        OpenMPI Jobs
       </a>
     </li>
   
@@ -1897,7 +1875,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
-        Multicore Jobs 
+        Multicore Jobs
       </a>
     </li>
   
@@ -1911,7 +1889,7 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
-        Using GPUs on the OSPool 
+        Using GPUs on the OSPool
       </a>
     </li>
   
@@ -1925,7 +1903,21 @@
   
     <li class="md-nav__item">
       <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
-        Large Memory Jobs 
+        Large Memory Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/osg-xsede/" class="md-nav__link">
+        Running OSG jobs on XSEDE
       </a>
     </li>
   
@@ -1985,7 +1977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/README.md" class="md-nav__link">
+      <a href="managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/" class="md-nav__link">
         Use Pegasus to Manage Workflows on OSG Connect
       </a>
     </li>
@@ -2023,14 +2015,14 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Software Examples For Osg
+          Software Examples For OSG
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Software Examples For Osg" data-md-level="1">
+      <nav class="md-nav" aria-label="Software Examples For OSG" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Software Examples For Osg
+          Software Examples For OSG
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2066,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/bioinformatics/tutorial-blast-split/" class="md-nav__link">
         High-Throughput BLAST
       </a>
     </li>
@@ -2080,7 +2072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/bioinformatics/tutorial-bwa/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/bioinformatics/tutorial-bwa/" class="md-nav__link">
         High-Throughput BWA Read Mapping
       </a>
     </li>
@@ -2127,7 +2119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/" class="md-nav__link">
         Running a Molecule Docking Job with AutoDock Vina
       </a>
     </li>
@@ -2204,14 +2196,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_4">
-          Machine_Learning
+          Machine Learning
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Machine_Learning" data-md-level="2">
+      <nav class="md-nav" aria-label="Machine Learning" data-md-level="2">
         <label class="md-nav__title" for="__nav_5_4">
           <span class="md-nav__icon md-icon"></span>
-          Machine_Learning
+          Machine Learning
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2221,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/" class="md-nav__link">
         Working with Tensorflow, GPUs, and containers
       </a>
     </li>
@@ -2251,14 +2243,14 @@
       
       
         <label class="md-nav__link" for="__nav_5_5">
-          Matlab_Runtime
+          Matlab Runtime
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Matlab_Runtime" data-md-level="2">
+      <nav class="md-nav" aria-label="Matlab Runtime" data-md-level="2">
         <label class="md-nav__title" for="__nav_5_5">
           <span class="md-nav__icon md-icon"></span>
-          Matlab_Runtime
+          Matlab Runtime
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2268,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/" class="md-nav__link">
         Basics of compiled MATLAB applications - Hello World example
       </a>
     </li>
@@ -2329,7 +2321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/python/tutorial-ScalingUp-Python/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/python/tutorial-ScalingUp-Python/" class="md-nav__link">
         Scaling Up With HTCondor’s Queue Command
       </a>
     </li>
@@ -2343,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/python/tutorial-wordfreq/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/python/tutorial-wordfreq/" class="md-nav__link">
         Wordcount Tutorial for Submitting Multiple Jobs
       </a>
     </li>
@@ -2390,7 +2382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/r/tutorial-R-addlibSNA/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/r/tutorial-R-addlibSNA/" class="md-nav__link">
         Use External Packages in your R Jobs
       </a>
     </li>
@@ -2404,7 +2396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/r/tutorial-R/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/r/tutorial-R/" class="md-nav__link">
         Run R scripts on the OSPool
       </a>
     </li>
@@ -2418,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_examples_for_osg/r/tutorial-ScalingUp-R/README.md" class="md-nav__link">
+      <a href="software_examples_for_osg/r/tutorial-ScalingUp-R/" class="md-nav__link">
         Scaling up compute resources
       </a>
     </li>
@@ -2495,101 +2487,6 @@
     <li class="md-nav__item">
       <a href="software_examples_for_osg/other_languages_tools/java-on-osg/" class="md-nav__link">
         Using Java in Jobs 
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          HPC Administration
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="HPC Administration" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          HPC Administration
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6_1">
-          OSG For HPC Administrators
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="OSG For HPC Administrators" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_1">
-          <span class="md-nav__icon md-icon"></span>
-          OSG For HPC Administrators
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="hpc_administration/osg_for_hpc_administrators/osg-flock/" class="md-nav__link">
-        Submit Node Flocking to OSG 
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="hpc_administration/osg_for_hpc_administrators/osg-xsede/" class="md-nav__link">
-        Running OSG jobs on XSEDE
       </a>
     </li>
   

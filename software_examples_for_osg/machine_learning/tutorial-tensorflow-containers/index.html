@@ -1,0 +1,2396 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://osg-htc.org/software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Working with Tensorflow, GPUs, and containers - OSG Connect Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="OSG Connect Docs" class="md-header__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OSG Connect Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working with Tensorflow, GPUs, and containers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-tabs__link">
+        Overview
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-tabs__link">
+        Support And Training Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-tabs__link">
+        Managing HTC Workloads On OSG Connect
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bioinformatics/tutorial-blast-split/" class="md-tabs__link md-tabs__link--active">
+        Software Examples For OSG
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OSG Connect Docs" class="md-nav__button md-logo" aria-label="OSG Connect Docs" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    OSG Connect Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Overview" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Welcome And Account Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Welcome And Account Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Welcome And Account Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/welcome_and_account_setup/is-it-for-you/" class="md-nav__link">
+        Computation on the Open Science Pool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/welcome_and_account_setup/generate-add-sshkey/" class="md-nav__link">
+        Generate SSH Keys and Activate Your OSG Login 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/welcome_and_account_setup/starting-project/" class="md-nav__link">
+        Join and Use a Project in OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/welcome_and_account_setup/registration-and-login/" class="md-nav__link">
+        Registration and Login for OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
+        Contact OSG for non-Support Inquiries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/frequently-asked-questions-faq-/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
+        Acknowledge the OSG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
+        OSG Accounting (GRACC)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
+        Policies for Using OSG Connect and the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Support And Training Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support And Training Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Support And Training Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Get Help!
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help!" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help!
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training_resources/get_help%21/getting-help-from-RCFs/" class="md-nav__link">
+        Email, Office Hours, and 1-1 Meetings 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Education And Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Education And Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Education And Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training_resources/education_and_training/osg-user-school/" class="md-nav__link">
+        Annual, Week-Long OSG User School 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_trainingresources/education_and_training/previous-training-events.md" class="md-nav__link">
+        Other Past Training Events 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training_resources/education_and_training/osgusertraining/" class="md-nav__link">
+        OSG User Training (regular/monthly) 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Managing HTC Workloads On OSG Connect
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Managing HTC Workloads On OSG Connect" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Managing HTC Workloads On OSG Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          HTC Workload Planning Testing Scaling Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTC Workload Planning Testing Scaling Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          HTC Workload Planning Testing Scaling Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/" class="md-nav__link">
+        Determining the Amount of Resources to Request in a Submit File 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/" class="md-nav__link">
+        Roadmap to HTC Workload Submission via OSG Connect 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Submitting HTC Workloads With HTCondor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Submitting HTC Workloads With HTCondor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Submitting HTC Workloads With HTCondor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/" class="md-nav__link">
+        Easily Submit Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/" class="md-nav__link">
+        Checkpointing Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/" class="md-nav__link">
+        Use OSG Connect Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/" class="md-nav__link">
+        Quickstart-Submit Example HTCondor Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/" class="md-nav__link">
+        Organizing and Submitting HTC Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/" class="md-nav__link">
+        Troubleshooting Job Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/" class="md-nav__link">
+        Finding OSG Locations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Using Software On The OSG
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Software On The OSG" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using Software On The OSG
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/" class="md-nav__link">
+        Control Where Your Jobs Run/Job Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/" class="md-nav__link">
+        Compiling Software for OSG Connect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/" class="md-nav__link">
+        Using Software on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/" class="md-nav__link">
+        Example Software Compilation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/" class="md-nav__link">
+        Create/Register a Docker Container Image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/" class="md-nav__link">
+        Request Help with Your Software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/" class="md-nav__link">
+        Access Software using Distributed Environment Modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/" class="md-nav__link">
+        View Existing OSPool-Supported Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/" class="md-nav__link">
+        Create a Singularity Container Image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/" class="md-nav__link">
+        Use Containers on the OSG
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Managing Data For Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Managing Data For Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Managing Data For Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Input Files Up To 100MB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/" class="md-nav__link">
+        Use scp To Transfer Files To and From OSG Connect
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/" class="md-nav__link">
+        Transfer Larger Input and Output Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/" class="md-nav__link">
+        Transfer HTTP-available Files up to 1GB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Job Output Files Up To 1GB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/" class="md-nav__link">
+        Overview: Data Staging and Transfer to Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Considerations For Specific Resource Needs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Considerations For Specific Resource Needs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Considerations For Specific Resource Needs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/" class="md-nav__link">
+        OpenMPI Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/" class="md-nav__link">
+        Multicore Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/" class="md-nav__link">
+        Using GPUs on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/" class="md-nav__link">
+        Large Memory Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/osg-xsede/" class="md-nav__link">
+        Running OSG jobs on XSEDE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Automated Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Automated Workflows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Automated Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/" class="md-nav__link">
+        Submit Workflows with HTCondor's DAGMan 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/" class="md-nav__link">
+        Use Pegasus to Manage Workflows on OSG Connect
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Software Examples For OSG
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Software Examples For OSG" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Software Examples For OSG
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Bioinformatics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bioinformatics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Bioinformatics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/tutorial-blast-split/" class="md-nav__link">
+        High-Throughput BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/tutorial-bwa/" class="md-nav__link">
+        High-Throughput BWA Read Mapping
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Drug Discovery
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drug Discovery" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Drug Discovery
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drug_discovery/tutorial-AutoDockVina/" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Freesurfer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Freesurfer" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Freesurfer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../freesurfer/Introduction/" class="md-nav__link">
+        Introduction to FreeSurfer on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          Machine Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Working with Tensorflow, GPUs, and containers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Working with Tensorflow, GPUs, and containers
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-container-images" class="md-nav__link">
+    Defining container images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-container-to-the-osg-cvmfs-distribution-mechanism" class="md-nav__link">
+    Adding a container to the OSG CVMFS distribution mechanism
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-container-on-the-submit-host" class="md-nav__link">
+    Testing the container on the submit host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-cpu-job" class="md-nav__link">
+    Running a CPU job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-gpu-job" class="md-nav__link">
+    Running a GPU job
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          Matlab Runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Matlab Runtime" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Matlab Runtime
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../matlab_runtime/tutorial-matlab-HelloWorld/" class="md-nav__link">
+        Basics of compiled MATLAB applications - Hello World example
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/manage-python-packages/" class="md-nav__link">
+        Run Python Scripts on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tutorial-ScalingUp-Python/" class="md-nav__link">
+        Scaling Up With HTCondor’s Queue Command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tutorial-wordfreq/" class="md-nav__link">
+        Wordcount Tutorial for Submitting Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_7">
+          R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-R-addlibSNA/" class="md-nav__link">
+        Use External Packages in your R Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-R/" class="md-nav__link">
+        Run R scripts on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-ScalingUp-R/" class="md-nav__link">
+        Scaling up compute resources
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8">
+          Other Languages Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Languages Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          Other Languages Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_languages_tools/julia-on-osg/" class="md-nav__link">
+        Using Julia on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_languages_tools/conda-on-osg/" class="md-nav__link">
+        Using conda to Run Python on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other_languages_tools/java-on-osg/" class="md-nav__link">
+        Using Java in Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-container-images" class="md-nav__link">
+    Defining container images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-container-to-the-osg-cvmfs-distribution-mechanism" class="md-nav__link">
+    Adding a container to the OSG CVMFS distribution mechanism
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-container-on-the-submit-host" class="md-nav__link">
+    Testing the container on the submit host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-cpu-job" class="md-nav__link">
+    Running a CPU job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-gpu-job" class="md-nav__link">
+    Running a GPU job
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Working with Tensorflow, GPUs, and containers</h1>
+
+<div class="toc">
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#defining-container-images">Defining container images</a></li>
+<li><a href="#adding-a-container-to-the-osg-cvmfs-distribution-mechanism">Adding a container to the OSG CVMFS distribution mechanism</a></li>
+<li><a href="#testing-the-container-on-the-submit-host">Testing the container on the submit host</a></li>
+<li><a href="#running-a-cpu-job">Running a CPU job</a></li>
+<li><a href="#running-a-gpu-job">Running a GPU job</a></li>
+</ul>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>In this tutorial, we explore GPUs and containers on OSG, using the popular Tensorflow
+sofware package. Tensorflow is a good example here as the software is too complex to 
+bundle up and ship with your job. Containers solve this problem by defining a full
+OS image, containing not only the complex software package, but dependencies and
+environment configuration as well.</p>
+<p><a href="https://www.tensorflow.org/">https://www.tensorflow.org/</a> desribes TensorFlow as:</p>
+<blockquote>
+<p>TensorFlow is an open source software library for numerical
+computation using data flow graphs. Nodes in the graph represent
+mathematical operations, while the graph edges represent the
+multidimensional data arrays (tensors) communicated between them. The
+flexible architecture allows you to deploy computation to one or more
+CPUs or GPUs in a desktop, server, or mobile device with a single
+API. TensorFlow was originally developed by researchers and engineers
+working on the Google Brain Team within Google's Machine Intelligence
+research organization for the purposes of conducting machine learning
+and deep neural networks research, but the system is general enough to
+be applicable in a wide variety of other domains as well.</p>
+</blockquote>
+<h2 id="defining-container-images">Defining container images<a class="headerlink" href="#defining-container-images" title="Permanent link">&para;</a></h2>
+<p>Defining containers is fully described in the <a href="https://support.opensciencegrid.org/support/solutions/articles/12000024676">Docker and Singularity Containers</a>
+section. Here we will just provide an overview of how you could take something
+like an existing Tensorflow image provided by OSG staff, and extend it by
+adding your own modules to it. Let's assume you like Tensorflow version
+2.3. The definition of this image can be found in Github: <a href="https://github.com/opensciencegrid/osgvo-tensorflow/blob/2.3/Dockerfile">Dockerfile</a>. You don't really need to 
+understand how an image was built in order to use it. As described in
+the containers documentation, make sure the HTCondor submit file has:</p>
+<div class="codehilite"><pre><span></span><code>Requirements = HAS_SINGULARITY == TRUE
++SingularityImage = &quot;/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3&quot;
+</code></pre></div>
+
+<p>If you want to extend an existing image, you can just inherit from the 
+parent image available on DockerHub <a href="https://hub.docker.com/r/opensciencegrid/tensorflow">here</a>.
+For example, if you just need some additional Python packages, your
+new Dockerfile could look like:</p>
+<div class="codehilite"><pre><span></span><code>FROM opensciencegrid/tensorflow:2.3
+
+RUN python3 -m pip install some_package_name
+</code></pre></div>
+
+<p>You can then <code>docker build</code> and <code>docker push</code> it so that your new
+image is available on DockerHub. Note that OSG does <em>not</em> provide
+any infrastructure for these steps. You will have to complete
+them on your own computer or using the DockerHub build
+infrastructure.</p>
+<h2 id="adding-a-container-to-the-osg-cvmfs-distribution-mechanism">Adding a container to the OSG CVMFS distribution mechanism<a class="headerlink" href="#adding-a-container-to-the-osg-cvmfs-distribution-mechanism" title="Permanent link">&para;</a></h2>
+<p>How to add a container image to the OSG CVMFS distribution mechanism is also
+described in <a href="https://support.opensciencegrid.org/support/solutions/articles/12000024676">Docker and Singularity Containers</a>,
+but a quick scan of the <a href="https://github.com/opensciencegrid/cvmfs-singularity-sync">cvmfs-singularity-sync</a> and specifically the <code>docker_images.txt</code> file show us that the tensorflow
+images are listed as:</p>
+<div class="codehilite"><pre><span></span><code>opensciencegrid/tensorflow:*
+opensciencegrid/tensorflow-gpu:*
+</code></pre></div>
+
+<p>Those two lines means that all tags from those two DockerHub repositories should
+be mapped to <code>/cvmfs/singularity.opensciencegrid.org/</code>. On the login node, try
+running:</p>
+<div class="codehilite"><pre><span></span><code>ls /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3/
+</code></pre></div>
+
+<p>This is the image in its expanded form - something we can execute with Singularity!</p>
+<h2 id="testing-the-container-on-the-submit-host">Testing the container on the submit host<a class="headerlink" href="#testing-the-container-on-the-submit-host" title="Permanent link">&para;</a></h2>
+<p>First, download the files contained in this tutorial to the login node using the <code>tutorial</code> command and <code>cd</code> into the tutorial directory that is created:</p>
+<div class="codehilite"><pre><span></span><code>tutorial tensorflow-containers
+cd tutorial-tensorflow-containers
+</code></pre></div>
+
+<p>Before submitting jobs to the OSG, it is always a good idea to test your code
+so that you understand runtime requirements. The containers can be tested
+on the OSGConnect submit hosts with <code>singularity shell</code>, which will drop you
+into a container and let you exlore it interactively. To explore the 
+Tensorflow 2.3 image, run:</p>
+<div class="codehilite"><pre><span></span><code>singularity shell /cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3/
+</code></pre></div>
+
+<p>Note how the command line prompt changes, providing you an indicator that 
+you are inside the image. You can exit any time by running <code>exit</code>. Another
+important thing to note is that your <code>$HOME</code> directory is automatically 
+mounted inside the interactive container - allowing you to access your
+codes and test it out. First, start with a simple python3 import test to
+make sure tensorflow is available:</p>
+<div class="codehilite"><pre><span></span><code>$ python3
+Python 3.6.9 (default, Jul 17 2020, 12:50:27) 
+[GCC 8.4.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import tensorflow
+2021-01-15 17:32:33.901607: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#39;libcudart.so.10.1&#39;; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2021-01-15 17:32:33.901735: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+&gt;&gt;&gt;
+</code></pre></div>
+
+<p>Tensorflow will warn you that no GPUs where found. This is expected as we
+do not have GPUs attached to our login nodes, and it is fine as Tensorflow
+works fine with regular CPUs (slower of course).</p>
+<p>Exit out of Python3 with <code>CTRL+D</code> and then we can run a Tensorflow testcode
+which can be found in this tutorial:</p>
+<div class="codehilite"><pre><span></span><code>$ python3 test.py 
+2021-01-15 17:37:43.152892: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#39;libcudart.so.10.1&#39;; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2021-01-15 17:37:43.153021: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2021-01-15 17:37:44.899967: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library &#39;libcuda.so.1&#39;; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2021-01-15 17:37:44.900063: W tensorflow/stream_executor/cuda/cuda_driver.cc:312] failed call to cuInit: UNKNOWN ERROR (303)
+2021-01-15 17:37:44.900130: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (login05.osgconnect.net): /proc/driver/nvidia/version does not exist
+2021-01-15 17:37:44.900821: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-01-15 17:37:44.912483: I tensorflow/core/platform/profile_utils/cpu_utils.cc:104] CPU Frequency: 2700000000 Hz
+2021-01-15 17:37:44.915548: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x4fa0bf0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2021-01-15 17:37:44.915645: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2021-01-15 17:37:44.921895: I tensorflow/core/common_runtime/eager/execute.cc:611] Executing op MatMul in device /job:localhost/replica:0/task:0/device:CPU:0
+tf.Tensor(
+[[22. 28.]
+ [49. 64.]], shape=(2, 2), dtype=float32)
+</code></pre></div>
+
+<p>We will again see a bunch of warnings regarding GPUs not being available, but as
+we can see by the <code>/job:localhost/replica:0/task:0/device:CPU:0</code> line, the code ran
+on one of the CPUs. When testing your own code like this, take note of how much
+memory, disk and runtime is required - it is needed in the next step.</p>
+<p>Once you are done with testing, use <code>CTRL+D</code> or run <code>exit</code> to exit out of 
+the container. Note that you can <em>not</em> submit jobs from within the container.</p>
+<h2 id="running-a-cpu-job">Running a CPU job<a class="headerlink" href="#running-a-cpu-job" title="Permanent link">&para;</a></h2>
+<p>If Tensorflow can run on GPUs, you might be wondering why we might want to run
+it on slower CPUs? One reason is that CPUs are plentiful while GPUs are still
+somewhat scarce. If you have a lot of shorter Tensorflow jobs, they might 
+complete faster on available CPUs, rather than wait in the queue for the
+faster, less available, GPUs. The good news is that Tensorflow code should
+work in both enviroments automatically, so if your code runs too slow on CPUs,
+moving to GPUs should be easy.</p>
+<p>To submit our job, we need a submit file and a job wrapper script. The
+submit file is a basic OSGConnect flavored HTCondor file, specifying that 
+we want the job to run in a container. <code>cpu-job.submit</code> contains:</p>
+<div class="codehilite"><pre><span></span><code>universe = vanilla
+
+# Job requirements - ensure we are running on a Singularity enabled
+# node and have enough resources to execute our code
+# Tensorflow also requires AVX instruction set and a newer host kernel
+Requirements = HAS_SINGULARITY == True &amp;&amp; HAS_AVX2 == True &amp;&amp; OSG_HOST_KERNEL_VERSION &gt;= 31000
+request_cpus = 1
+request_gpus = 0
+request_memory = 1 GB
+request_disk = 1 GB
+
+# Container image to run the job in
++SingularityImage = &quot;/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow:2.3&quot;
+
+# Executable is the program your job will run It&#39;s often useful
+# to create a shell script to &quot;wrap&quot; your actual work.
+Executable = job-wrapper.sh
+Arguments =
+
+# Inputs/outputs - in this case we just need our python code.
+# If you leave out transfer_output_files, all generated files comes back
+transfer_input_files = test.py
+#transfer_output_files =
+
+# Error and output are the error and output channels from your job
+# that HTCondor returns from the remote host.
+Error = $(Cluster).$(Process).error
+Output = $(Cluster).$(Process).output
+
+# The LOG file is where HTCondor places information about your
+# job&#39;s status, success, and resource consumption.
+Log = $(Cluster).log
+
+# Send the job to Held state on failure. 
+#on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+
+# Periodically retry the jobs every 1 hour, up to a maximum of 5 retries.
+#periodic_release =  (NumJobStarts &lt; 5) &amp;&amp; ((CurrentTime - EnteredCurrentStatus) &gt; 60*60)
+
+# queue is the &quot;start button&quot; - it launches any jobs that have been
+# specified thus far.
+queue 1
+</code></pre></div>
+
+<p>And job-wrapper.sh:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">set</span> -e
+
+<span class="c1"># set TMPDIR variable</span>
+<span class="nb">export</span> <span class="nv">TMPDIR</span><span class="o">=</span><span class="nv">$_CONDOR_SCRATCH_DIR</span>
+
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&quot;I&#39;m running on&quot;</span> <span class="k">$(</span>hostname -f<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&quot;OSG site: </span><span class="nv">$OSG_SITE_NAME</span><span class="s2">&quot;</span>
+<span class="nb">echo</span>
+
+python3 test.py <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+</td></tr></table>
+<p>The job can now be submitted with <code>condor_submit cpu-job.submit</code>. Once the job
+is done, check the files named after the job id for the outputs.</p>
+<h2 id="running-a-gpu-job">Running a GPU job<a class="headerlink" href="#running-a-gpu-job" title="Permanent link">&para;</a></h2>
+<p>When moving the job to be run on a GPU, all we have to do is update two lines
+in the submit file: set <code>request_gpus</code> to <code>1</code> and specify a GPU enabled 
+container image for <code>+SingularityImage</code>. The updated submit file can be found
+in <code>gpu-job.submit</code> with the contents:</p>
+<div class="codehilite"><pre><span></span><code>universe = vanilla
+
+# Job requirements - ensure we are running on a Singularity enabled
+# node and have enough resources to execute our code
+# Tensorflow also requires AVX instruction set and a newer host kernel
+Requirements = HAS_SINGULARITY == True &amp;&amp; HAS_AVX2 == True &amp;&amp; OSG_HOST_KERNEL_VERSION &gt;= 31000
+request_cpus = 1
+request_gpus = 1
+request_memory = 1 GB
+request_disk = 1 GB
+
+# Container image to run the job in
++SingularityImage = &quot;/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:2.3&quot;
+
+# Executable is the program your job will run It&#39;s often useful
+# to create a shell script to &quot;wrap&quot; your actual work.
+Executable = job-wrapper.sh
+Arguments =
+
+# Inputs/outputs - in this case we just need our python code.
+# If you leave out transfer_output_files, all generated files comes back
+transfer_input_files = test.py
+#transfer_output_files =
+
+# Error and output are the error and output channels from your job
+# that HTCondor returns from the remote host.
+Error = $(Cluster).$(Process).error
+Output = $(Cluster).$(Process).output
+
+# The LOG file is where HTCondor places information about your
+# job&#39;s status, success, and resource consumption.
+Log = $(Cluster).log
+
+# Send the job to Held state on failure. 
+#on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+
+# Periodically retry the jobs every 1 hour, up to a maximum of 5 retries.
+#periodic_release =  (NumJobStarts &lt; 5) &amp;&amp; ((CurrentTime - EnteredCurrentStatus) &gt; 60*60)
+
+# queue is the &quot;start button&quot; - it launches any jobs that have been
+# specified thus far.
+queue 1
+</code></pre></div>
+
+<p>Submit a job with <code>condor_submit gpu-job.submit</code>. Once the job is complete, check
+the <code>.out</code> file for a line stating the code was run under a GPU. Something similar
+to:</p>
+<div class="codehilite"><pre><span></span><code>2021-02-02 23:25:19.022467: I tensorflow/core/common_runtime/eager/execute.cc:611] Executing op MatMul in device /job:localhost/replica:0/task:0/device:GPU:0
+</code></pre></div>
+
+<p>The <code>GPU:0</code> parts shows that a GPU was found and used for the computation.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../freesurfer/Introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to FreeSurfer on the OSPool " rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction to FreeSurfer on the OSPool 
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../matlab_runtime/tutorial-matlab-HelloWorld/" class="md-footer__link md-footer__link--next" aria-label="Next: Basics of compiled MATLAB applications - Hello World example" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Basics of compiled MATLAB applications - Hello World example
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://twitter.com/OSGUserSchool" target="_blank" rel="noopener" title="OSG User School on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://www.facebook.com/OSGUserSchool" target="_blank" rel="noopener" title="OSG User School on Facebook" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
