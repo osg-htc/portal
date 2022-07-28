@@ -2141,7 +2141,7 @@ your home directory. Once you are down exploring, exit the container
 by running <code>exit</code> or with <code>CTRL+D</code></p>
 <h2 id="osg-provided-images">OSG-Provided Images<a class="headerlink" href="#osg-provided-images" title="Permanent link">&para;</a></h2>
 <p>The OSG Team maintains a set of images that are already in the OSG
-Singularity repository. <em><a href="12000073449">A list of available containers can be found on this page</a>.</em></p>
+Singularity repository. <em><a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/">A list of available containers can be found on this page</a>.</em></p>
 <p>If the software you need isn't already supported in a listed container,
 you can use your own container or any container image in Docker Hub
 (see sections further below). Once the container you need is in the
@@ -2157,9 +2157,9 @@ queue
 
 <h2 id="custom-singularity-images">Custom Singularity Images<a class="headerlink" href="#custom-singularity-images" title="Permanent link">&para;</a></h2>
 <p>If you already have software in the form of a <code>.sif</code> Singuilarity file,
-and that file is within the <a href="12000002985">supported data sizes</a>, you
+and that file is within the <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">supported data sizes</a>, you
 can stage the .sif file with your job. The image will be resused for
-each job, and thus the preferred transfer method is <a href="12000002775">Stash</a>.
+each job, and thus the preferred transfer method is <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">Stash</a>.
 Store the .sif file under <code>/public/$USERNAME/</code>, and then use the stash
 url directly in the <code>+SingularityImage</code> attribute. Note that you can not
 use shell variable expansion in the submit file - be sure to replace the
@@ -2177,7 +2177,7 @@ so that the caches see a "new" name. In this example, replacing
 nodes get the old version and some nodes the new version. Prevent this
 by creating a new file named with v2.</p>
 <p>More information on how to create Singularity images can be found
-in the <a href="12000086275">Singularity Images Guide</a>.</p>
+in the <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/">Singularity Images Guide</a>.</p>
 <h2 id="custom-docker-images">Custom Docker Images<a class="headerlink" href="#custom-docker-images" title="Permanent link">&para;</a></h2>
 <p>If you would prefer to create or use an existing Docker Hub container,
 for example an authoritative container for your software which
@@ -2185,7 +2185,7 @@ already exists in Docker Hub, OSG can distribute the image for you
 via CVMFS. The result is a synchronized copy of the image under
 <code>/cvmfs/singularity.opensciencegrid.org/</code> which is cached and available
 to the execution nodes. Creating and/or registering a Docker
-image is described in the <a href="12000058245">Docker Images Guide</a>.</p>
+image is described in the <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/">Docker Images Guide</a>.</p>
 <p>To run a job with a Docker image, use the <code>+SingularityImage</code> to
 specify the image the job should be using. Example:</p>
 <div class="codehilite"><pre><span></span><code>+SingularityImage = &quot;/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el8:latest&quot;
