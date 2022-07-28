@@ -1945,7 +1945,7 @@ a detailed example of compiling software for use in OSG Connect. </p>
 <p>For this example, we will be compiling Samtools which is a very common bioinformatics 
 software for working with aligned sequencing data. However, the steps described in this 
 example are applicable to many other software. For a general introduction to software 
-compilation in OSG Connect, please see <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect</a>.</p>
+compilation in OSG Connect, please see <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect</a>.</p>
 <p>Specifically, this guide provides two examples of compiling Samtools, <a href="#compile-samtools-without-cram-support">one without CRAM file 
 support</a> and <a href="#compile-samtools-with-cram-support">one with CRAM file support</a>. 
 <em>Why two examples?</em> Currently, to install Samtools 
@@ -2133,7 +2133,7 @@ samtools-1.10/ samtools-1.10.tar.gz
 <p>The last command in the above example returns the size of our tar archive. This is 
 important for determine the appropriate method that we should use for transferring 
 this file along with our subsequent jobs. To learn more, please see 
-<a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a>.</p>
+<a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a>.</p>
 <p>To clean up and clear out space in your home directory, we recommend deleting the Samtools source 
 code directory.</p>
 <h3 id="step-5-use-samtools-in-our-jobs">Step 5. Use Samtools in our jobs<a class="headerlink" href="#step-5-use-samtools-in-our-jobs" title="Permanent link">&para;</a></h3>
@@ -2220,7 +2220,7 @@ will fail without additional steps.</p>
 <p>Luckily for us, bzip2 version 1.0.6 is available as a module and this module 
 includes access to a <code>.a</code> library file. We will use this module for our Samtools compilation. 
 To learn more about using modules, please see 
-<a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Accessing Software using Distributed Environment Modules</a>. 
+<a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Accessing Software using Distributed Environment Modules</a>. 
 <code>liblzma</code> however is not currently available as a module and our next step 
 will be to install <code>liblzma</code>.</p>
 <h3 id="step-3-compile-liblzma">Step 3. Compile liblzma<a class="headerlink" href="#step-3-compile-liblzma" title="Permanent link">&para;</a></h3>
@@ -2265,7 +2265,7 @@ load the bzip2 module:</p>
 <p>Loading this module will further modify some of your environment variables 
 so that Samtools is able to locate the bzip2 library files.</p>
 <p>To learn more about using modules, please see 
-<a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Accessing Software using Distributed Environment Modules</a>. </p>
+<a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">Accessing Software using Distributed Environment Modules</a>. </p>
 <h3 id="step-5-compile-samtools">Step 5. Compile Samtools<a class="headerlink" href="#step-5-compile-samtools" title="Permanent link">&para;</a></h3>
 <p>After compiling XZ Utils (which provides <code>liblzma</code>) and loading the <code>bzip2 1.0.6</code> module, 
 we are now ready to compile Samtools with CRAM support.</p>
@@ -2325,7 +2325,7 @@ samtools-1.10/ samtools-1.10.tar.gz
 <p>The last command in the above example returns the size of our tar archive. This is 
 important for determine the appropriate method that we should use for transferring 
 this file along with our subsequent jobs. To learn more, please see 
-<a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a>.</p>
+<a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a>.</p>
 <p>Follow the these same steps for creating a tar archive of the xz-5.2.5 library as well. </p>
 <p>To clean up and clear out space in your home directory, we recommend deleting the Samtools source 
 code directory.</p>
