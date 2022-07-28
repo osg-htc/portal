@@ -1943,7 +1943,7 @@
 ensure that your jobs have access to the software that will be executed. This guide provides 
 useful information for compiling and using your software in OSG Connect. A detailed 
 example of performing software compilation is additionally available 
-at <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">OSG Connect Example Compilation Guide</a>. </p>
+at <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">OSG Connect Example Compilation Guide</a>. </p>
 <blockquote>
 <p><em>What is compiling?</em>
 The process of compiling converts human readable code into binary, 
@@ -1969,7 +1969,7 @@ documention. Currently the login nodes have <code>GCC 4.8.5</code> as the defaul
 versions of GCC may also be available - to learn more please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#111;&#112;&#101;&#110;&#115;&#99;&#105;&#101;&#110;&#99;&#101;&#103;&#114;&#105;&#100;&#46;&#111;&#114;&#103;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#111;&#112;&#101;&#110;&#115;&#99;&#105;&#101;&#110;&#99;&#101;&#103;&#114;&#105;&#100;&#46;&#111;&#114;&#103;</a>.</p>
 <p>CMake is a commonly used compilation platform. Your software may have dependencies for 
 specific <code>cmake</code> versions. Currently the login nodes have two versions of CMake, <code>3.12.3</code> 
-and <code>3.13.0</code> available as <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">modules</a>. </p>
+and <code>3.13.0</code> available as <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">modules</a>. </p>
 <h3 id="static-versus-dynamic-linking-during-compilation">Static versus dynamic linking during compilation<a class="headerlink" href="#static-versus-dynamic-linking-during-compilation" title="Permanent link">&para;</a></h3>
 <p>Binary code often depends on additional information (i.e. instructions) from other software, 
 known as libraries, for proper execution. The default behavior when compiling, is for the 
@@ -1998,7 +1998,7 @@ in the installtion instructions of your software. For any libraries added to <co
 before software compilation, you'll also need to add these same libraries to 
 your <code>LD_LIBRARY_PATH</code> as a step in your job's executable bash script before executing 
 your software.</p>
-<p>The <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">distributed environment modules system</a> 
+<p>The <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">distributed environment modules system</a> 
 available on OSG Connect also provides several commonly used software libraries 
 (lapack, atlas, hdf5, netcdf, etc.) that can be used for your software compilation and 
 execution. The appropriate modules should be loaded before performing your software 
@@ -2038,7 +2038,7 @@ path to the directory you created for your software installation.</p>
 <h2 id="use-your-software">Use Your Software<a class="headerlink" href="#use-your-software" title="Permanent link">&para;</a></h2>
 <p>When submitting jobs, you will need to transfer a copy of your compiled software, 
 and any dynamically-linked dependencies that you also installed. Our 
-<a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a> 
+<a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Introduction to Data Management on OSG Connect</a> 
 guide is a good starting point for more information for selecting the appropriate
 methods for transferring you software. Depending on your job workflow, it may be possible 
 to directly specify your executable binary as the <code>executable</code> in your HTCondor 

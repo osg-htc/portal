@@ -2008,7 +2008,7 @@ needed for job submission. The initial quota per user is 50 GBs, and can be incr
 to support@opensciencegrid.org when a user needs more space for appropriately-sized files.</p>
 <p><strong>ALL JOBS MUST BE SUBMITTED FROM WITHIN <code>/home</code></strong>. Users are also prohibited 
 from making their <code>/home</code> directory world-readable due to security concerns. See 
-<a href="../../overview/references/policy/">Policies for Using OSG via OSG Connect Submit Servers</a> for more details. </p>
+<a href="../../../overview/references/policy/">Policies for Using OSG via OSG Connect Submit Servers</a> for more details. </p>
 <p>If you're unable to submit jobs or your jobs are going on hold because you've 
 reached your <code>/home</code> quota, please contact us at 
 <a href="mailto:support@opensciencegrid.org">support@opensciencegrid.org</a> about a quota increase.</p>
@@ -2063,21 +2063,21 @@ have already uploaded these input files from your own computer to your OSG Conne
 <td align="center">&lt;100 MB;<br>&lt;500 MB total per job</td>
 <td align="center"><code>/home</code></td>
 <td align="center"><code>transfer_input_files</code></td>
-<td align="center"><a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">HTCondor File Transfer</a></td>
+<td align="center"><a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">HTCondor File Transfer</a></td>
 </tr>
 <tr>
 <td align="center"><strong>OSG's<br> transfer tools</strong></td>
 <td align="center">&gt;1GB;<br>&lt;10 GB per job</td>
 <td align="center"><code>/public</code></td>
 <td align="center"><code>stash</code> address in <code>transfer_input_files</code></td>
-<td align="center"><a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">Stash Transfer</a></td>
+<td align="center"><a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">Stash Transfer</a></td>
 </tr>
 <tr>
 <td align="center"><strong>HTTP</strong></td>
 <td align="center">&lt;1GB</td>
 <td align="center">non-OSG web server</td>
 <td align="center"><code>http</code> address in <code>transfer_input_files</code></td>
-<td align="center"><a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/">HTTP Access</a></td>
+<td align="center"><a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/">HTTP Access</a></td>
 </tr>
 <tr>
 <td align="center"><strong>GridFTP</strong></td>
@@ -2107,14 +2107,14 @@ have already uploaded these input files from your own computer to your OSG Conne
 <td align="center">&lt; 1 GB</td>
 <td align="center"><code>/home</code></td>
 <td align="center">HTCondor default output transfer or <code>transfer_output_files</code></td>
-<td align="center"><a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">HTCondor Transfer</a></td>
+<td align="center"><a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/">HTCondor Transfer</a></td>
 </tr>
 <tr>
 <td align="center"><strong>OSG's transfer tools</strong></td>
 <td align="center">&gt;1GB and<br>&lt; 10 GB</td>
 <td align="center"><code>/public</code></td>
 <td align="center"><code>stashcp</code> in job executable</td>
-<td align="center"><a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">stashcp</a></td>
+<td align="center"><a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/">stashcp</a></td>
 </tr>
 <tr>
 <td align="center"><strong>GridFTP</strong></td>

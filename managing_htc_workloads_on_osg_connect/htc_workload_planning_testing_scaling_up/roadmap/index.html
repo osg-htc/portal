@@ -1964,8 +1964,8 @@ see <a href="5000632058">Is the Open Science Pool for You?</a>. </p>
 <p>After your OSG account has been approved, go through the following guides to 
 complete your access to the login node and to enable your account to submit jobs. </p>
 <ul>
-<li><a href="../../overview/welcome_and_account_setup/generate-add-sshkey/-generate-ssh-keys-and-activate-your-osg-login">Generate ssh keys and login</a></li>
-<li><a href="../../overview/welcome_and_account_setup/starting-project/-join-and-use-a-project-in-osg-connect">Set your default project</a></li>
+<li><a href="../../../overview/welcome_and_account_setup/generate-add-sshkey/">Generate ssh keys and login</a></li>
+<li><a href="../../../overview/welcome_and_account_setup/starting-project/">Set your default project</a></li>
 </ul>
 <h1 id="3-learn-to-submit-htcondor-jobs">3. Learn to Submit HTCondor Jobs<a class="headerlink" href="#3-learn-to-submit-htcondor-jobs" title="Permanent link">&para;</a></h1>
 <p>Computational work is run on the OSPool by submitting it as “jobs” to the
@@ -1976,8 +1976,8 @@ understand how HTCondor job submission works. The following guides show
 how to submit basic HTCondor jobs. The second example allows you to see
 where in the OSPool your jobs run. </p>
 <ul>
-<li><a href="../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/-osg-connect-quickstart">OSG Connect Quickstart</a></li>
-<li><a href="../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/-finding-osg-locations">Finding OSG Locations</a></li>
+<li><a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/">OSG Connect Quickstart</a></li>
+<li><a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/">Finding OSG Locations</a></li>
 </ul>
 <h1 id="4-test-a-first-job">4. Test a First Job<a class="headerlink" href="#4-test-a-first-job" title="Permanent link">&para;</a></h1>
 <p>After learning about the basics of HTCondor job submission, you will
@@ -1986,24 +1986,24 @@ by the job and the appropriate mechanism to handle the data. We
 recommend doing this using a single test job. </p>
 <h2 id="prepare-your-software">Prepare your software<a class="headerlink" href="#prepare-your-software" title="Permanent link">&para;</a></h2>
 <p>Software is an integral part of your HTC workflow.  Whether you’ve written it yourself, inherited it from your research group, or use common open-source packages, any required executables and libraries will need to be made available to your jobs if they are to run on the OSPool. </p>
-<p>Read through <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/-using-software-in-osg-connect">this overview of Using Software in OSG Connect</a> to help you determine the best way to provide your software.  We also have the following guides/tutorials for each major software portability approach:</p>
+<p>Read through <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/">this overview of Using Software in OSG Connect</a> to help you determine the best way to provide your software.  We also have the following guides/tutorials for each major software portability approach:</p>
 <ul>
-<li>To <strong>install your own software</strong>, begin with the guide on <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect</a> and then complete the <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">Example Software Compilation tutorial</a>.</li>
-<li>To <strong>use precompiled binaries</strong>, try the example presented in the <a href="../../software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/-running-a-molecule-docking-job-with-autodock-vina">AutoDock Vina tutorial</a> and/or the <a href="../../software_examples_for_osg/other_languages_tools/julia-on-osg/-using-julia-on-the-osg">Julia tutorial</a>.</li>
-<li>To <strong>use Docker containers</strong> for your jobs, start with the <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/">Docker and Singularity Containers guide</a>, and (optionally) work through the <a href="../../software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/-working-with-tensorflow-gpus-and-containers">Tensorflow tutorial</a> (which uses Docker/Singularity)</li>
-<li>To <strong>use Distributed Environment Modules</strong> for your jobs, start with <a href="../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">this Modules guide</a> and then complete the Module example in <a href="../../software_examples_for_osg/r/tutorial-R-addlibSNA/-run-r-scripts-on-osg">this R tutorial</a></li>
+<li>To <strong>install your own software</strong>, begin with the guide on <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/">Compiling Software for OSG Connect</a> and then complete the <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/">Example Software Compilation tutorial</a>.</li>
+<li>To <strong>use precompiled binaries</strong>, try the example presented in the <a href="../../../software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/">AutoDock Vina tutorial</a> and/or the <a href="../../../software_examples_for_osg/other_languages_tools/julia-on-osg/">Julia tutorial</a>.</li>
+<li>To <strong>use Docker containers</strong> for your jobs, start with the <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/">Docker and Singularity Containers guide</a>, and (optionally) work through the <a href="../../../software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/">Tensorflow tutorial</a> (which uses Docker/Singularity)</li>
+<li>To <strong>use Distributed Environment Modules</strong> for your jobs, start with <a href="../../../managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/">this Modules guide</a> and then complete the Module example in <a href="../../../software_examples_for_osg/r/tutorial-R-addlibSNA/">this R tutorial</a></li>
 </ul>
 <p>Finally, here are some additional guides specific to some of the most common scripting languages and software tools used on OSG**:</p>
 <ul>
-<li><a href="../../software_examples_for_osg/python/manage-python-packages/-run-python-scripts-on-osg">Python</a></li>
-<li><a href="../../software_examples_for_osg/r/tutorial-R/-use-external-packages-in-your-r-jobs">R</a></li>
-<li><a href="../../software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/-working-with-tensorflow-gpus-and-containers">Machine Learning</a></li>
-<li><a href="../../software_examples_for_osg/bioinformatics/tutorial-blast-split/-running-a-blast-workflow">BLAST</a></li>
+<li><a href="../../../software_examples_for_osg/python/manage-python-packages/">Python</a></li>
+<li><a href="../../../software_examples_for_osg/r/tutorial-R/">R</a></li>
+<li><a href="../../../software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/">Machine Learning</a></li>
+<li><a href="../../../software_examples_for_osg/bioinformatics/tutorial-blast-split/">BLAST</a></li>
 </ul>
 <p>**This is not a complete list.  Feel free to search for your software in our <a href="https://support.opensciencegrid.org/support/solutions/">Knowledge base</a>. </p>
 <h2 id="manage-your-data">Manage your data<a class="headerlink" href="#manage-your-data" title="Permanent link">&para;</a></h2>
 <p>The data for your jobs will need to be transferred to each job that runs in the OSPool, 
-and HTCondor has built-in features for getting data to jobs. Our <a href="../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/-data-management-and-policies">Data Management Policies</a> guide
+and HTCondor has built-in features for getting data to jobs. Our <a href="../../../managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/">Data Management Policies</a> guide
 discussed the relevant approaches, when to use them, and where to stage data for each.</p>
 <!--
 - Pick a tutorial?
@@ -2022,8 +2022,8 @@ up in one or two steps (first run several jobs, before running ALL of them).
 HTCondor has many useful features that make it easy to submit
 multiple jobs with the same submit file.  </p>
 <ul>
-<li><a href="../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/-easily-submit-multiple-jobs">Easily submit multiple jobs</a></li>
-<li><a href="../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/-scaling-up-after-success-with-test-jobs">Scaling up after success with test jobs</a> discusses how to test your jobs for duration, memory and disk usage, and the total amount of space you might need on the </li>
+<li><a href="../../../managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/">Easily submit multiple jobs</a></li>
+<li><a href="../../../managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/">Scaling up after success with test jobs</a> discusses how to test your jobs for duration, memory and disk usage, and the total amount of space you might need on the </li>
 </ul>
 <!-- TODO: Making jobs resilient* -->
 
