@@ -1,318 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://osg-htc.org/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/hpc_administration/osg_for_hpc_administrators/osg-flock/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/hpc_administration/osg_for_hpc_administrators/osg-flock/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/automated_workflows/dagman-workflows/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/automated_workflows/tutorial-pegasus/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/gpu-jobs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/large-memory-jobs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/multicore-jobs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/openmpi-jobs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/osg-xsede/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/considerations_for_specific_resource_needs/osg-xsede/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/jobdurationcategory/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/preparing-to-scale-up/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/htc_workload_planning_testing_scaling_up/roadmap/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-htcondor/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/file-transfer-via-http/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/osgconnect-storage/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/output-file-transfer-via-htcondor/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/scp/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/managing_data_for_jobs/stashcache/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/checkpointing-on-OSPool/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/submit-multiple-jobs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-command/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-error101/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-organizing/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-osg-locations/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/submitting_htc_workloads_with_htcondor/tutorial-quickstart/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/available-containers-list/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/compiling-applications/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-docker/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers-singularity/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/containers/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/example-compilation/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/new_modules_list/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/requirements/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-overview/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/managing_htc_workloads_on_osg_connect/using_software_on_the_osg/software-request/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/references/acknowledgeOSG/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/references/acknowledgeOSG/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/references/contact-information/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/references/contact-information/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/references/frequently-asked-questions-faq-/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/references/frequently-asked-questions-faq-/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/references/gracc/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/references/gracc/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/references/policy/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/references/policy/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/welcome_and_account_setup/generate-add-sshkey/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/welcome_and_account_setup/generate-add-sshkey/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/welcome_and_account_setup/is-it-for-you/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/welcome_and_account_setup/is-it-for-you/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/welcome_and_account_setup/registration-and-login/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/welcome_and_account_setup/registration-and-login/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/overview/welcome_and_account_setup/starting-project/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/overview/welcome_and_account_setup/starting-project/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/bioinformatics/tutorial-blast-split/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/bioinformatics/tutorial-blast-split/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/bioinformatics/tutorial-bwa/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/bioinformatics/tutorial-bwa/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/drug_discovery/tutorial-AutoDockVina/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/freesurfer/Introduction/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/freesurfer/Introduction/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/machine_learning/tutorial-tensorflow-containers/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/matlab_runtime/tutorial-matlab-HelloWorld/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/other_languages_tools/conda-on-osg/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/other_languages_tools/conda-on-osg/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/other_languages_tools/java-on-osg/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/other_languages_tools/java-on-osg/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/other_languages_tools/julia-on-osg/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/other_languages_tools/julia-on-osg/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/python/manage-python-packages/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/python/manage-python-packages/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/python/tutorial-ScalingUp-Python/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/python/tutorial-ScalingUp-Python/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/python/tutorial-wordfreq/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/python/tutorial-wordfreq/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/r/tutorial-R/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/r/tutorial-R/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/r/tutorial-R-addlibSNA/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/r/tutorial-R-addlibSNA/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/software_examples_for_osg/r/tutorial-ScalingUp-R/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/software_examples_for_osg/r/tutorial-ScalingUp-R/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/support_and_training_resources/education_and_training/osg-user-school/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/support_and_training_resources/education_and_training/osg-user-school/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/support_and_training_resources/education_and_training/osgusertraining/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/support_and_training_resources/education_and_training/osgusertraining/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/support_and_training_resources/education_and_training/previous-training-events/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/support_and_training_resources/education_and_training/previous-training-events/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://osg-htc.org/support_and_training_resources/get_help%21/getting-help-from-RCFs/</loc>
-         <lastmod>2022-07-28</lastmod>
+         <loc>https://osg-htc.org/connectbook/support_and_training_resources/get_help%21/getting-help-from-RCFs/</loc>
+         <lastmod>2022-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
