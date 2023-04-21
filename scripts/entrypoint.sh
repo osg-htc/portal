@@ -1,7 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-python3 user-documentation/scripts/link-docs.py
+cd /docs/user-documentation
+
+python3 scripts/link-docs.py
 
 echo "I have built the User Documentation"
 
-mkdocs "$@"
+cd /docs
+
+ exec mkdocs "$@"
