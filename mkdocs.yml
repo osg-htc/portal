@@ -15,8 +15,7 @@ theme:
 
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: False
+  
   - meta
   - pymdownx.details
   - toc:
