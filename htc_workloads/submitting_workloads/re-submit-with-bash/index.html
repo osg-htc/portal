@@ -1,0 +1,2965 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://portal.osg-htc.org/documentation/htc_workloads/submitting_workloads/re-submit-with-bash/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Submit and Resubmit Multiple Jobs using Bash Scripting - OSPool Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#submit-and-resubmit-multiple-jobs-using-bash-scripting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="OSPool Documentation" class="md-header__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OSPool Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Submit and Resubmit Multiple Jobs using Bash Scripting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-tabs__link">
+        Get Started on the OSPool
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-tabs__link">
+        Support And Training Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../workload_planning/roadmap/" class="md-tabs__link md-tabs__link--active">
+        Submit High Throughput Computing (HTC) Workloads
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial-command/" class="md-tabs__link">
+        Tutorials and Software Examples
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-tabs__link">
+        Additional Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OSPool Documentation" class="md-nav__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    OSPool Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Get Started on the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Started on the OSPool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get Started on the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Welcome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Welcome" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Welcome
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-nav__link">
+        Computation on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
+        Policies for Using OSG Services and the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/frequently-asked-questions/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Account Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Account Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Account Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/registration-and-login/" class="md-nav__link">
+        Start Here: Overview of Requesting OSPool Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/comanage-access/" class="md-nav__link">
+        Log In to uw.osg-htc.org Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/connect-access/" class="md-nav__link">
+        Log In to OSG Connect Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/generate-add-sshkey/" class="md-nav__link">
+        Generate SSH Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/starting-project/" class="md-nav__link">
+        Set and View Project Usage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Support And Training Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support And Training Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Support And Training Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Get Help!
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help!" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help!
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-nav__link">
+        Email, Office Hours, and 1-1 Meetings 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Education And Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Education And Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Education And Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osgusertraining/" class="md-nav__link">
+        Monthly OSG User Training
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/materials/" class="md-nav__link">
+        Past Training Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osg-user-school/" class="md-nav__link">
+        Annual, Week-Long OSG User School 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/previous-training-events/" class="md-nav__link">
+        Other Past Training Events 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/ospool_for_education/" class="md-nav__link">
+        OSPool Resources for Teaching & Education
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Submit High Throughput Computing (HTC) Workloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Submit High Throughput Computing (HTC) Workloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Submit High Throughput Computing (HTC) Workloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          How to Use the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="How to Use the OSPool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          How to Use the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/roadmap/" class="md-nav__link">
+        Roadmap to HTC Workload Submission
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          HTC Workload Planning, Testing, and Scaling Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTC Workload Planning, Testing, and Scaling Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTC Workload Planning, Testing, and Scaling Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/htcondor_job_submission/" class="md-nav__link">
+        Overview: Submit Jobs to the OSPool using HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/preparing-to-scale-up/" class="md-nav__link">
+        Determining the Amount of Resources to Request in a Submit File 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../submit-multiple-jobs/" class="md-nav__link">
+        Easily Submit Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Submit and Resubmit Multiple Jobs using Bash Scripting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Submit and Resubmit Multiple Jobs using Bash Scripting
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start-consider-your-own-workflow" class="md-nav__link">
+    Before you start: Consider your own workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-multiple-jobs-matching-a-filename-or-file-extension" class="md-nav__link">
+    Submit multiple jobs matching a filename or file extension
+  </a>
+  
+    <nav class="md-nav" aria-label="Submit multiple jobs matching a filename or file extension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-list-of-files-using-bash-scripting" class="md-nav__link">
+    Create a list of files using Bash scripting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-multiple-jobs-using-queue-var-from-list" class="md-nav__link">
+    Submit multiple jobs using queue &lt;var&gt; from &lt;list&gt;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resubmit-selected-jobs-from-a-batch-submission" class="md-nav__link">
+    Resubmit selected jobs from a batch submission
+  </a>
+  
+    <nav class="md-nav" aria-label="Resubmit selected jobs from a batch submission">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-updated-list-of-files-using-bash-scripting" class="md-nav__link">
+    Create an updated list of files using Bash scripting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resubmit-selected-jobs" class="md-nav__link">
+    Resubmit selected jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-tips-and-techniques" class="md-nav__link">
+    Other tips and techniques
+  </a>
+  
+    <nav class="md-nav" aria-label="Other tips and techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-commands" class="md-nav__link">
+    Useful commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-variables-in-the-condor_submit-command" class="md-nav__link">
+    Using variables in the condor_submit command
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-help" class="md-nav__link">
+    Get Help
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/jobdurationcategory/" class="md-nav__link">
+        Job Duration Categories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Slurm_to_HTCondor/" class="md-nav__link">
+        Convert your workflow from Slurm to HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        Launch a JupyterLab Instance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Managing Data For Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Managing Data For Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Managing Data For Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/overview/" class="md-nav__link">
+        Overview: Data Staging and Transfer to Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Smaller Job Files to and from /home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/osdf/" class="md-nav__link">
+        Transfer Larger Job Files and Containers Using OSDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/file-transfer-via-http/" class="md-nav__link">
+        Transfer HTTP-available Files up to 1GB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/scp/" class="md-nav__link">
+        Use scp To Transfer Files To and From OSG Managed Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Using Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/software-overview/" class="md-nav__link">
+        Overview: Software on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/compiling-applications/" class="md-nav__link">
+        Compiling Software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/example-compilation/" class="md-nav__link">
+        Example Software Compilation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/containers-singularity/" class="md-nav__link">
+        Containers - Apptainer/Singularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/containers-docker/" class="md-nav__link">
+        Containers - Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_software/available-containers-list/" class="md-nav__link">
+        Containers - Predefined List
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Monitor, Review, and Troubleshoot Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor, Review, and Troubleshoot Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor, Review, and Troubleshoot Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitor_review_jobs/" class="md-nav__link">
+        Monitor and Review Jobs With condor_q and condor_history
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-error101/" class="md-nav__link">
+        Troubleshooting Job Errors
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Considerations For Specific Resource Needs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Considerations For Specific Resource Needs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Considerations For Specific Resource Needs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/requirements/" class="md-nav__link">
+        Control Where Your Jobs Run/Job Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/gpu-jobs/" class="md-nav__link">
+        GPU Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/arm64/" class="md-nav__link">
+        ARM64
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checkpointing-on-OSPool/" class="md-nav__link">
+        Checkpointing Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/large-memory-jobs/" class="md-nav__link">
+        Large Memory Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/multicore-jobs/" class="md-nav__link">
+        Multicore Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/openmpi-jobs/" class="md-nav__link">
+        OpenMPI Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/el9-transition/" class="md-nav__link">
+        EL9 Transition
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          Automated Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Automated Workflows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Automated Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/dagman-workflows/" class="md-nav__link">
+        Overview: Submit Workflows with HTCondor's DAGMan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/dagman-simple-example/" class="md-nav__link">
+        Simple Example of a DAGMan Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/tutorial-pegasus/" class="md-nav__link">
+        Use Pegasus to Manage Workflows on OSPool Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Tutorials and Software Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials and Software Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials and Software Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Workflow Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workflow Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Workflow Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-command/" class="md-nav__link">
+        List of Available Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-quickstart/" class="md-nav__link">
+        Quickstart-Submit Example HTCondor Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-organizing/" class="md-nav__link">
+        Organizing and Submitting HTC Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial-osg-locations/" class="md-nav__link">
+        Finding OSG Locations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Artificial Intelligence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Artificial Intelligence" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Artificial Intelligence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/scikit-learn/" class="md-nav__link">
+        scikit-learn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/tutorial-pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/manage-python-packages/" class="md-nav__link">
+        Run Python Scripts on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/tutorial-ScalingUp-Python/" class="md-nav__link">
+        Scaling Up With HTCondor’s Queue Command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/tutorial-wordfreq/" class="md-nav__link">
+        Wordcount Tutorial for Submitting Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-R-addlibSNA/" class="md-nav__link">
+        Use External Packages in your R Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-R/" class="md-nav__link">
+        Run R scripts on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-ScalingUp-R/" class="md-nav__link">
+        Scaling up compute resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-spills-R/" class="md-nav__link">
+        Analyzing .csv Data with R
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          Conda/Miniconda
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Conda/Miniconda" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Conda/Miniconda
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/conda-tarball/" class="md-nav__link">
+        Conda with Tarballs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/conda-container/" class="md-nav__link">
+        Conda with Containers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          DAGMan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DAGMan" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          DAGMan
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/tutorial-dagman-intermediate/" class="md-nav__link">
+        Intermediate DAGMan: Uses and Features
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_7">
+          Matlab Runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Matlab Runtime" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Matlab Runtime
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/matlab_runtime/tutorial-matlab-HelloWorld/" class="md-nav__link">
+        Basics of compiled MATLAB applications - Hello World example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/matlab_runtime/tutorial-Matlab-ScalingUp/" class="md-nav__link">
+        Scaling up MATLAB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8">
+          Julia and Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Julia and Java" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          Julia and Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/julia-on-osg/" class="md-nav__link">
+        Using Julia on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/java-on-osg/" class="md-nav__link">
+        Using Java in Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" type="checkbox" id="__nav_5_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_9">
+          Bioinformatics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bioinformatics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_9">
+          <span class="md-nav__icon md-icon"></span>
+          Bioinformatics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-fastqc/" class="md-nav__link">
+        FastQC Quality Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-blast-split/" class="md-nav__link">
+        High-Throughput BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-bwa/" class="md-nav__link">
+        High-Throughput BWA Read Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/freesurfer/Introduction/" class="md-nav__link">
+        FreeSurfer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" type="checkbox" id="__nav_5_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_10">
+          Drug Discovery
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drug Discovery" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Drug Discovery
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/drug_discovery/tutorial-AutoDockVina/" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Additional Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
+        Acknowledge the OSG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
+        Contact OSG for non-Support Inquiries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
+        OSG Accounting (GRACC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start-consider-your-own-workflow" class="md-nav__link">
+    Before you start: Consider your own workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-multiple-jobs-matching-a-filename-or-file-extension" class="md-nav__link">
+    Submit multiple jobs matching a filename or file extension
+  </a>
+  
+    <nav class="md-nav" aria-label="Submit multiple jobs matching a filename or file extension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-list-of-files-using-bash-scripting" class="md-nav__link">
+    Create a list of files using Bash scripting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-multiple-jobs-using-queue-var-from-list" class="md-nav__link">
+    Submit multiple jobs using queue &lt;var&gt; from &lt;list&gt;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resubmit-selected-jobs-from-a-batch-submission" class="md-nav__link">
+    Resubmit selected jobs from a batch submission
+  </a>
+  
+    <nav class="md-nav" aria-label="Resubmit selected jobs from a batch submission">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-updated-list-of-files-using-bash-scripting" class="md-nav__link">
+    Create an updated list of files using Bash scripting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resubmit-selected-jobs" class="md-nav__link">
+    Resubmit selected jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-tips-and-techniques" class="md-nav__link">
+    Other tips and techniques
+  </a>
+  
+    <nav class="md-nav" aria-label="Other tips and techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-commands" class="md-nav__link">
+    Useful commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-variables-in-the-condor_submit-command" class="md-nav__link">
+    Using variables in the condor_submit command
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-help" class="md-nav__link">
+    Get Help
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="submit-and-resubmit-multiple-jobs-using-bash-scripting">Submit and Resubmit Multiple Jobs using Bash Scripting<a class="headerlink" href="#submit-and-resubmit-multiple-jobs-using-bash-scripting" title="Permanent link">&para;</a></h1>
+<p>This guide is based on the original scripts from Jarryd Ramborger at the George Lab at UC San Diego, presented at HTC'24 (<a href="https://youtu.be/YrCLBf6ATmE?si=Scu4TSt7VlRpzUVL">watch the presentation</a>). You can reach Jarryd at <a href="mailto:jkramborger@health.ucsd.edu">jkramborger@health.ucsd.edu</a></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>HTCondor allows for <a href="../submit-multiple-jobs">submitting multiple jobs from a single submit file</a>. Many users find the <code>queue &lt;var&gt; from &lt;list&gt;</code> option particularly helpful, as it allows users to submit multiple jobs with one or more distinct variables per job. However, creating this list for hundreds of jobs becomes inefficient to do manually. How can you automate creation of this list? Furthermore, what if you want to rerun only <em>some</em> runs and not all?</p>
+<p>This guide will walk through the basics of submitting and rerunning jobs with multiple variables by leveraging bash scripting. To fully utilize this guide, users should be familiar with using <a href="../submit-multiple-jobs/#2-submit-multiple-jobs-with-one-or-more-distinct-variables-per-job"><code>queue &lt;var&gt; from &lt;list&gt;</code> in submitting multiple jobs</a>.</p>
+<h2 id="before-you-start-consider-your-own-workflow">Before you start: Consider your own workflow<a class="headerlink" href="#before-you-start-consider-your-own-workflow" title="Permanent link">&para;</a></h2>
+<p>Every user's workflow is different and has varying needs. You will need to evaluate your own workflow and come up with a strategy for writing scripts for submitting and resubmitting jobs. Here are some questions to consider when strategizing how to automate your workflow:</p>
+<ol>
+<li>What are common elements within the list of jobs that I need to submit?</li>
+<li>How do correctly loop through the list of input files and/or arguments in my submit file?</li>
+<li>How can I uniquely name my outputs so that they don't overwrite each other?</li>
+<li>If my some of my jobs fail, what parts of their output files (including standard error, output, and log files) distinguishes them from successful jobs?  How can I utilize this difference in rerunning my jobs?</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">General strategy</p>
+<ol>
+<li>Write a bash script to create a list of variables. (e.g. <code>ls *.mp4 &gt; input_list.txt</code>).</li>
+<li>Use <code>queue &lt;var&gt; from &lt;list&gt;</code> to submit multiple jobs based on the variables.</li>
+<li>To resubmit multiple jobs, write a bash script to update your list of variables.</li>
+</ol>
+</div>
+<p>In this guide, we will walk through one detailed example on how to leverage bash scripting and the <code>queue</code> statement to submit multiple jobs. However, your needs may differ from what's presented. We encourage you to consider how to integrate or modify these methods into your own workflow as you read this guide.</p>
+<h2 id="submit-multiple-jobs-matching-a-filename-or-file-extension">Submit multiple jobs matching a filename or file extension<a class="headerlink" href="#submit-multiple-jobs-matching-a-filename-or-file-extension" title="Permanent link">&para;</a></h2>
+<p>Consider a pipeline in which a researcher needs to analyze hundreds of .mp4 video files saved in multiple directories under different names. Below is a snippet of a tree diagram of what their file directory structure might look like. Their data is stored in subdirectories in <code>videos/</code>, and they have created separate directories for their standard error (<code>err/</code>), standard output (<code>out/</code>), and final analysis (<code>analysis/</code>).</p>
+<pre><code>/home/username/
+|-- analysis/
+|-- analyze_videos.sh
+|-- err/
+|-- log/
+|-- out/
+|-- videos/
+|   |-- dataset1/
+|   |   |-- 2024-09-18-mouse1.mp4
+|   |   |-- 2024-09-18-mouse2.mp4
+|   |   |-- 2024-09-18-mouse3.mp4
+|   |   `-- notes.txt
+|   |-- dataset2/
+|   |   |-- 2024-10-31-mouse1.mp4
+|   |   |-- 2024-10-31-mouse2.mp4
+|   |   `-- notes.txt
+|   ...
+</code></pre>
+<p>The researcher needs to run <code>analyze_videos.sh</code> on each .mp4 file. They plan to use the <code>queue &lt;var&gt; from &lt;list&gt;</code> syntax to submit all their jobs from a single submit file. To create their list, they can manually copy and paste the path of each .mp4 file into a text document, but this can soon becomes a tedious task. How can they automate this process?</p>
+<h3 id="create-a-list-of-files-using-bash-scripting">Create a list of files using Bash scripting<a class="headerlink" href="#create-a-list-of-files-using-bash-scripting" title="Permanent link">&para;</a></h3>
+<p>Instead of copy and pasting the path to each video manually, we can leverage Bash scripting to do this for us. There are multiple ways to achieve this: if all the files were in one directory, we could use simple <code>ls *.mp4 &gt; job_list.txt</code> command, similar to the example in the <a href="../submit-multiple-jobs/#2-submit-multiple-jobs-with-one-or-more-distinct-variables-per-job">Easily Submit Multiple Jobs guide</a>.</p>
+<p>However, the files are listed in multiple sub-directories, so in this case, we will use the <code>find</code> command to recursively find the .mp4 files. <code>find</code> can be a powerful tool - read more about the <code>find</code> command <a href="https://help.ubuntu.com/community/find">here</a>.</p>
+<p>Our plan is to print the path for each file, as well as the basename of the file itself. These two elements will then be utilized as <em>variables</em> for our HTCondor submit file. Below is the script <code>create_list.sh</code>, which accomplishes these tasks:</p>
+<pre><code>#!/bin/bash
+
+# Set name of the file containing the list of jobs
+job_list=job_list.txt
+
+# Specify directory with videos
+videos_directory=videos
+
+# Remove the job list file, if it exists, for a clean start
+if [ -f &quot;${job_list}&quot; ] ; then
+    rm &quot;${job_list}&quot;
+fi
+
+# Append list of videos with .mp4 extension to the job list file
+for video in $(find ${videos_directory} -type f -name &quot;*.mp4&quot;); do
+        echo &quot;${video}, $(basename ${video} .mp4)&quot; &gt;&gt; ${job_list}
+        echo &quot;${video} added to ${job_list}&quot;
+done
+</code></pre>
+<details class="question">
+<summary>What the script doing in the <code>for</code> loop?</summary>
+<p>For users unfamiliar with Bash scripting, the above code can be daunting. Let's break it down step-by-step.</p>
+<p>Recall that the goal is to grab a list of paths to the .mp4 files, as well as the basenames for the files themselves. The .mp4 files are listed in multiple sub-directories. To find those .mp4 files, we can use the <code>find</code> command:</p>
+<p><code>find ${videos_directory} -type f -name "*.mp4"</code></p>
+<ol>
+<li>The first argument after the <code>find</code> command indicates which directory to search in. In this case, we pass the value assigned to <code>${videos_directory}</code>, which should be <code>videos</code>.</li>
+<li>Next, <code>-type f</code> indicates that we want to find a file (in contrast to finding a directory).</li>
+<li>Lastly, <code>-name "*.mp4"</code> indicates we want to find files that match a certain naming pattern. The wildcard <code>*.mp4</code> indicates a name with any length of characters as long as it ends with <code>.mp4</code>.</li>
+</ol>
+<p>The full <code>find</code> command above would generate a list of full paths to files:</p>
+<p><code>videos/dataset1/2024-09-18-mouse2.mp4</code><br>
+<code>videos/dataset1/2024-09-18-mouse1.mp4</code><br>
+<code>videos/dataset2/2024-10-31-mouse1.mp4</code><br>
+<code>videos/dataset2/2024-10-31-mouse2.mp4</code></p>
+<p>We can then use <code>for</code> to loop through this list and assign each line to the variable <code>${video}</code>. The <code>$()</code> captures the output of the <code>find</code> command, which is then used in the <code>for</code> loop.</p>
+<blockquote>
+<p><code>for video in $(find ${videos_directory} -type f -name "*.mp4"); do</code></p>
+</blockquote>
+<p>Each time the <code>for</code> loop runs, we want to collect information about the path and the basename in <code>job_list.txt</code>. The path is already assigned to the variable <code>${video}</code>. To get the basename, we use the <code>basename</code> command. When we pass the path into <code>basename</code> and use <code>.mp4</code> as the second argument, it returns the basename without the .mp4 extension.</p>
+<p><code>basename ${video} .mp4</code></p>
+<p>We can then print both the path and the basename to our <code>${job_list}</code> file, separated by a comma.</p>
+<blockquote>
+<p><code>echo "${video}, $(basename ${video} .mp4)" &gt;&gt; ${job_list}</code></p>
+</blockquote>
+<p>The next line prints a message to the terminal to let us know that the corresponding file is added to the rerun list. This line could be omitted.</p>
+<blockquote>
+<p><code>echo "${video} added to ${job_list}"</code></p>
+</blockquote>
+</details>
+<p>Once the script is created, we change the script to be executable and run the script. When this is complete, <code>job_list.txt</code> now contains a list of absolute paths to the .mp4 files in the videos directory and the basenames of each .mp4 file.</p>
+<pre><code>[username@ap40 ~ ]$ chmod +x create_list.sh
+
+[username@ap40 ~ ]$ ./create_list.sh
+videos/dataset1/2024-09-18-mouse2.mp4 added to job_list.txt
+videos/dataset1/2024-09-18-mouse1.mp4 added to job_list.txt
+videos/dataset2/2024-10-31-mouse1.mp4 added to job_list.txt
+videos/dataset2/2024-10-31-mouse2.mp4 added to job_list.txt
+
+[username@ap40 ~ ]$ ls
+analysis/          create_list.sh  job_list.txt  out/
+analyze_videos.sh  err/            log/          videos/
+
+[username@ap40 ~ ]$ cat job_list.txt
+videos/dataset1/2024-09-18-mouse2.mp4, 2024-09-18-mouse2
+videos/dataset1/2024-09-18-mouse1.mp4, 2024-09-18-mouse1
+videos/dataset2/2024-10-31-mouse1.mp4, 2024-10-31-mouse1
+videos/dataset2/2024-10-31-mouse2.mp4, 2024-10-31-mouse2
+</code></pre>
+<p>Notice that in our list, we have the name of the file without the .mp4 extension. In our script, we used the <code>basename</code> program within the loop to remove the <code>.mp4</code> file extension.</p>
+<p>Why might we want to do this? We can use the basename of our file (e.g. <code>2024-09-18-mouse1</code>) in the filename of our outputs to keep our files organized. Leaving out the .mp4 extension in these names will make naming these outputs easier.</p>
+<h3 id="submit-multiple-jobs-using-queue-var-from-list">Submit multiple jobs using <code>queue &lt;var&gt; from &lt;list&gt;</code><a class="headerlink" href="#submit-multiple-jobs-using-queue-var-from-list" title="Permanent link">&para;</a></h3>
+<p>Now, that we have a list, we can use <code>job_list.txt</code> in our HTCondor submit file using the <code>queue &lt;var&gt; from &lt;list&gt;</code> syntax. Below is our submit file, <code>job.sub</code>.</p>
+<pre><code># job.sub
+
+executable = analyze_videos.sh
+arguments = $(video)
+
+log = log/job_$(Cluster).log
+error = err/$(video)_$(Cluster).err
+output = out/$(video)_$(Cluster).out
+
+transfer_input_files = $(path)
+transfer_output_files = $(video).txt
+transfer_output_remaps = &quot;$(video).txt = analysis/$(video).txt&quot;
+
++JobDurationCategory = &quot;Medium&quot;
+
+request_cpus = 1
+request_memory = 10GB
+request_disk = 10GB
+
+queue path, video from job_list.txt
+</code></pre>
+<p>Notice the <code>queue</code> statement on the last line. As HTCondor loops through each line in <code>job_list.txt</code>, the values of <code>$(path)</code> and <code>$(video)</code> will change correspondingly.</p>
+<p>We set <code>transfer_input_files</code> to reference each .mp4 file using the <code>$(path)</code> value from the list. We also pass <code>$(video)</code> as an argument to our executable, so our executable knows the basename of the video file and can proceed with its analysis. Lastly, we remap the output file so that HTCondor transfers it to the <code>analysis</code> folder.</p>
+<p>The researcher can now submit the job. When the job is finished, the output files of the analysis, log, and other files are in their respective folders, as seen in this tree diagram.</p>
+<pre><code>/home/username/
+|-- analysis
+|   |-- 2024-09-18-mouse1.txt
+|   |-- 2024-10-31-mouse1.txt
+|-- analyze_videos.sh
+|-- create_list.sh
+|-- err
+|   |-- 2024-09-18-mouse1_800457.err
+|   |-- 2024-09-18-mouse2_800457.err
+|   |-- 2024-10-31-mouse1_800457.err
+|   `-- 2024-10-31-mouse2_800457.err
+|-- job_list.txt
+|-- job.sub
+|-- log
+|   `-- job_800457.log
+|-- out
+|   |-- 2024-09-18-mouse1_800457.out
+|   |-- 2024-09-18-mouse2_800457.out
+|   |-- 2024-10-31-mouse1_800457.out
+|   `-- 2024-10-31-mouse2_800457.out
+...
+</code></pre>
+<p>Notice that <code>2024-09-18-mouse2.txt</code> and <code>2024-10-31-mouse2.txt</code> does not exist in the analysis folder. In our hypothetical scenario, these particular jobs failed, and our researcher needs to rerun the jobs after identifying what caused the failure. The researcher could manually create another <code>job_list.txt</code> file with the right information to resubmit the job, but if there are many failures, this could become a tedious task. In the next section, we will see how to automate resubmission of jobs from a batch submission.</p>
+<h2 id="resubmit-selected-jobs-from-a-batch-submission">Resubmit selected jobs from a batch submission<a class="headerlink" href="#resubmit-selected-jobs-from-a-batch-submission" title="Permanent link">&para;</a></h2>
+<p>Sometimes, one or more jobs in a batch of jobs will fail. Failure can be caused by various reasons: going over requested memory, inconsistent files — the potential reasons are too numerous to list! How can we resubmit a few jobs out of the entire batch of jobs in an automated fashion?</p>
+<p>First, we need to <em>identify the differences between a failed job and a successful job</em>. In the previous example, if our researcher's calculation was successful, it would transfer the results of the analysis, a .txt file, to the <code>analysis</code> folder. If the analysis was unsuccessful, the corresponding .txt file would not exist.</p>
+<p>After rectifying the point of failure (such as increasing requested memory), the researcher needs to resubmit the job for videos with the missing analyses. Because the missing analyses have no .txt files in the analysis folder, the researcher realized that they need a script that checks for which analyses are missing and create a new list of videos for submission.</p>
+<h3 id="create-an-updated-list-of-files-using-bash-scripting">Create an updated list of files using Bash scripting<a class="headerlink" href="#create-an-updated-list-of-files-using-bash-scripting" title="Permanent link">&para;</a></h3>
+<p>One strategy we can use in this scenario is to compare <code>job_list.txt</code> with the files currently in the <code>analysis</code> directory. If the basename of our .mp4 video matches with a .txt file in the <code>analysis</code> directory, we can skip the corresponding job. If the basename does <em>not</em> have a match, then we should add that line of the job list to the rerun list.</p>
+<p>Below is the script <code>create_rerun_list.sh</code>:</p>
+<pre><code>#!/bin/bash
+
+# Define input and output files for job list
+input_list=job_list.txt
+rerun_list=rerun_list.txt
+
+# Define analysis directory
+analysis_dir=analysis
+
+# Remove the rerun list file, if it exists, for a clean start
+if [ -f &quot;${rerun_list}&quot; ] ; then
+    rm &quot;${rerun_list}&quot;
+fi
+
+# Loop through input_list and finds the basename: 
+#    If there is no match, add it to rerun_list
+#    If there is a match in the analysis folder, skip
+
+while read line; do
+
+    match=$( awk '{print $2}' &lt;&lt;&lt; &quot;${line}&quot;)
+
+    if [ $(ls ${analysis_dir}/*.txt | grep -c ${match}) -eq 0 ];
+    then
+        echo &quot;${line}&quot; &gt;&gt; ${rerun_list}
+        echo &quot;${match} added to ${rerun_list}.&quot;
+    else
+        echo &quot;${match} has already been run. Skipping.&quot;
+    fi
+
+done &lt; ${input_list}
+
+</code></pre>
+<details class="question" open="open">
+<summary>What the script doing in the <code>while</code> loop?</summary>
+<p>For users unfamiliar with Bash scripting, the above code can be daunting. Let's break it down step-by-step.</p>
+<details class="note">
+<summary>The <code>while</code> block</summary>
+<p>The beginning of the <code>while</code> block reads a file and assigns each line to the variable <code>$line</code>:</p>
+<blockquote>
+<p><code>while read line; do</code></p>
+</blockquote>
+<p>The end of the block uses <code>${input_list}</code> as the file to be read:</p>
+<blockquote>
+<p><code>done &lt; ${input_list}</code></p>
+</blockquote>
+</details>
+<details class="note">
+<summary>Assigning the basename to <code>${match}</code></summary>
+<p>The first line in the <code>while</code> block uses multiple bash commands.</p>
+<blockquote>
+<p><code>match=$( awk '{print $2}' &lt;&lt;&lt; "${line}")</code></p>
+</blockquote>
+<p>Recall the format of each line in <code>job_list.txt</code>:</p>
+<p><code>videos/dataset1/2024-09-18-mouse2.mp4, 2024-09-18-mouse2</code></p>
+<p>The basename (<code>2024-09-18-mouse2</code>) can be used to match to files in the <code>analysis</code> directory. The basename is the second item in the line, so we use <code>awk '{print2}'</code> to grab the second item.</p>
+<p>However, we still need to refer to the corresponding line in our list. To achieve that, <code>&lt;&lt;&lt;</code> feeds <code>${line}</code> into the <code>awk</code> command.</p>
+<p>Lastly, the variable <code>${match}</code> is assigned to the value of the entire command, which is encased in <code>$()</code>.</p>
+</details>
+<details class="note">
+<summary>The <code>if</code> conditional statement</summary>
+<p>Next, we use an <code>if</code> block to make decisions about which lines to add to our list.</p>
+<blockquote>
+<p><code>if [ $(ls ${analysis_dir}/*.txt | grep -c ${match}) -eq 0 ];</code></p>
+</blockquote>
+<p>How did we come to writing this condition? Our goal is to match the basename (<code>2024-09-18-mouse2</code>) to a .txt file in the <code>analysis</code> directory.</p>
+<p>We can get a list of the .txt files in the <code>analysis</code> directory using the <code>ls</code> command with the wildcard <code>*</code>:</p>
+<p><code>ls ${analysis_dir}/*.txt</code></p>
+<p>We can then pipe (<code>|</code>) the output of the <code>ls</code> command to the <code>grep</code> command to see if the basename <code>${match}</code> exists in the output of the above <code>ls</code> command. Additionally, the <code>-c</code> flag for grep counts the number of matches.</p>
+<p>The combination of those pieces then becomes:</p>
+<p><code>ls ${analysis_dir}/*.txt | grep -c ${match}</code></p>
+<p>Lastly, we need to evaluate whether there is a match. If there is a match, the above command will return a number greater than 0. If there is no match, the command will return zero.</p>
+<p>Thus, we set the condition to see if the command (encased in <code>$()</code>) evaluates to zero with <code>-eq 0</code>.</p>
+</details>
+<details class="note">
+<summary>The <code>then</code> and <code>else</code> blocks</summary>
+<p>Lastly, we print or skip lines depending on whether there is or isn't a match.</p>
+<p>The <code>then</code> block:</p>
+<p>If the conditional statement evaluates to 0, then that means there is <em>no</em> match, and we should add the line to the rerun list.</p>
+<blockquote>
+<p><code>echo "${line}" &gt;&gt; ${rerun_list}</code></p>
+</blockquote>
+<p>The next line prints a message to the terminal to let us know that the corresponding file is added to the rerun list. This line could be omitted.</p>
+<blockquote>
+<p><code>echo "${match} added to ${rerun_list}."</code></p>
+</blockquote>
+<p><br>
+The <code>else</code> block:</p>
+<p>If the conditional statement returns a value other than 0, then that means there is a match, and the line should <em>not</em> be added to the rerun list. This line could be omitted.</p>
+<blockquote>
+<p><code>echo "${match} has already been run. Skipping."</code></p>
+</blockquote>
+</details>
+</details>
+<p>We can execute <code>create_rerun_list.sh</code> and observe which video files will be added to the rerun list, and which will be skipped.</p>
+<pre><code>[username@ap40 ~ ]$ ./create_rerun_list.sh
+2024-09-18-mouse2 added to rerun_list.txt.
+2024-09-18-mouse1 has already been run. Skipping.
+2024-10-31-mouse1 has already been run. Skipping.
+2024-10-31-mouse2 added to rerun_list.txt.
+</code></pre>
+<h3 id="resubmit-selected-jobs">Resubmit selected jobs<a class="headerlink" href="#resubmit-selected-jobs" title="Permanent link">&para;</a></h3>
+<p>Our researcher is now ready to resubmit the selected jobs. Instead of editing the <code>job.sub</code> file, it will be useful to create separate submit file, <code>job_rerun.sub</code>, where the only difference is the <code>queue</code> statement.</p>
+<pre><code>queue path, video from rerun_list.txt
+</code></pre>
+<p>Our researcher can now submit the new jobs, and two jobs are submitted accordingly.</p>
+<pre><code>[username@ap40 ~ ]$ condor_submit job_rerun.sub
+Submitting job(s)..
+2 job(s) submitted to cluster 800458.
+</code></pre>
+<h2 id="other-tips-and-techniques">Other tips and techniques<a class="headerlink" href="#other-tips-and-techniques" title="Permanent link">&para;</a></h2>
+<h3 id="useful-commands">Useful commands<a class="headerlink" href="#useful-commands" title="Permanent link">&para;</a></h3>
+<p>Often your bash scripts will use commands like <code>find</code>, <code>grep</code>, <code>ls</code>, and <code>awk</code>. Exploring these commands will widen your toolkit for writing automated scripts.</p>
+<h3 id="arguments">Arguments<a class="headerlink" href="#arguments" title="Permanent link">&para;</a></h3>
+<p>You can generalize your scripts further by using arguments in your Bash scripts. For example, we could change the first few lines of <code>create_list.sh</code> to accept arguments:</p>
+<pre><code>#!/bin/bash
+
+# Set name of the file containing the list of jobs
+job_list=$1
+
+# Specify directory with videos
+videos_directory=$2
+...
+</code></pre>
+<p>This allows us to specify the name of our job list file and directory containing our videos without having to constantly edit the script. When we run the new script, the arguments we put in are then assigned to the corresponding variables in the script.</p>
+<pre><code>[username@ap40 ~] ./create_list.sh new_list.txt updated_videos
+updated_videos/dataset1/2024-09-18-mouse2.mp4 added to new_list.txt
+updated_videos/dataset1/2024-09-18-mouse1.mp4 added to new_list.txt
+updated_videos/dataset2/2024-10-31-mouse1.mp4 added to new_list.txt
+updated_videos/dataset2/2024-10-31-mouse2.mp4 added to new_list.txt
+</code></pre>
+<h3 id="using-variables-in-the-condor_submit-command">Using variables in the <code>condor_submit</code> command<a class="headerlink" href="#using-variables-in-the-condor_submit-command" title="Permanent link">&para;</a></h3>
+<p>In the above example, we copied <code>job.sub</code> to <code>job_rerun.sub</code> and needed to edit the queue statement to refer to <code>rerun_list.txt</code>. Instead of doing this, we can use a variable in the <code>queue</code> statement.</p>
+<pre><code>queue path, video from $(job_list)
+</code></pre>
+<p>We can assign the variable and submit the job in one step.</p>
+<pre><code>[username@ap40 ~] condor_submit job.sub job_list=rerun_list.txt
+Submitting job(s)..
+2 job(s) submitted to cluster 800469.
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Double-check your files and do a small-scale test before using variables in the <code>condor_submit</code> command. Any mistakes in a submitting a large number of jobs could potentially mean a large mess to clean up!</p>
+</div>
+<h2 id="get-help">Get Help<a class="headerlink" href="#get-help" title="Permanent link">&para;</a></h2>
+<p>For assistance, questions, or discussing strategy, please email the OSG Research Facilitation team at <a href="mailto:support@osg-htc.org">support@osg-htc.org</a> or attend our <a href="../../../support_and_training/support/getting-help-from-RCFs/#virtual-office-hours">Virtual Office Hours</a>.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../submit-multiple-jobs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Easily Submit Multiple Jobs" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Easily Submit Multiple Jobs
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../workload_planning/jobdurationcategory/" class="md-footer__link md-footer__link--next" aria-label="Next: Job Duration Categories" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Job Duration Categories
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
