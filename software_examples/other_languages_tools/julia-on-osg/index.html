@@ -1,0 +1,2792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://portal.osg-htc.org/documentation/software_examples/other_languages_tools/julia-on-osg/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Using Julia on the OSPool - OSPool Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-julia-on-the-ospool" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="OSPool Documentation" class="md-header__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OSPool Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using Julia on the OSPool 
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-tabs__link">
+        Get Started on the OSPool
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-tabs__link">
+        Support And Training Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../htc_workloads/workload_planning/roadmap/" class="md-tabs__link">
+        Submit High Throughput Computing (HTC) Workloads
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-command/" class="md-tabs__link md-tabs__link--active">
+        Tutorials and Software Examples
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-tabs__link">
+        Additional Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OSPool Documentation" class="md-nav__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    OSPool Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Get Started on the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Started on the OSPool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get Started on the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Welcome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Welcome" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Welcome
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-nav__link">
+        Computation on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
+        Policies for Using OSG Services and the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/frequently-asked-questions/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Account Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Account Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Account Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/registration-and-login/" class="md-nav__link">
+        Start Here: Overview of Requesting OSPool Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/comanage-access/" class="md-nav__link">
+        Log In to uw.osg-htc.org Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/connect-access/" class="md-nav__link">
+        Log In to OSG Connect Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/generate-add-sshkey/" class="md-nav__link">
+        Generate SSH Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/starting-project/" class="md-nav__link">
+        Set and View Project Usage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Support And Training Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support And Training Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Support And Training Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Get Help!
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help!" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help!
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-nav__link">
+        Email, Office Hours, and 1-1 Meetings 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Education And Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Education And Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Education And Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osgusertraining/" class="md-nav__link">
+        Monthly OSG User Training
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/materials/" class="md-nav__link">
+        Past Training Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osg-user-school/" class="md-nav__link">
+        Annual, Week-Long OSG User School 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/previous-training-events/" class="md-nav__link">
+        Other Past Training Events 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/ospool_for_education/" class="md-nav__link">
+        OSPool Resources for Teaching & Education
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Submit High Throughput Computing (HTC) Workloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Submit High Throughput Computing (HTC) Workloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Submit High Throughput Computing (HTC) Workloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          How to Use the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="How to Use the OSPool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          How to Use the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/workload_planning/roadmap/" class="md-nav__link">
+        Roadmap to HTC Workload Submission
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          HTC Workload Planning, Testing, and Scaling Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTC Workload Planning, Testing, and Scaling Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTC Workload Planning, Testing, and Scaling Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/workload_planning/htcondor_job_submission/" class="md-nav__link">
+        Overview: Submit Jobs to the OSPool using HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/workload_planning/preparing-to-scale-up/" class="md-nav__link">
+        Determining the Amount of Resources to Request in a Submit File 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/submit-multiple-jobs/" class="md-nav__link">
+        Easily Submit Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/re-submit-with-bash/" class="md-nav__link">
+        Submit and Resubmit Multiple Jobs using Bash Scripting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/workload_planning/jobdurationcategory/" class="md-nav__link">
+        Job Duration Categories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/Slurm_to_HTCondor/" class="md-nav__link">
+        Convert your workflow from Slurm to HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/jupyter/" class="md-nav__link">
+        Launch a JupyterLab Instance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Managing Data For Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Managing Data For Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Managing Data For Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/managing_data/overview/" class="md-nav__link">
+        Overview: Data Staging and Transfer to Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/managing_data/file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Smaller Job Files to and from /home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/managing_data/osdf/" class="md-nav__link">
+        Transfer Larger Job Files and Containers Using OSDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/managing_data/file-transfer-via-http/" class="md-nav__link">
+        Transfer HTTP-available Files up to 1GB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/managing_data/scp/" class="md-nav__link">
+        Use scp To Transfer Files To and From OSG Managed Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Using Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/software-overview/" class="md-nav__link">
+        Overview: Software on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/compiling-applications/" class="md-nav__link">
+        Compiling Software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/example-compilation/" class="md-nav__link">
+        Example Software Compilation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/containers-singularity/" class="md-nav__link">
+        Containers - Apptainer/Singularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/containers-docker/" class="md-nav__link">
+        Containers - Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/using_software/available-containers-list/" class="md-nav__link">
+        Containers - Predefined List
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Monitor, Review, and Troubleshoot Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor, Review, and Troubleshoot Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor, Review, and Troubleshoot Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/monitor_review_jobs/" class="md-nav__link">
+        Monitor and Review Jobs With condor_q and condor_history
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-error101/" class="md-nav__link">
+        Troubleshooting Job Errors
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Considerations For Specific Resource Needs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Considerations For Specific Resource Needs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Considerations For Specific Resource Needs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/requirements/" class="md-nav__link">
+        Control Where Your Jobs Run/Job Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/gpu-jobs/" class="md-nav__link">
+        GPU Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/arm64/" class="md-nav__link">
+        ARM64
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/checkpointing-on-OSPool/" class="md-nav__link">
+        Checkpointing Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/large-memory-jobs/" class="md-nav__link">
+        Large Memory Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/multicore-jobs/" class="md-nav__link">
+        Multicore Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/openmpi-jobs/" class="md-nav__link">
+        OpenMPI Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/specific_resource/el9-transition/" class="md-nav__link">
+        EL9 Transition
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          Automated Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Automated Workflows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Automated Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/automated_workflows/dagman-workflows/" class="md-nav__link">
+        Overview: Submit Workflows with HTCondor's DAGMan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/automated_workflows/dagman-simple-example/" class="md-nav__link">
+        Simple Example of a DAGMan Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/automated_workflows/tutorial-pegasus/" class="md-nav__link">
+        Use Pegasus to Manage Workflows on OSPool Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Tutorials and Software Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials and Software Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials and Software Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Workflow Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workflow Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Workflow Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-command/" class="md-nav__link">
+        List of Available Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-quickstart/" class="md-nav__link">
+        Quickstart-Submit Example HTCondor Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-organizing/" class="md-nav__link">
+        Organizing and Submitting HTC Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/submitting_workloads/tutorial-osg-locations/" class="md-nav__link">
+        Finding OSG Locations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Artificial Intelligence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Artificial Intelligence" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Artificial Intelligence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/scikit-learn/" class="md-nav__link">
+        scikit-learn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai/tutorial-pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/manage-python-packages/" class="md-nav__link">
+        Run Python Scripts on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tutorial-ScalingUp-Python/" class="md-nav__link">
+        Scaling Up With HTCondor’s Queue Command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/tutorial-wordfreq/" class="md-nav__link">
+        Wordcount Tutorial for Submitting Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-R-addlibSNA/" class="md-nav__link">
+        Use External Packages in your R Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-R/" class="md-nav__link">
+        Run R scripts on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-ScalingUp-R/" class="md-nav__link">
+        Scaling up compute resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r/tutorial-spills-R/" class="md-nav__link">
+        Analyzing .csv Data with R
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          Conda/Miniconda
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Conda/Miniconda" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Conda/Miniconda
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conda-tarball/" class="md-nav__link">
+        Conda with Tarballs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conda-container/" class="md-nav__link">
+        Conda with Containers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          DAGMan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DAGMan" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          DAGMan
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../htc_workloads/automated_workflows/tutorial-dagman-intermediate/" class="md-nav__link">
+        Intermediate DAGMan: Uses and Features
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_7">
+          Matlab Runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Matlab Runtime" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Matlab Runtime
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../matlab_runtime/tutorial-matlab-HelloWorld/" class="md-nav__link">
+        Basics of compiled MATLAB applications - Hello World example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../matlab_runtime/tutorial-Matlab-ScalingUp/" class="md-nav__link">
+        Scaling up MATLAB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8">
+          Julia and Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Julia and Java" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          Julia and Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using Julia on the OSPool 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Using Julia on the OSPool 
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart-instructions" class="md-nav__link">
+    Quickstart Instructions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-julia-packages" class="md-nav__link">
+    Install Julia Packages
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Julia Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-julia-and-set-up-a-project" class="md-nav__link">
+    Download Julia and set up a "project"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    Install Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-julia-jobs" class="md-nav__link">
+    Submit Julia Jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-executable-bash-script" class="md-nav__link">
+    Create Executable Bash Script
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Executable Bash Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-bash-script-for-base-julia-only" class="md-nav__link">
+    Example Bash Script For Base Julia Only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-bash-script-for-julia-with-installed-packages" class="md-nav__link">
+    Example Bash Script For Julia With Installed Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-htcondor-submit-file" class="md-nav__link">
+    Create HTCondor Submit File
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java-on-osg/" class="md-nav__link">
+        Using Java in Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" type="checkbox" id="__nav_5_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_9">
+          Bioinformatics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bioinformatics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_9">
+          <span class="md-nav__icon md-icon"></span>
+          Bioinformatics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/tutorial-fastqc/" class="md-nav__link">
+        FastQC Quality Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/tutorial-blast-split/" class="md-nav__link">
+        High-Throughput BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bioinformatics/tutorial-bwa/" class="md-nav__link">
+        High-Throughput BWA Read Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../freesurfer/Introduction/" class="md-nav__link">
+        FreeSurfer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" type="checkbox" id="__nav_5_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_10">
+          Drug Discovery
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drug Discovery" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Drug Discovery
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drug_discovery/tutorial-AutoDockVina/" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Additional Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
+        Acknowledge the OSG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
+        Contact OSG for non-Support Inquiries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
+        OSG Accounting (GRACC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart-instructions" class="md-nav__link">
+    Quickstart Instructions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-julia-packages" class="md-nav__link">
+    Install Julia Packages
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Julia Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-julia-and-set-up-a-project" class="md-nav__link">
+    Download Julia and set up a "project"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-packages" class="md-nav__link">
+    Install Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submit-julia-jobs" class="md-nav__link">
+    Submit Julia Jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-executable-bash-script" class="md-nav__link">
+    Create Executable Bash Script
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Executable Bash Script">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-bash-script-for-base-julia-only" class="md-nav__link">
+    Example Bash Script For Base Julia Only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-bash-script-for-julia-with-installed-packages" class="md-nav__link">
+    Example Bash Script For Julia With Installed Packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-htcondor-submit-file" class="md-nav__link">
+    Create HTCondor Submit File
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="using-julia-on-the-ospool">Using Julia on the OSPool<a class="headerlink" href="#using-julia-on-the-ospool" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide provides an introduction to running Julia code on the Open 
+Science Pool. The <a href="#quickstart-instructions">Quickstart Instructions</a> provide 
+an outline of job submission. The following sections provide more details about 
+installing Julia packages (<a href="#install-julia-packages">Install Julia Packages</a>) and creating a complete
+job submission (<a href="#submit-julia-jobs">Submit Julia Jobs</a>). This guide assumes that 
+you have a script written in Julia and can identify the additional Julia packages 
+needed to run the script. </p>
+<p>If you are using many Julia packages or have other software dependencies as 
+part of your job, you may want to manage your software via a container instead 
+of using the tar.gz file method described in this guide. The Research Computing Facilitation (RCF) team 
+maintains a <a href="../../../htc_workloads/using_software/available-containers-list/">Julia container</a> that can be used as a starting point 
+for creating a customized container with added packages. See 
+our <a href="../../../htc_workloads/using_software/containers-docker/">Docker and Singularity/Apptainer Guide</a> for more details. </p>
+<h2 id="quickstart-instructions">Quickstart Instructions<a class="headerlink" href="#quickstart-instructions" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Download the precompiled Julia software from <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a>. 
+You will need the 64-bit, tarball compiled for general use on a Linux x86 system. The 
+file name will resemble something like <code>julia-#.#.#-linux-x86_64.tar.gz</code>.</p>
+<ul>
+<li>Tip: use <code>wget</code> to download directly to your <code>/home</code> directory on the 
+access point, <strong>OR</strong> use <code>transfer_input_files = url</code> in your HTCondor submit files.</li>
+</ul>
+</li>
+<li>
+<p>Install your Julia packages on the access point, else skip to the next step.</p>
+<ul>
+<li>For more details, see the section on installing Julia 
+packages below: <a href="#install-julia-packages">Installing Julia Packages</a></li>
+</ul>
+</li>
+<li>
+<p>Submit a job that executes a Julia script using the Julia precompiled binary
+with base Julia and Standard Library, via a shell script like the following as 
+the job's executable: </p>
+<pre><code>#!/bin/bash
+
+# extract Julia tar.gz file
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+
+# add Julia binary to PATH
+export PATH=$_CONDOR_SCRATCH_DIR/julia-#-#-#/bin:$PATH
+
+# run Julia script
+julia my-script.jl
+</code></pre>
+<ul>
+<li>For more details on the job submission, see the section 
+below: <a href="#submit-julia-jobs">Submit Julia Jobs</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="install-julia-packages">Install Julia Packages<a class="headerlink" href="#install-julia-packages" title="Permanent link">&para;</a></h2>
+<p>If your work requires additional Julia packages, you will need to peform a one-time 
+installation of these packages within a Julia project. A copy of the project 
+can then be saved for use in subsequent job submissions. For more details, 
+please see Julia's documentation at <a href="https://julialang.github.io/Pkg.jl">Julia Pkg.jl</a>.</p>
+<h3 id="download-julia-and-set-up-a-project">Download Julia and set up a "project"<a class="headerlink" href="#download-julia-and-set-up-a-project" title="Permanent link">&para;</a></h3>
+<p>If you have not already downloaded a copy of Julia, download the 
+precompiled Julia software from <a href="https://julialang.org/downloads/">https://julialang.org/downloads/</a>. 
+You will need the 64-bit, tarball compiled for general use on a Linux x86 system. The 
+file name will resemble something like <code>julia-#.#.#-linux-x86_64.tar.gz</code>. </p>
+<p>We will need a copy of the original tar.gz file for running jobs, but to install 
+packages, we also need an unpacked version of the software. Run the following commands 
+to extract the Julia software and add Julia to your <code>PATH</code>: </p>
+<pre><code>$ tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+$ export PATH=$PWD/julia-#.#.#/bin:$PATH
+</code></pre>
+<p>After these steps, you should be able to run Julia from the command line, e.g.</p>
+<pre><code>$ julia --version
+</code></pre>
+<p>Now create a project directory to install your packages (we've called 
+it <code>my-project/</code> below) and tell Julia its name: </p>
+<pre><code>$ mkdir my-project
+$ export JULIA_DEPOT_PATH=$PWD/my-project
+</code></pre>
+<blockquote>
+<p>If you already have a directory with Julia packages on the login node, you can 
+add to it by skipping the <code>mkdir</code> step above and going straight to setting the 
+<code>JULIA_DEPOT_PATH</code> variable. </p>
+</blockquote>
+<p>You can choose whatever name to use for this directory -- if you have
+different projects that you use for different jobs, you could
+use a more descriptive name than "my-project".</p>
+<h3 id="install-packages">Install Packages<a class="headerlink" href="#install-packages" title="Permanent link">&para;</a></h3>
+<p>We will now use Julia to install any needed packages to the project directory 
+we created in the previous step. </p>
+<p>Open Julia with the <code>--project</code> option set to the project directory: </p>
+<pre><code>$ julia --project=my-project
+</code></pre>
+<p>Once you've started up the Julia REPL (interpreter), start the Pkg REPL, used to 
+install packages, by typing <code>]</code>. Then install and test packages by using 
+Julia's <code>add Package</code> syntax. </p>
+<pre><code>               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.0.5 (2019-09-09)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia&gt; ]
+(my-project) pkg&gt; add Package
+(my-project) pkg&gt; test Package
+</code></pre>
+<p>If you have multiple packages to install they can be combined 
+into a single command, e.g. <code>(my-project) pkg&gt; add Package1 Package2 Package3</code>.</p>
+<p><strong>If you encounter issues getting packages to install successfully, please 
+contact us at support@osg-htc.org</strong></p>
+<p>Once you are done, you can exit the Pkg REPL by typing the <code>DELETE</code> key and then 
+typing <code>exit()</code></p>
+<pre><code>(my-project) pkg&gt; 
+julia&gt; exit()
+</code></pre>
+<p>Your packages will have been installed to the <code>my_project</code> directory; we want 
+to compress this folder so that it is easier to copy to jobs. </p>
+<pre><code>$ tar -czf my-project.tar.gz my-project/
+</code></pre>
+<h2 id="submit-julia-jobs">Submit Julia Jobs<a class="headerlink" href="#submit-julia-jobs" title="Permanent link">&para;</a></h2>
+<p>To submit a job that runs a Julia script, create a bash 
+script and HTCondor submit file following the examples in this section. These 
+example assume that you have downloaded a copy of Julia for Linux as a <code>tar.gz</code> 
+file and if using packages, you have gone through the steps above to install them 
+and create an additional <code>tar.gz</code> file of the installed packages. </p>
+<h2 id="create-executable-bash-script">Create Executable Bash Script<a class="headerlink" href="#create-executable-bash-script" title="Permanent link">&para;</a></h2>
+<p>Your job will use a bash script as the HTCondor <code>executable</code>. This script 
+will contain all the steps needed to unpack the Julia binaries and 
+execute your Julia script (<code>script.jl</code> below). What follows are two example bash scripts, 
+one which can be used to execute a script with base Julia only, and one that 
+will use packages you installed to a project directory (see <a href="#install-julia-packages">Install Julia Packages</a>).</p>
+<h3 id="example-bash-script-for-base-julia-only">Example Bash Script For Base Julia Only<a class="headerlink" href="#example-bash-script-for-base-julia-only" title="Permanent link">&para;</a></h3>
+<p>If your Julia script can run without additional packages (other than base Julia and 
+the Julia Standard library) use the example script directly below.</p>
+<pre><code>#!/bin/bash
+
+# julia-job.sh
+
+# extract Julia tar.gz file
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+
+# add Julia binary to PATH
+export PATH=$_CONDOR_SCRATCH_DIR/julia-#.#.#/bin:$PATH
+
+# run Julia script
+julia script.jl
+</code></pre>
+<h3 id="example-bash-script-for-julia-with-installed-packages">Example Bash Script For Julia With Installed Packages<a class="headerlink" href="#example-bash-script-for-julia-with-installed-packages" title="Permanent link">&para;</a></h3>
+<pre><code>#!/bin/bash
+
+# julia-job.sh
+
+# extract Julia tar.gz file and project tar.gz file
+tar -xzf julia-#.#.#-linux-x86_64.tar.gz
+tar -xzf my-project.tar.gz
+
+# add Julia binary to PATH
+export PATH=$_CONDOR_SCRATCH_DIR/julia-#.#.#/bin:$PATH
+# add Julia packages to DEPOT variable
+export JULIA_DEPOT_PATH=$_CONDOR_SCRATCH_DIR/my-project
+
+# run Julia script
+julia --project=my-project script.jl
+</code></pre>
+<h2 id="create-htcondor-submit-file">Create HTCondor Submit File<a class="headerlink" href="#create-htcondor-submit-file" title="Permanent link">&para;</a></h2>
+<p>After creating a bash script named <code>julia-job.sh</code> to run Julia, then create a submit file to submit the job. </p>
+<p>More details about setting up a submit file, including a submit file template, 
+can be found in our quickstart guide: <a href="../../../htc_workloads/submitting_workloads/tutorial-quickstart/">Quickstart Tutorial</a></p>
+<pre><code># File Name = julia-job.sub
+
+executable = julia-job.sh
+
+transfer_input_files = julia-#.#.#-linux-x86_64.tar.gz, script.jl
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+output        = job.$(Cluster).$(Process).out
+error         = job.$(Cluster).$(Process).error
+log           = job.$(Cluster).$(Process).log
+
++JobDurationCategory = "Medium"
+
+requirements   = (OSGVO_OS_STRING == "RHEL 9")
+request_cpus   = 1
+request_memory = 2GB
+request_disk   = 2GB
+
+queue 1
+</code></pre>
+<p>If your Julia script needs to use packages installed for a project, 
+be sure to include <code>my-project.tar.gz</code> as an input file in <code>julia-job.sub</code>. 
+For project tarballs that are &lt;1 GB, you can follow the below example:</p>
+<pre><code>transfer_input_files = julia-#.#.#-linux-x86_64.tar.gz, script.jl, my-project.tar.gz
+</code></pre>
+<p>Modify the CPU/memory request lines to match what is needed by the job. 
+Test a few jobs for disk space/memory usage in order to make sure your 
+requests for a large batch are accurate! Disk space and memory usage can be found in the 
+log file after the job completes.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../matlab_runtime/tutorial-Matlab-ScalingUp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scaling up MATLAB" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Scaling up MATLAB
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../java-on-osg/" class="md-footer__link md-footer__link--next" aria-label="Next: Using Java in Jobs " rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Using Java in Jobs 
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://portal.osg-htc.org/documentation/htc_workloads/using_software/example-compilation/">
+      
+      <link rel="icon" href="../../../assets/OSG_Logo.svg">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
+    
+    
+      
+        <title>Example Software Compilation - OSPool Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/code-highlight.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/osg.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#example-of-compiling-software-for-use-on-the-ospool" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="OSPool Documentation" class="md-header__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OSPool Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example Software Compilation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-tabs__link">
+        Get Started on the OSPool
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-tabs__link">
+        Support And Training Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../workload_planning/roadmap/" class="md-tabs__link md-tabs__link--active">
+        Submit High Throughput Computing (HTC) Workloads
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../submitting_workloads/tutorial-command/" class="md-tabs__link">
+        Tutorials and Software Examples
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-tabs__link">
+        Additional Resources
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OSPool Documentation" class="md-nav__button md-logo" aria-label="OSPool Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/OSG_Logo.svg" alt="logo">
+
+    </a>
+    OSPool Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Get Started on the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Started on the OSPool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Get Started on the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Welcome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Welcome" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Welcome
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/is-it-for-you/" class="md-nav__link">
+        Computation on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/policy/" class="md-nav__link">
+        Policies for Using OSG Services and the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/frequently-asked-questions/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Account Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Account Setup" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Account Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/registration-and-login/" class="md-nav__link">
+        Start Here: Overview of Requesting OSPool Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/comanage-access/" class="md-nav__link">
+        Log In to uw.osg-htc.org Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/connect-access/" class="md-nav__link">
+        Log In to OSG Connect Access Points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/generate-add-sshkey/" class="md-nav__link">
+        Generate SSH Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/account_setup/starting-project/" class="md-nav__link">
+        Set and View Project Usage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Support And Training Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Support And Training Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Support And Training Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Get Help!
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Get Help!" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Get Help!
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/support/getting-help-from-RCFs/" class="md-nav__link">
+        Email, Office Hours, and 1-1 Meetings 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Education And Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Education And Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Education And Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osgusertraining/" class="md-nav__link">
+        Monthly OSG User Training
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/materials/" class="md-nav__link">
+        Past Training Materials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/osg-user-school/" class="md-nav__link">
+        Annual, Week-Long OSG User School 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/previous-training-events/" class="md-nav__link">
+        Other Past Training Events 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../support_and_training/training/ospool_for_education/" class="md-nav__link">
+        OSPool Resources for Teaching & Education
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Submit High Throughput Computing (HTC) Workloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Submit High Throughput Computing (HTC) Workloads" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Submit High Throughput Computing (HTC) Workloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          How to Use the OSPool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="How to Use the OSPool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          How to Use the OSPool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/roadmap/" class="md-nav__link">
+        Roadmap to HTC Workload Submission
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          HTC Workload Planning, Testing, and Scaling Up
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTC Workload Planning, Testing, and Scaling Up" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          HTC Workload Planning, Testing, and Scaling Up
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/htcondor_job_submission/" class="md-nav__link">
+        Overview: Submit Jobs to the OSPool using HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/preparing-to-scale-up/" class="md-nav__link">
+        Determining the Amount of Resources to Request in a Submit File 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/submit-multiple-jobs/" class="md-nav__link">
+        Easily Submit Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/re-submit-with-bash/" class="md-nav__link">
+        Submit and Resubmit Multiple Jobs using Bash Scripting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workload_planning/jobdurationcategory/" class="md-nav__link">
+        Job Duration Categories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/Slurm_to_HTCondor/" class="md-nav__link">
+        Convert your workflow from Slurm to HTCondor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/jupyter/" class="md-nav__link">
+        Launch a JupyterLab Instance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Managing Data For Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Managing Data For Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Managing Data For Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/overview/" class="md-nav__link">
+        Overview: Data Staging and Transfer to Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/file-transfer-via-htcondor/" class="md-nav__link">
+        Transfer Smaller Job Files to and from /home
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/osdf/" class="md-nav__link">
+        Transfer Larger Job Files and Containers Using OSDF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/file-transfer-via-http/" class="md-nav__link">
+        Transfer HTTP-available Files up to 1GB In Size
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../managing_data/scp/" class="md-nav__link">
+        Use scp To Transfer Files To and From OSG Managed Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Using Software
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using Software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software-overview/" class="md-nav__link">
+        Overview: Software on the Open Science Pool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compiling-applications/" class="md-nav__link">
+        Compiling Software
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Example Software Compilation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Example Software Compilation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-examples" class="md-nav__link">
+    Two Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-samtools-without-cram-support" class="md-nav__link">
+    Compile Samtools Without CRAM Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile Samtools Without CRAM Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-acquire-samtools-source-code" class="md-nav__link">
+    Step 1. Acquire Samtools source code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-read-through-installation-instructions" class="md-nav__link">
+    Step 2. Read through installation instructions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-perform-samtools-compilation" class="md-nav__link">
+    Step 3. Perform Samtools compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-make-our-software-portable" class="md-nav__link">
+    Step 4. Make our software portable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-use-samtools-in-our-jobs" class="md-nav__link">
+    Step 5. Use Samtools in our jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-samtools-with-cram-support" class="md-nav__link">
+    Compile Samtools With CRAM Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile Samtools With CRAM Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2-read-through-installation-instructions-continued" class="md-nav__link">
+    Step 2. Read through installation instructions, continued
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-compile-liblzma" class="md-nav__link">
+    Step 3. Compile liblzma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-load-bzip2-module" class="md-nav__link">
+    Step 4. Load bzip2 module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-compile-samtools" class="md-nav__link">
+    Step 5. Compile Samtools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-make-our-software-portable" class="md-nav__link">
+    Step 6. Make our software portable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-use-samtools-in-our-jobs" class="md-nav__link">
+    Step 7. Use Samtools in our jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers-singularity/" class="md-nav__link">
+        Containers - Apptainer/Singularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers-docker/" class="md-nav__link">
+        Containers - Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../available-containers-list/" class="md-nav__link">
+        Containers - Predefined List
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Monitor, Review, and Troubleshoot Jobs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor, Review, and Troubleshoot Jobs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor, Review, and Troubleshoot Jobs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/monitor_review_jobs/" class="md-nav__link">
+        Monitor and Review Jobs With condor_q and condor_history
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/tutorial-error101/" class="md-nav__link">
+        Troubleshooting Job Errors
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Considerations For Specific Resource Needs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Considerations For Specific Resource Needs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Considerations For Specific Resource Needs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/requirements/" class="md-nav__link">
+        Control Where Your Jobs Run/Job Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/gpu-jobs/" class="md-nav__link">
+        GPU Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/arm64/" class="md-nav__link">
+        ARM64
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/checkpointing-on-OSPool/" class="md-nav__link">
+        Checkpointing Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/large-memory-jobs/" class="md-nav__link">
+        Large Memory Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/multicore-jobs/" class="md-nav__link">
+        Multicore Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/openmpi-jobs/" class="md-nav__link">
+        OpenMPI Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specific_resource/el9-transition/" class="md-nav__link">
+        EL9 Transition
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7">
+          Automated Workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Automated Workflows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Automated Workflows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/dagman-workflows/" class="md-nav__link">
+        Overview: Submit Workflows with HTCondor's DAGMan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/dagman-simple-example/" class="md-nav__link">
+        Simple Example of a DAGMan Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/tutorial-pegasus/" class="md-nav__link">
+        Use Pegasus to Manage Workflows on OSPool Access Points
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Tutorials and Software Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials and Software Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials and Software Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Workflow Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Workflow Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Workflow Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/tutorial-command/" class="md-nav__link">
+        List of Available Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/tutorial-quickstart/" class="md-nav__link">
+        Quickstart-Submit Example HTCondor Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/tutorial-organizing/" class="md-nav__link">
+        Organizing and Submitting HTC Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../submitting_workloads/tutorial-osg-locations/" class="md-nav__link">
+        Finding OSG Locations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          Artificial Intelligence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Artificial Intelligence" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Artificial Intelligence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/scikit-learn/" class="md-nav__link">
+        scikit-learn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/tensorflow/" class="md-nav__link">
+        TensorFlow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/ai/tutorial-pytorch/" class="md-nav__link">
+        PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/manage-python-packages/" class="md-nav__link">
+        Run Python Scripts on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/tutorial-ScalingUp-Python/" class="md-nav__link">
+        Scaling Up With HTCondor’s Queue Command
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/python/tutorial-wordfreq/" class="md-nav__link">
+        Wordcount Tutorial for Submitting Multiple Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          R
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="R" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          R
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-R-addlibSNA/" class="md-nav__link">
+        Use External Packages in your R Jobs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-R/" class="md-nav__link">
+        Run R scripts on the OSPool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-ScalingUp-R/" class="md-nav__link">
+        Scaling up compute resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/r/tutorial-spills-R/" class="md-nav__link">
+        Analyzing .csv Data with R
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          Conda/Miniconda
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Conda/Miniconda" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Conda/Miniconda
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/conda-tarball/" class="md-nav__link">
+        Conda with Tarballs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/conda-container/" class="md-nav__link">
+        Conda with Containers
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          DAGMan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DAGMan" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          DAGMan
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automated_workflows/tutorial-dagman-intermediate/" class="md-nav__link">
+        Intermediate DAGMan: Uses and Features
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_7">
+          Matlab Runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Matlab Runtime" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Matlab Runtime
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/matlab_runtime/tutorial-matlab-HelloWorld/" class="md-nav__link">
+        Basics of compiled MATLAB applications - Hello World example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/matlab_runtime/tutorial-Matlab-ScalingUp/" class="md-nav__link">
+        Scaling up MATLAB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_8" type="checkbox" id="__nav_5_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_8">
+          Julia and Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Julia and Java" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_8">
+          <span class="md-nav__icon md-icon"></span>
+          Julia and Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/julia-on-osg/" class="md-nav__link">
+        Using Julia on the OSPool 
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/other_languages_tools/java-on-osg/" class="md-nav__link">
+        Using Java in Jobs 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_9" type="checkbox" id="__nav_5_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_9">
+          Bioinformatics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Bioinformatics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_9">
+          <span class="md-nav__icon md-icon"></span>
+          Bioinformatics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-fastqc/" class="md-nav__link">
+        FastQC Quality Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-blast-split/" class="md-nav__link">
+        High-Throughput BLAST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/bioinformatics/tutorial-bwa/" class="md-nav__link">
+        High-Throughput BWA Read Mapping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/freesurfer/Introduction/" class="md-nav__link">
+        FreeSurfer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_10" type="checkbox" id="__nav_5_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_10">
+          Drug Discovery
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drug Discovery" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_10">
+          <span class="md-nav__icon md-icon"></span>
+          Drug Discovery
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software_examples/drug_discovery/tutorial-AutoDockVina/" class="md-nav__link">
+        Running a Molecule Docking Job with AutoDock Vina
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Additional Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          References
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="References" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          References
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/acknowledgeOSG/" class="md-nav__link">
+        Acknowledge the OSG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/contact-information/" class="md-nav__link">
+        Contact OSG for non-Support Inquiries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/references/gracc/" class="md-nav__link">
+        OSG Accounting (GRACC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-examples" class="md-nav__link">
+    Two Examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-samtools-without-cram-support" class="md-nav__link">
+    Compile Samtools Without CRAM Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile Samtools Without CRAM Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-acquire-samtools-source-code" class="md-nav__link">
+    Step 1. Acquire Samtools source code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-read-through-installation-instructions" class="md-nav__link">
+    Step 2. Read through installation instructions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-perform-samtools-compilation" class="md-nav__link">
+    Step 3. Perform Samtools compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-make-our-software-portable" class="md-nav__link">
+    Step 4. Make our software portable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-use-samtools-in-our-jobs" class="md-nav__link">
+    Step 5. Use Samtools in our jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-samtools-with-cram-support" class="md-nav__link">
+    Compile Samtools With CRAM Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile Samtools With CRAM Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-2-read-through-installation-instructions-continued" class="md-nav__link">
+    Step 2. Read through installation instructions, continued
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-compile-liblzma" class="md-nav__link">
+    Step 3. Compile liblzma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-load-bzip2-module" class="md-nav__link">
+    Step 4. Load bzip2 module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-compile-samtools" class="md-nav__link">
+    Step 5. Compile Samtools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-make-our-software-portable" class="md-nav__link">
+    Step 6. Make our software portable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-use-samtools-in-our-jobs" class="md-nav__link">
+    Step 7. Use Samtools in our jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="example-of-compiling-software-for-use-on-the-ospool">Example of Compiling Software For Use on the OSPool<a class="headerlink" href="#example-of-compiling-software-for-use-on-the-ospool" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This guide provides a detailed example of compiling software for use from an 
+OSG Access Point. For this example, we will be compiling Samtools which is a very 
+common bioinformatics software for working with aligned sequencing data. We hope that 
+this specific example helps illustrate the general compilation steps that 
+can be applied to many other software compilations. For a general introduction to software 
+compilation, please see our <a href="../../../htc_workloads/using_software/compiling-applications/">Compiling Software guide</a>.</p>
+<h2 id="two-examples">Two Examples<a class="headerlink" href="#two-examples" title="Permanent link">&para;</a></h2>
+<p>This guide provides two examples of compiling Samtools, <a href="#compile-samtools-without-cram-support">one without CRAM file 
+support</a> and <a href="#compile-samtools-with-cram-support">one with CRAM file support</a>. 
+<em>Why two examples?</em> Currently, to install Samtools 
+with CRAM support requires additional dependencies (aka libraries) that will also need to be 
+installed and most Samtools users are only working with BAM files which does not require CRAM 
+support.</p>
+<p><em>Do I need CRAM support for my work?</em> CRAM is an alternative compressed sequence alignment 
+file format to BAM. Learn more at <a href="https://www.sanger.ac.uk/tool/cram/">https://www.sanger.ac.uk/tool/cram/</a>.</p>
+<h2 id="compile-samtools-without-cram-support">Compile Samtools Without CRAM Support<a class="headerlink" href="#compile-samtools-without-cram-support" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-acquire-samtools-source-code">Step 1. Acquire Samtools source code<a class="headerlink" href="#step-1-acquire-samtools-source-code" title="Permanent link">&para;</a></h3>
+<p>Samtools source code is available at <a href="http://www.htslib.org/download/">http://www.htslib.org/download/</a>. The 
+development code is also available via GitHub at <a href="https://github.com/samtools/samtools">https://github.com/samtools/samtools</a>. On the download page is some important information to make note of:</p>
+<blockquote>
+<p>"[Samtools] uses HTSlib internally [and] these source packages contain their own copies of htslib"</p>
+</blockquote>
+<p>What this means is 1.) HTSlib is a dependency of Samtools and 2.) the HTSlib source code is included 
+with the Samtools source code.</p>
+<p>Either download the Samtools source code to your computer and upload to your login node, or
+right-click on the Samtools source code link and copy the link location. Login in to your OSG Access Point
+and use <code>wget</code> to download the source code directly and extract the tarball:</p>
+<pre><code>[user@apXX ~]$ wget https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2
+[user@apXX ~]$ tar -xjf samtools-1.10.tar.bz2
+</code></pre>
+<p>The above two commands will create a directory named <code>samtools-1.10</code> which contains all the code 
+and instructions needed for compiling Samtools and HTSlib. Take a moment to look at the content available 
+in this new directory.</p>
+<h3 id="step-2-read-through-installation-instructions">Step 2. Read through installation instructions<a class="headerlink" href="#step-2-read-through-installation-instructions" title="Permanent link">&para;</a></h3>
+<p><em>What steps need to be performed for our compilation? What system dependencies exist for our 
+software?</em> Answers to these questions, and other important information, should be available 
+in the installation instructions for your software which will be available online and/or 
+included in the source code.</p>
+<p>The HTSlib website where the Samtools source code is hosted provides basic installation instructions 
+and refers users to <code>INSTALL</code> (which is a plain text file that can be found in <code>samtools-1.10/</code>) for 
+more information. You will also see a <code>README</code> file in the source code directory which will provide 
+important information. <code>README</code> files will always be included with your source code and we 
+recommend reviewing before compiling software. There is also a <code>README</code> and <code>INSTALL</code> file available 
+for HTSlib in the source code directory <code>samtools-1.10/htslib-1.10/</code>.</p>
+<p><code>cd</code> to samtools-1.10 and read through <code>README</code> and <code>INSTALL</code>. As described in <code>INSTALL</code>, 
+the Samtools installation will follow the common <code>configure</code>, <code>make</code>, <code>make install</code> process:</p>
+<pre><code>Basic Installation
+==================
+
+To build and install Samtools, 'cd' to the samtools-1.x directory containing
+the package's source and type the following commands:
+
+    ./configure
+    make
+    make install
+
+The './configure' command checks your build environment and allows various
+optional functionality to be enabled (see Configuration below).
+</code></pre>
+<p>Also described in <code>INSTALL</code> are a number of required and optional system dependencies 
+for installing Samtools and HTSlib (which is itself a dependency of Samtools):</p>
+<pre><code>System Requirements
+===================
+
+Samtools and HTSlib depend on the following libraries:
+
+  Samtools:
+    zlib       &lt;http://zlib.net&gt;
+    curses or GNU ncurses (optional, for the 'tview' command)
+               &lt;http://www.gnu.org/software/ncurses/&gt;
+
+  HTSlib:
+    zlib       &lt;http://zlib.net&gt;
+    libbz2     &lt;http://bzip.org/&gt;
+    liblzma    &lt;http://tukaani.org/xz/&gt;
+    libcurl    &lt;https://curl.haxx.se/&gt;
+               (optional but strongly recommended, for network access)
+    libcrypto  &lt;https://www.openssl.org/&gt;
+               (optional, for Amazon S3 support; not needed on MacOS)
+
+...
+
+The bzip2 and liblzma dependencies can be removed if full CRAM support
+is not needed - see HTSlib's INSTALL file for details.
+</code></pre>
+<p>Some dependencies are needed to support certain features from Samtools (such as <code>tview</code> and 
+CRAM compression). You will not need <code>tview</code> as this is intended for interactive work which is 
+not currently supported from the OSG Access Points. For this specific compilation example, we will disable 
+both <code>tview</code> and CRAM support - see <a href="#compile-samtools-with-cram-support">below</a> for our 
+compilation example that will provide CRAM file support. </p>
+<p>Following the suggestion in the Samtools <code>INSTALL</code> file, we can view the HTSlib <code>INSTALL</code> 
+file at <code>samtools-1.10/htslib-1.10/INSTALL</code>. Here we will find the necessary 
+information for disabling bzip2 and liblzma dependencies:</p>
+<pre><code>--disable-bz2
+    Bzip2 is an optional compression codec format for CRAM, included
+    in HTSlib by default.  It can be disabled with --disable-bz2, but
+    be aware that not all CRAM files may be possible to decode.
+
+--disable-lzma
+    LZMA is an optional compression codec for CRAM, included in HTSlib
+    by default.  It can be disabled with --disable-lzma, but be aware
+    that not all CRAM files may be possible to decode.
+</code></pre>
+<p>These are two flags that will need to be used when performing our installation.</p>
+<p>To determine what libraries are available on our OSG Access Point, we can look at <code>/usr/lib</code> 
+and <code>/usr/lib64</code> for the various Samtools library dependencies, for example:</p>
+<pre><code>[user@apXX ~]$ ls /usr/lib* | grep libcurl
+[user@apXX ~]$ ls /usr/lib* | grep htslib
+</code></pre>
+<p>Although we will find matches for <code>libcurl</code>, we will not find any <code>htslib</code> files meaning that 
+HTSlib is not currently installed on the login node, nor is it currently available 
+as a module. This means that HTSlib will also need to be compiled. Luckly, the Samtools 
+developers have conveniently included the HTSlib source code with the Samtools source code 
+and have made it possible to compile both Samtools and HTSlib at the same time. From the 
+Samtools <code>INSTALL</code> file, is the following: </p>
+<pre><code>    By default, configure looks for an HTSlib source tree within or alongside
+    the samtools source directory; if there are several likely candidates,
+    you will have to choose one via this option.
+</code></pre>
+<p>This mean that we don't have to do anything extra to get HTSlib installed because 
+the Samtools installation will do it by default.</p>
+<blockquote>
+<p>When performing your compilation, if your compiler is unable to locate the necessary 
+libraries, or if newer versions of libraries are needed, it will result in an error - this 
+makes for an alternative method of determining whether your system has the appropriate 
+libraries for your software and more often than not, installation by trial and error is 
+a common approach. However, taking a little bit of time before hand 
+and looking for library files can save you time and frustration during software compilation.</p>
+</blockquote>
+<h3 id="step-3-perform-samtools-compilation">Step 3. Perform Samtools compilation<a class="headerlink" href="#step-3-perform-samtools-compilation" title="Permanent link">&para;</a></h3>
+<p>We now have all of the information needed to start our compilation of Samtools without CRAM support.</p>
+<p>First, we will create a new directory in our <code>home</code> directory that will store the 
+Samtools compiled software. The example here will use a directory, called <code>my-software</code>, 
+for organizing all compiled software in the <code>home</code> directory:</p>
+<pre><code>[user@apXX ~]$ mkdir $HOME/my-software
+[user@apXX ~]$ mkdir $HOME/my-software/samtools-1.10
+</code></pre>
+<blockquote>
+<p>As a best practice, always include the version name of your software in the directory name.</p>
+</blockquote>
+<p>Next we'll change to the Samtools source code directory that was created in 
+<a href="#step-1-acquire-samtools-source-code">Step 1</a>. You should see the <code>INSTALL</code> and <code>README</code> files 
+as well as a file called <code>configure</code>.</p>
+<p>The first command we will run is <code>./configure</code> - this step will execute the configure script 
+and allows us to modify various details about our Samtools installation. We will be executing <code>configure</code> 
+with several flags:</p>
+<pre><code>[user@apXX samtools-1.10]$ ./configure --prefix=$HOME/my-software/samtools-1.10 --disable-bz2 --disable-lzma --without-curses
+</code></pre>
+<p>Here we used <code>--prefix</code> to specify where we would like the final Samtools software 
+to be installed, <code>--disable-bz2</code> and <code>--disable-lzma</code> to disable <code>lzma</code> 
+and <code>bzip2</code> dependencies for CRAM, and <code>--without-curses</code> to disable <code>tview</code> support.</p>
+<p>Next run the final two commands:</p>
+<pre><code>[user@apXX samtools-1.10]$ make
+[user@apXX samtools-1.10]$ make install
+</code></pre>
+<p>Once <code>make install</code> has finished running, the compilation is complete. We can 
+also confirm this by looking at the content of <code>~/my-software/samtools-1.10/</code> where 
+we had Samtools installed:</p>
+<pre><code>[user@apXX samtools-1.10]$ cd ~
+[user@apXX ~]$ ls -F my-software/samtools-1.10/
+bin/ share/
+</code></pre>
+<p>There will be two directories present in <code>my-software/samtools-1.10</code>, one named <code>bin</code> and 
+another named <code>share</code>. The Samtools executable will be located in <code>bin</code> and we can give 
+it a quick test to make sure it runs as expected:</p>
+<pre><code>[user@apXX ~]$ ./my-software/samtools-1.10/bin/samtools view
+</code></pre>
+<p>which will return the Samtools <code>view</code> usage statement.</p>
+<h3 id="step-4-make-our-software-portable">Step 4. Make our software portable<a class="headerlink" href="#step-4-make-our-software-portable" title="Permanent link">&para;</a></h3>
+<p>Our subsequent job submissions on the OSPool will need a copy of our software. For 
+convenience, we recommend converting your software directory to a tar archive. 
+First move to <code>my-software/</code>, then create the tar archive:</p>
+<pre><code>[user@apXX ~]$ cd my-software/
+[user@apXX my-software]$ tar -czf samtools-1.10.tar.gz samtools-1.10/
+[user@apXX my-software]$ ls samtools-1.10*
+samtools-1.10/ samtools-1.10.tar.gz
+[user@apXX my-software]$ du -h samtools-1.10.tar.gz
+2.0M    samtools-1.10.tar.gz
+</code></pre>
+<p>The last command in the above example returns the size of our tar archive. This is 
+important for determine the appropriate method that we should use for transferring 
+this file along with our subsequent jobs. To learn more, please see 
+<a href="../../../htc_workloads/managing_data/overview">Overview: Data Staging and Transfer to Jobs</a>.</p>
+<p>To clean up and clear out space in your home directory, we recommend deleting the Samtools source 
+code directory.</p>
+<h3 id="step-5-use-samtools-in-our-jobs">Step 5. Use Samtools in our jobs<a class="headerlink" href="#step-5-use-samtools-in-our-jobs" title="Permanent link">&para;</a></h3>
+<p>Now that Samtools has been compiled we can submit jobs that use this software. Below is an example submit file 
+for a job that will use Samtools with a BAM file named <code>my-sample.bam</code> which is &lt;100MB in size:</p>
+<pre><code>#samtools.sub
+log = samtools.$(Cluster).log
+error = samtools.$(Cluster)_$(Process).err
+output = samtools.$(Cluster)_$(Process).out
+
+executable = samtools.sh
+
+transfer_input_files = /home/username/my-software/samtools-1.10.tar.gz, my-sample.bam
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
++JobDurationCategory = "Medium"
+
+requirements = (OSGVO_OS_STRING == "RHEL 9")
+request_memory = 1.3GB
+request_disk = 1.5GB
+request_cpus = 1
+
+queue 1
+</code></pre>
+<p>The above submit file will transfer a complete copy of the Samtools tar archive 
+created in <a href="#step-4-make-our-software-portable">Step 4</a> and also includes an important 
+<code>requirements</code> attribute which tells HTCondor to run our job on 
+execute nodes running Red Hat Linux version 7 operating system.</p>
+<blockquote>
+<p>The resource requests for your jobs may differ from what is shown in the 
+above example. Always run tests to determine the appropriate requests for your jobs.</p>
+</blockquote>
+<p>Some additional steps are then needed in the executable bash script used by this job 
+to "untar" the Samtools and add this software to the <code>PATH</code> enviroment variable:</p>
+<pre><code>#!/bin/bash
+# samtools.sh
+
+# untar software
+tar -xzf samtools-1.10.tar.gz
+
+# modify environment variables 
+export PATH=$_CONDOR_SCRATCH_DIR/samtools-1.10/bin:$PATH
+
+# run samtools commands
+...
+</code></pre>
+<h2 id="compile-samtools-with-cram-support">Compile Samtools With CRAM Support<a class="headerlink" href="#compile-samtools-with-cram-support" title="Permanent link">&para;</a></h2>
+<p>This example includes steps to install and use a library and to use a module, 
+which are both currently needed for compiling Samtools with CRAM support. </p>
+<p>The steps in this example assume that you have performed 
+<a href="#step-1-acquire-samtools-source-code">Step 1</a> and 
+<a href="#step-2-read-through-installation-instructions">Step 2</a> in the above example for 
+compiling Samtools without CRAM support.</p>
+<h3 id="step-2-read-through-installation-instructions-continued">Step 2. Read through installation instructions, continued<a class="headerlink" href="#step-2-read-through-installation-instructions-continued" title="Permanent link">&para;</a></h3>
+<p>From both the Samtools and HTSlib <code>INSTALL</code> files, we know that both bzip2 and 
+libzlma are required for CRAM support. We can check our system for these libraries:</p>
+<pre><code>[user@apXX ~]$ ls /usr/lib* | grep libz
+[user@apXX ~]$ ls /usr/lib* | grep libbz2
+</code></pre>
+<p>which will reveal that both sets of libraries are available on the login. <strong>However</strong> 
+if we were to attempt Samtools installation with CRAM support right now 
+we would find that this results in an error when performing the <code>configure</code> step.</p>
+<p><em>If the libraries are present, why do we get this error?</em> This error is due to 
+differences between types of library files. For example, running 
+<code>ls /usr/lib* | grep libbz2</code> will return two matches, <code>libbz2.so.1</code> and <code>libbz2.so.1.0.6</code>. 
+But running <code>ls /usr/lib* | grep liblz</code> will return four matches including three 
+<code>.so</code> and one <code>.a</code> files. Our Samtools compilation specifically requires 
+the <code>.a</code> type of library file for both <code>libbz2</code> and <code>liblzma</code> and the absence of 
+this type of library file in <code>/usr/lib64</code> is why compilation 
+will fail without additional steps.</p>
+<h3 id="step-3-compile-liblzma">Step 3. Compile liblzma<a class="headerlink" href="#step-3-compile-liblzma" title="Permanent link">&para;</a></h3>
+<p>To compile Samtools with CRAM support requires that we first compile 
+<code>liblzma</code>. Following the same approach as we did for Samtools, first we 
+acquire a copy of the the latest liblzma source code, then review the installation instructions. 
+From our online search we will that <code>liblzma</code> 
+is availble from the XZ Utils library package.</p>
+<pre><code>[user@apXX ~]$ wget https://tukaani.org/xz/xz-5.2.5.tar.gz
+[user@apXX ~]$ tar -xzf xz-5.2.5.tar.gz
+</code></pre>
+<p>Then review the installation instructions and check for dependencies. Everything 
+that is needed for the default installation of XZ utils is currently available on the login node.</p>
+<pre><code>[user@apXX ~]$ cd xz-5.2.5/
+[user@apXX xz-5.2.5]$ less INSTALL
+</code></pre>
+<p>Perform the XZ Utils compilation:</p>
+<pre><code>[user@apXX xz-5.2.5]$ mkdir $HOME/my-software/xz-5.2.5
+[user@apXX xz-5.2.5]$ ./configure --prefix=$HOME/my-software/xz-5.2.5
+[user@apXX xz-5.2.5]$ make
+[user@apXX xz-5.2.5]$ make install
+[user@apXX xz-5.2.5]$ ls -F $HOME/my-software/xz-5.2.5
+/bin  /include  /lib  /share
+</code></pre>
+<p>Success!</p>
+<p>Lastly we need to set some environment variables so that Samtools knows where to 
+find this library:</p>
+<pre><code>[user@apXX xz-5.2.5]$ export PATH=$HOME/my-software/xz-5.2.5/bin:$PATH
+[user@apXX xz-5.2.5]$ export LIBRARY_PATH=$HOME/my-software/xz-5.2.5/lib:$LIBRARY_PATH
+[user@apXX xz-5.2.5]$ export LD_LIBRARY_PATH=$LIBRARY_PATH
+</code></pre>
+<h3 id="step-4-load-bzip2-module">Step 4. Load bzip2 module<a class="headerlink" href="#step-4-load-bzip2-module" title="Permanent link">&para;</a></h3>
+<p>After installing XZ Utils and setting our environment variable, next we will 
+load the bzip2 module:</p>
+<pre><code>[user@apXX xz-5.2.5]$ module load bzip2/1.0.6
+</code></pre>
+<p>Loading this module will further modify some of your environment variables 
+so that Samtools is able to locate the bzip2 library files.</p>
+<h3 id="step-5-compile-samtools">Step 5. Compile Samtools<a class="headerlink" href="#step-5-compile-samtools" title="Permanent link">&para;</a></h3>
+<p>After compiling XZ Utils (which provides <code>liblzma</code>) and loading the <code>bzip2 1.0.6</code> module, 
+we are now ready to compile Samtools with CRAM support.</p>
+<p>First, we will create a new directory in our <code>home</code> directory that will store the 
+Samtools compiled software. The example here will use a common directory, called <code>my-software</code>, 
+for organizing all compiled software in the <code>home</code> directory:</p>
+<pre><code>[user@apXX ~]$ mkdir $HOME/my-software
+[user@apXX ~]$ mkdir $HOME/my-software/samtools-1.10
+</code></pre>
+<blockquote>
+<p>As a best practice, always include the version name of your software in the directory name.</p>
+</blockquote>
+<p>Next, we will change our directory to the Samtools source code directory that was created in 
+<a href="#step-1-acquire-samtools-source-code">Step 1</a>. You should see the <code>INSTALL</code> and <code>README</code> files 
+as well as a file called <code>configure</code>.</p>
+<p>The first command we will run is <code>./configure</code> - this file is a script that allows us 
+to modify various details about our Samtools installation and we will be executing <code>configure</code> 
+with a flag that disables <code>tview</code>:</p>
+<pre><code>[user@apXX samtools-1.10]$ ./configure --prefix=$HOME/my-software/samtools-1.10 --without-curses
+</code></pre>
+<p>Here we used <code>--prefix</code> to specify where we would like the final Samtools software 
+to be installed and <code>--without-curses</code> to disable <code>tview</code> support.</p>
+<p>Next run the final two commands:</p>
+<pre><code>[user@apXX samtools-1.10]$ make
+[user@apXX samtools-1.10]$ make install
+</code></pre>
+<p>Once <code>make install</code> has finished running, the compilation is complete. We can 
+also confirm this by looking at the content of <code>~/my-software/samtools-1.10/</code> where 
+we had Samtools installed:</p>
+<pre><code>[user@apXX samtools-1.10]$ cd ~
+[user@apXX ~]$ ls -F my-software/samtools-1.10/
+bin/ share/
+</code></pre>
+<p>There will be two directories present in <code>my-software/samtools-1.10</code>, one named <code>bin</code> and 
+another named <code>share</code>. The Samtools executable will be located in <code>bin</code> and we can give 
+it a quick test to make sure it runs as expected:</p>
+<pre><code>[user@apXX ~]$ ./my-software/samtools-1.10/bin/samtools view
+</code></pre>
+<p>which will return the Samtools <code>view</code> usage statement.</p>
+<h3 id="step-6-make-our-software-portable">Step 6. Make our software portable<a class="headerlink" href="#step-6-make-our-software-portable" title="Permanent link">&para;</a></h3>
+<p>Our subsequent job submissions on the OSPool will need a copy of our software. For 
+convenience, we recommend converting your software directory to a tar archive. 
+First move to <code>my-software/</code>, then create the tar archive:</p>
+<pre><code>[user@apXX ~]$ cd my-software/
+[user@apXX my-software]$ tar -czf samtools-1.10.tar.gz samtools-1.10/
+[user@apXX my-software]$ ls samtools-1.10*
+samtools-1.10/ samtools-1.10.tar.gz
+[user@apXX my-software]$ du -h samtools-1.10.tar.gz
+2.0M    samtools-1.10.tar.gz
+</code></pre>
+<p>The last command in the above example returns the size of our tar archive. This is 
+important for determine the appropriate method that we should use for transferring 
+this file along with our subsequent jobs. To learn more, please see 
+<a href="../../../htc_workloads/managing_data/overview/">Introduction to Data Management on OSG</a>.</p>
+<p>Follow the these same steps for creating a tar archive of the xz-5.2.5 library as well. </p>
+<p>To clean up and clear out space in your home directory, we recommend deleting the Samtools source 
+code directory.</p>
+<h3 id="step-7-use-samtools-in-our-jobs">Step 7. Use Samtools in our jobs<a class="headerlink" href="#step-7-use-samtools-in-our-jobs" title="Permanent link">&para;</a></h3>
+<p>Now that Samtools has been compiled we can submit jobs that use this software. For Samtools 
+with CRAM we will also need to bring along a copy of XZ Utils (which includes the <code>liblzma</code> library) 
+and ensure that our jobs have access to the <code>bzip2 1.0.6</code> module. Below is an example submit file 
+for a job that will use Samtools with a Fasta file <code>genome.fa' and CRAM file named</code>my-sample.cram` which is &lt;100MB in size:</p>
+<pre><code>#samtools-cram.sub
+log = samtools-cram.$(Cluster).log
+error = samtools-cram.$(Cluster)_$(Process).err
+output = samtools-cram.$(Cluster)_$(Process).out
+
+executable = samtools-cram.sh
+
+transfer_input_files = /home/username/my-software/samtools-1.10.tar.gz, /home/username/my-software/xz-5.2.5.tar.gz, genome.fa, my-sample.cram
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
++JobDurationCategory = "Medium"
+
+requirements = (OSGVO_OS_STRING == "RHEL 9")
+request_memory = 1.3GB
+request_disk = 1.5GB
+request_cpus = 1
+
+queue 1
+</code></pre>
+<p>The above submit file will transfer a complete copy of the Samtools tar archive 
+created in <a href="#step-6-make-our-software-portable">Step 6</a> as well as a copy of XZ Utils installation from 
+<a href="#step-3-compile-liblzma">Step 3</a>. This submit file 
+also includes an important <code>requirements</code> which tell HTCondor to run our job on 
+execute nodes running Red Hat Linux version 7 operating system/</p>
+<blockquote>
+<p>The resource requests for your jobs may differ from what is shown in the 
+above example. Always run tests to determine the appropriate requests for your jobs.</p>
+</blockquote>
+<p>Some additional steps are then needed in the executable bash script used by this job 
+to "untar" the Samtools and XZ Util tar archives, modify the <code>PATH</code> and 
+<code>LD_LIBRARY_PATH</code> enviroments of our job, and load the <code>bzip2</code> module:</p>
+<pre><code>#!/bin/bash
+# samtools-cram.sh
+
+# untar software and libraries
+tar -xzf samtools-1.10.tar.gz
+tar -xzf xz-5.2.5.tar.gz
+
+# modify environment variables 
+export LD_LIBRARY_PATH=$_CONDOR_SCRATCH_DIR/xz-5.2.5/lib:$LD_LIBRARY_PATH
+export PATH=$_CONDOR_SCRATCH_DIR/samtools-1.10/bin:$_CONDOR_SCRATCH_DIR/xz-5.2.5/bin:$PATH
+
+# load bzip2 module
+module load bzip2/1.0.6
+
+# run samtools commands
+...
+</code></pre>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../compiling-applications/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compiling Software" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Compiling Software
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../containers-singularity/" class="md-footer__link md-footer__link--next" aria-label="Next: Containers - Apptainer/Singularity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Containers - Apptainer/Singularity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      
+    
+  </body>
+</html>
